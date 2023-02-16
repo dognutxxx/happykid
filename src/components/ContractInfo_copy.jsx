@@ -2801,6 +2801,7 @@ function contractInfo_copy() {
     invalidAge.contactInfo.middlename = inputMiddleNameContract;
     invalidAge.contactInfo.lastname = inputLastNameContract;
     invalidAge.contactInfo.telNo = inputMobilePhoneContract;
+    console.log("zappp");
 
     const chdPax_infPaxsArray = invalidAge.chdPaxs.concat(invalidAge.infPaxs);
     console.log(chdPax_infPaxsArray);

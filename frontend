@@ -10,44 +10,44 @@
         "name": "Suvarnabhumi, Bangkok"
       },
       "arrCity": {
-        "code": "FUK",
-        "name": "Fukuoka, Fukuoka"
+        "code": "CTS",
+        "name": "Chitose, Sapporo"
       },
       "airline": {
-        "code": "VZ",
-        "name": "Thai Vietjet Air"
+        "code": "TG",
+        "name": "Thai Airways Intl"
       },
       "flightNumber": "810",
       "operatedAirline": {
-        "code": "VZ",
-        "name": "Thai Vietjet Air"
+        "code": "TG",
+        "name": "Thai Airways Intl"
       },
       "departureDateTime": "2023-01-17T23:55:00",
       "arrivalDateTime": "2023-01-18T08:20:00",
-      "rbd": "W",
+      "rbd": "Y",
       "Seq": 1
     },
     {
       "depCity": {
-        "code": "FUK",
-        "name": "Fukuoka, Fukuoka"
+        "code": "CTS",
+        "name": "Chitose, Sapporo"
       },
       "arrCity": {
-        "code": "HND",
-        "name": "Haneda, Tokyo"
+        "code": "KIX",
+        "name": "Kansai Int'l, Osaka"
       },
       "airline": {
-        "code": "JL",
-        "name": "Japan Airlines"
+        "code": "TG",
+        "name": "Thai Airways Intl"
       },
-      "flightNumber": "306",
+      "flightNumber": "6046",
       "operatedAirline": {
-        "code": "JL",
-        "name": "Japan Airlines"
+        "code": "EH",
+        "name": "Saeta"
       },
       "departureDateTime": "2023-01-18T12:50:00",
       "arrivalDateTime": "2023-01-18T10:30:00",
-      "rbd": "G",
+      "rbd": "Y",
       "Seq": 2
     }
   ],
@@ -58,40 +58,63 @@
         "name": "Haneda, Tokyo"
       },
       "arrCity": {
-        "code": "FUK",
-        "name": "Fukuoka, Fukuoka"
+        "code": "IZO",
+        "name": "Izumo, Izumo"
       },
       "airline": {
         "code": "JL",
         "name": "Japan Airlines"
       },
-      "flightNumber": "307",
+      "flightNumber": "285",
       "operatedAirline": {
         "code": "JL",
         "name": "Japan Airlines"
       },
-      "departureDateTime": "2023-01-31T20:05:00",
-      "arrivalDateTime": "2023-01-31T17:45:00",
+      "departureDateTime": "2023-01-19T16:55:00",
+      "arrivalDateTime": "2023-01-19T18:20:00",
       "rbd": "Y",
       "Seq": 1
     },
     {
       "depCity": {
-        "code": "FUK",
-        "name": "Fukuoka, Fukuoka"
+        "code": "IZO",
+        "name": "Izumo, Izumo"
       },
       "arrCity": {
-        "code": "BKK",
-        "name": "Suvarnabhumi, Bangkok"
+        "code": "ITM",
+        "name": "Itami, Osaka"
+      },
+      "airline": {
+        "code": "JL",
+        "name": "Japan Airlines"
+      },
+      "flightNumber": "2358",
+      "operatedAirline": {
+        "code": "JL",
+        "name": "Japan Airlines"
+      },
+      "departureDateTime": "2023-11-30T19:30:00",
+      "arrivalDateTime": "2023-11-30T20:30:00",
+      "rbd": "Y",
+      "Seq": 2
+    },
+    {
+      "depCity": {
+        "code": "KIX",
+        "name": "Kansai Int'l, Osaka"
+      },
+      "arrCity": {
+        "code": "TPE",
+        "name": "Taiwan taoyuan Intl, Taipei"
       },
       "airline": {
         "code": "TG",
         "name": "Thai Airways Intl"
       },
-      "flightNumber": "649",
+      "flightNumber": "6313",
       "operatedAirline": {
-        "code": "TG",
-        "name": "Thai Airways Intl"
+        "code": "BR",
+        "name": "Eva Air"
       },
       "departureDateTime": "2023-01-31T22:30:00",
       "arrivalDateTime": "2023-02-01T01:25:00",
@@ -100,30 +123,30 @@
     }
   ],
   "contactInfo": {
-    "title": "Mr",
-    "firstname": "arnon",
-    "middlename": "",
-    "lastname": "prommoon",
-    "email": "nut@gmail.com",
-    "telNo": "090",
+    "title": "MR",
+    "firstname": "ning",
+    "middlename": null,
+    "lastname": "aisoft",
+    "email": "butsanee@aisoftthailand.com",
+    "telNo": "660891223223",
     "countryCode": "TH"
   },
   "adtPaxs": [
     {
       "id": 1,
       "paxType": "ADT",
-      "title": "Mr",
-      "firstname": "arnon",
-      "middlename": "",
-      "lastname": "arnon",
-      "birthday": "2022-12-29",
-      "email": "nut@gmail.com",
-      "telNo": "090",
-      "passportNumber": "152011505",
-      "passportIssuingDate": "2022-12-23",
-      "passportExpiryDate": "2022-12-27",
-      "passportIssuingCountry": "TH",
-      "passportNationality": "asdasd",
+      "title": "MR",
+      "firstname": "ning",
+      "middlename": null,
+      "lastname": "aisoft",
+      "birthday": "1988-01-01T00:00:00",
+      "email": null,
+      "telNo": null,
+      "passportNumber": null,
+      "passportIssuingDate": "0001-01-01T00:00:00",
+      "passportExpiryDate": "0001-01-01T00:00:00",
+      "passportIssuingCountry": null,
+      "passportNationality": null,
       "frequencyFlyerAirline": null,
       "frequencyFlyerNumber": null,
       "seatRequest": null,
@@ -144,5 +167,6 @@
       "StatusReissue": false
     }
   ],
+
   "languageCode": "th"
 }

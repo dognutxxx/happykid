@@ -23,18 +23,18 @@ const encryptStorage2 = new EncryptStorage("H@b'v4U*[8Y,m~:d", {});
 
 function contractInfo_copy() {
   const [status, setStatus] = useState(false);
-  console.log("status",status);
   const [resBooking, setResBooking] = useState("");
+
+  // const azure_url = "https://back-nftant-uat.azurewebsites.net";
+  const azure_url = "http://localhost:3001";
 
   const accesstripType = localStorage.access_;
   const valueTypeTrip = encryptStorage2.decryptString(accesstripType);
 
   const access = JSON.parse(valueTypeTrip);
-  console.log("acess", access);
 
   const typeType_ = JSON.parse(valueTypeTrip);
   const typeTrip = typeType_.tripType;
-  console.log("typeTrip", typeTrip);
 
   const airport = localStorage.airport_;
   const valueAirport = encryptStorage2.decryptString(airport);
@@ -48,7 +48,7 @@ function contractInfo_copy() {
   //PNR
   const { setDataSearch } = usePnrContext();
 
-  const {bookingPerson} = usePnrContext(0);
+  const { bookingPerson } = usePnrContext(0);
 
   const typeOfTrip = () => {
     if (typeTrip === "R") {
@@ -57,13 +57,19 @@ function contractInfo_copy() {
       return "One-Way";
     }
   };
-  console.log(typeOfTrip());
 
-  const adult = Number(access.adult)
-  const child = Number(access.child)
-  const infant = Number(access.infant)
-  const count = adult + child + infant
+  const adult = Number(access.adult);
+  const child = Number(access.child);
+  const infant = Number(access.infant);
 
+  const checkRoundTrip = () => {
+    if (typeTrip === "R") {
+      return adult * 2 + child * 2 + infant * 2;
+    } else {
+      return adult + child + infant;
+    }
+  };
+  // console.log(checkRoundTrip()); // เช็คจำนวนคน Round Trip
 
   //Contract Detail
   const { inputTitleContract } = useContractDetailContext();
@@ -103,9 +109,15 @@ function contractInfo_copy() {
   const { arriveDateTime } = useDepartureSelectedContext();
   const { src } = useDepartureSelectedContext();
   const { oneStopCity } = useDepartureSelectedContext();
-  const { departureDateTimeSeq1 } = useDepartureSelectedContext();
-  const { departureDateTimeSeq2 } = useDepartureSelectedContext();
-  const { arriveCodeCitySeq1 } = useDepartureSelectedContext();
+  const { twoStopCity } = useDepartureSelectedContext();
+  const { oneStopCodeCity } = useDepartureSelectedContext();
+  const { twoStopCodeCity } = useDepartureSelectedContext();
+  const { departureDateTimeSeq1_1 } = useDepartureSelectedContext();
+  const { departureDateTimeSeq2_1 } = useDepartureSelectedContext();
+  const { departureDateTimeSeq3_1 } = useDepartureSelectedContext();
+  const { arrivalDateTimeSeq1_1 } = useDepartureSelectedContext();
+  const { arrivalDateTimeSeq2_1 } = useDepartureSelectedContext();
+  const { arrivalDateTimeSeq3_1 } = useDepartureSelectedContext();
 
   //Return result
   const { airline2 } = useReturnSelectedContext();
@@ -118,24 +130,42 @@ function contractInfo_copy() {
   const { arriveDateTime2 } = useReturnSelectedContext();
   const { src2 } = useReturnSelectedContext();
   const { oneStopCity2 } = useReturnSelectedContext();
+  const { twoStopCity2 } = useReturnSelectedContext();
   const { oneStopCodeCity2 } = useReturnSelectedContext();
+  const { twoStopCodeCity2 } = useReturnSelectedContext();
   const { departureDateTimeSeq1_2 } = useReturnSelectedContext();
   const { departureDateTimeSeq2_2 } = useReturnSelectedContext();
+  const { departureDateTimeSeq3_2 } = useReturnSelectedContext();
+  const { arrivalDateTimeSeq1_2 } = useReturnSelectedContext();
+  const { arrivalDateTimeSeq2_2 } = useReturnSelectedContext();
+  const { arrivalDateTimeSeq3_2 } = useReturnSelectedContext();
 
   //ResultBookingObjContext
   const { onewayDirectObjBooking } = useResultBookingObjContext();
   const { onewayOneStopObjBooking } = useResultBookingObjContext();
+  const { onewayTwoStopObjBooking } = useResultBookingObjContext();
   const { roundDir_DirObjBookingInfo } = useResultBookingObjContext();
   const { roundDir_OneObjBookingInfo } = useResultBookingObjContext();
-  const { roundOne_OneObjBookingInfo } = useResultBookingObjContext();
+  const { roundDir_TwoObjBookingInfo } = useResultBookingObjContext();
   const { roundOne_DirObjBookingInfo } = useResultBookingObjContext();
+  const { roundOne_OneObjBookingInfo } = useResultBookingObjContext();
+  const { roundOne_TwoObjBookingInfo } = useResultBookingObjContext();
+  const { roundTwo_DirObjBookingInfo } = useResultBookingObjContext();
+  const { roundTwo_OneObjBookingInfo } = useResultBookingObjContext();
+  const { roundTwo_TwoObjBookingInfo } = useResultBookingObjContext();
 
   console.log("OneWay_Dir", onewayDirectObjBooking);
-  console.log("OneWay_OneStop", onewayOneStopObjBooking);
-  console.log("Round_Dir-Dir", roundDir_DirObjBookingInfo);
-  console.log("Round_Dir-OneStop ", roundDir_OneObjBookingInfo);
-  console.log("Round_OneStop-OneStop  ", roundOne_OneObjBookingInfo);
-  console.log("Round_OneStop-Dir ", roundOne_DirObjBookingInfo);
+  // console.log("OneWay_OneStop", onewayOneStopObjBooking);
+  // console.log("OneWay_TwoStop", onewayTwoStopObjBooking);
+  // console.log("Round_Dir-Dir", roundDir_DirObjBookingInfo);
+  // console.log("Round_Dir-OneStop ", roundDir_OneObjBookingInfo);
+  // console.log("Round_Dir-TwoStop ", roundDir_TwoObjBookingInfo);
+  // console.log("Round_OneStop-Dir ", roundOne_DirObjBookingInfo);
+  // console.log("Round_OneStop-OneStop  ", roundOne_OneObjBookingInfo);
+  // console.log("Round_OneStop-TwoStop  ", roundOne_TwoObjBookingInfo);
+  // console.log("Round_TwoStop_Dir  ", roundTwo_DirObjBookingInfo);
+  // console.log("Round_TwoStop_OneStop  ", roundTwo_OneObjBookingInfo);
+  // console.log("Round_TwoStop-TwoStop  ", roundTwo_TwoObjBookingInfo);
 
   const { depDirectSeq_s1 } = useFinalDirectDepartureContext();
   const { depOneStopSeq_s1 } = useFinalOneStopDepartureContext();
@@ -172,48 +202,39 @@ function contractInfo_copy() {
   const totalTime = timeDuration?.slice(0, 2) + "hr " + timeDuration?.slice(2) + "m";
   const totalTime2 = timeDuration2?.slice(0, 2) + "hr " + timeDuration2?.slice(2) + "m";
 
-  const checkPNR = async () => {
-    await axios
-      .get(`http://localhost:3001/read/single/${dna}`, {
-        //Get token จาก server (localhost:3001)
-      })
-      .then((res) => {
-        if (res.data.length === 0) {
-          // console.log("Status OK");
-        } else {
-          {
-            axios
-              .get(`http://localhost:3001/status/single/${dna}`, {
-                //Get token จาก server (localhost:3001)
-              })
-              .then((res) => {
-                setStatus(res.data[0].active);
-              });
-          }
-        }
-      });
-  };
-  checkPNR();
-
   const findFlight = () => {
     if (onewayDirectObjBooking) {
       return onewayDirectObjBooking[0];
     } else if (onewayOneStopObjBooking) {
       return onewayOneStopObjBooking[0];
+    } else if (onewayTwoStopObjBooking) {
+      return onewayTwoStopObjBooking[0];
     } else if (roundDir_DirObjBookingInfo) {
       return roundDir_DirObjBookingInfo[0];
     } else if (roundDir_OneObjBookingInfo) {
       return roundDir_OneObjBookingInfo[0];
+    } else if (roundDir_TwoObjBookingInfo) {
+      return roundDir_TwoObjBookingInfo[0];
     } else if (roundOne_OneObjBookingInfo) {
       return roundOne_OneObjBookingInfo[0];
     } else if (roundOne_DirObjBookingInfo) {
       return roundOne_DirObjBookingInfo[0];
+    } else if (roundOne_TwoObjBookingInfo) {
+      return roundOne_TwoObjBookingInfo[0];
+    } else if (roundTwo_DirObjBookingInfo) {
+      return roundTwo_DirObjBookingInfo[0];
+    } else if (roundTwo_OneObjBookingInfo) {
+      return roundTwo_OneObjBookingInfo[0];
+    } else if (roundTwo_TwoObjBookingInfo) {
+      return roundTwo_TwoObjBookingInfo[0];
     } else {
-      console.log("error");
+      console.log("ไม่มี");
     }
   };
 
   const apiBody = findFlight();
+  console.log(apiBody);
+  
 
   const dataNFTDetail = localStorage.NFT_;
   const value_ = encryptStorage2.decryptString(dataNFTDetail);
@@ -222,7 +243,7 @@ function contractInfo_copy() {
 
   let navigate = useNavigate();
 
-  const wallet = localStorage.walletAddress;
+  const wallet = sessionStorage.walletAddress;
   // const value = encryptStorage2.decryptString(wallet);
 
   const sucessAlert = (message) => {
@@ -248,7 +269,6 @@ function contractInfo_copy() {
   };
 
   const valueTypeTrip_ = JSON.parse(valueTypeTrip);
-  console.log(valueTypeTrip_);
 
   const findAirportCodeDep = () => {
     const airportDep = valueAirport_.Departure?.filter((el) => {
@@ -256,7 +276,6 @@ function contractInfo_copy() {
     });
     return airportDep[0].AirportName;
   };
-  console.log(findAirportCodeDep());
 
   const findAirportCodeArr = () => {
     const airportArr = valueAirport_.Arrival?.filter((el) => {
@@ -264,14 +283,15 @@ function contractInfo_copy() {
     });
     return airportArr[0].AirportName;
   };
-  console.log(findAirportCodeArr());
 
   const finalTicket = async () => {
     try {
       setLoading(true);
-      const accessToken = await axios.post("http://localhost:3001/accesstoken");
+      // const accessToken = await axios.post("http://localhost:3001/accesstoken");
+      const accessToken = await axios.post(`${azure_url}/accesstoken`);
       const dataSearch = await axios.post(
-        "http://localhost:3001/bookingInfo",
+        // "http://localhost:3001/bookingInfo",
+        `${azure_url}/bookingInfo`,
         {
           body: apiBody,
           accessToken: accessToken.data.accessToken,
@@ -282,8 +302,9 @@ function contractInfo_copy() {
       );
       setDataSearch(dataSearch.data.recordLocator);
 
-      if (bookingPerson <= 10) { 
-        const pnr = await axios.post("http://localhost:3001/create", {
+      if (bookingPerson <= 8) {
+        // const pnr = await axios.post("http://localhost:3001/create", {
+        const pnr = await axios.post(`${azure_url}/create`, {
           pnr: `${dataSearch.data.recordLocator}`,
           dna: `${dna}`,
           datetime: `${formatted_date()}`,
@@ -294,22 +315,33 @@ function contractInfo_copy() {
           arrivalTrip: `${access.destinationCode}`,
           arrivalCity: `${findAirportCodeArr()}`,
           type: `${typeOfTrip()}`,
-          person: `${count}`,
+          person: `${checkRoundTrip()}`,
         });
         sucessAlert("การออกตั๋วเสร็จสิ้น");
         localStorage.clear();
+        sessionStorage.clear();
         navigate("/finalticket", { replace: true });
       } else {
         localStorage.clear();
+        sessionStorage.clear();
         errorAlert("Already NFT actived, Please contract admin or reserve again");
         navigate("/", { replace: true });
       }
     } catch (err) {
-      console.log(err);
+      console.log(err, "err");
     }
   };
 
   const [show, setShow] = useState();
+
+  // const invaild = () => {
+  //   apiBody.chdPaxs.filter((val) => {
+  //     if(val.birthday === "" || val.birthday === null || val.birthday === undefined) {
+  //       return false
+  //     }
+  //   })
+  //   return true;
+  // }
 
   const onClick = () => {
     setShow(true);
@@ -325,7 +357,6 @@ function contractInfo_copy() {
 
   var adultsSection = [];
   for (let i = 0; i < adultInfo.length; i++) {
-    console.log(i);
     adultsSection.push(
       <div>
         <div className="">
@@ -340,10 +371,10 @@ function contractInfo_copy() {
           </div>
 
           <div className="flex w-full p-2 gap-12">
-            <div>
+            {/* <div>
               <div className="w-[100%] font-semibold text-[#4E1311]">Date of birth</div>
               {adultInfo[i]?.birthday}
-            </div>
+            </div> */}
 
             <div>
               <div className="font-semibold text-[#4E1311]">Mobile Phone</div>
@@ -424,7 +455,6 @@ function contractInfo_copy() {
 
   var childsSection = [];
   for (let i = 0; i < childInfo.length; i++) {
-    console.log(i);
     childsSection.push(
       <div>
         <div className="">
@@ -523,7 +553,6 @@ function contractInfo_copy() {
 
   var infantsSection = [];
   for (let i = 0; i < infantInfo.length; i++) {
-    console.log(i);
     infantsSection.push(
       <div>
         <div className="">
@@ -636,117 +665,246 @@ function contractInfo_copy() {
             <div className="border flex justify-center p-2 mx-4 lg:mx-16 my-auto">
               <div className="p-2 w-[300px] h-full">
                 <>
-                  <img className="w-full" src={nftImg} alt="" />
+                  <img className="w-full rounded" src={nftImg} alt="" />
                 </>
-                <h2 className="my-4">NFT Ticket : {nftName} </h2>
+                <p className="mt-4 font-semibold">NFT Ticket : </p>
+                <p className="font-semibold">{nftName} </p>
               </div>
 
               <div className="border rounded-xl w-full p-2">
                 <div className="text-lg">
-                  <p className="bg-gray-100 text-[#FAA819] font-bold">Departure</p>
+                  <p className="text-[#FAA819] font-bold">Departure</p>
                   <p className="text-[#828282]">
-                    {moment(access.departureDate).format("dddd")}, {moment(access.departureDate).format("DD-MMM-YYYY")}
+                    {moment(access.departDate).format("dddd")}, {moment(access.departDate).format("DD-MMM-YYYY")}
                   </p>
 
-                  {oneStopCity ? (
+                  {/* {oneStopCity ? (
                     <p className="text-[#828282] font-bold text-start">One Stop Flight</p>
                   ) : (
                     <p className="text-[#828282] text-start font-bold">Direct Flight</p>
+                  )} */}
+                  {oneStopCity && twoStopCity ? (
+                    <p className="">Two Stop Flight</p>
+                  ) : oneStopCity ? (
+                    <p className="">One Stop Flight</p>
+                  ) : (
+                    <p className="">Direct Flight</p>
                   )}
                 </div>
                 <p className="text-lg text-[#828282]">{totalTime}</p>
 
                 <div className="my-4">
-                  <img className="" src={src} alt="" />
+                <img className="" src={`https://ai-r-logo.azurewebsites.net/square/${src}.png`} alt="" />
                   <div className="font-semibold">{airline}</div>
                 </div>
 
                 <div className="flex w-[100%] my-6 text-lg">
-                  <div className="flex flex-col justify-between font-semibold w-[80px]">
-                    <p className="">{departureDateTime}</p>
-                    {oneStopCity ? <p className="">{departureDateTimeSeq1}</p> : <p className="">{arriveDateTime}</p>}
-                  </div>
-                  <div className="mx-2">
-                    <svg width="33" height="113" viewBox="0 0 33 113" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="16.5" cy="5" r="5" transform="rotate(90 16.5 5)" fill="#FAA819" />
-                      <path d="M16.5 10L16.5 40" stroke="#FAA819" strokeLinecap="round" strokeLinejoin="round" />
-                      <path
-                        d="M28.5071 44.4929C27.9132 43.899 26.8868 43.8406 25.538 44.324C24.6105 44.6565 23.6377 45.2137 23.1723 45.6792L19.4345 49.417L7.13066 47.4844L4 50.6151L14.2295 54.6219L10.9451 57.9064L6.28335 58.1794L4.04805 60.4147L9.10708 62.8558L7.6898 64.2731L8.7269 65.3102L10.1423 63.8948L12.5858 68.9514L14.8206 66.7166L15.0936 62.0549L18.4332 58.7153L22.4392 68.9428L25.5698 65.8121L23.6377 53.5107L27.3208 49.8276C27.7862 49.3622 28.3435 48.3893 28.676 47.4618C29.1594 46.1134 29.101 45.0867 28.5071 44.4929ZM6.62236 50.0671L7.64023 49.0492L18.1514 50.7001L15.3615 53.49L6.62236 50.0671ZM24.0051 65.3027L22.9873 66.3205L19.5651 57.5835L22.3545 54.794L24.0051 65.3027ZM27.2953 46.967C27.0151 47.7488 26.552 48.5223 26.2837 48.7906L13.6621 61.4123L13.3891 66.074L13.0083 66.4547L11.2407 62.7966L12.5157 61.5215L11.4786 60.4844L10.2057 61.7573L6.54575 59.9913L6.92603 59.6111L11.5877 59.3381L24.2094 46.7163C24.4777 46.448 25.2512 45.985 26.033 45.7047C26.9205 45.3865 27.3914 45.4515 27.47 45.53C27.5484 45.6086 27.6135 46.0794 27.2953 46.967Z"
-                        fill="#FAA819"
-                      />
-                      <path
-                        d="M16.5 72.9517L16.5 102.952"
-                        stroke="#FAA819"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <circle cx="16.5" cy="107.952" r="5" transform="rotate(90 16.5 107.952)" fill="#FAA819" />
-                    </svg>
-                  </div>
+                  <div>
+                    <div className="flex w-[100%] text-lg my-6">
+                      <div className="flex flex-col justify-between font-semibold ">
+                        {oneStopCity && twoStopCity ? (
+                          <p className="">{departureDateTimeSeq1_1}</p>
+                        ) : oneStopCity ? (
+                          <p className="">{departureDateTimeSeq1_1}</p>
+                        ) : (
+                          <p className="">{departureDateTime}</p>
+                        )}
 
-                  <div className="flex flex-col justify-between">
-                    <div className="flex font-semibold">
-                      <p className="">{departureNameCity}</p>
+                        {oneStopCity && twoStopCity ? (
+                          <p className="">{arrivalDateTimeSeq1_1}</p>
+                        ) : oneStopCity ? (
+                          <p className="">{arrivalDateTimeSeq1_1}</p>
+                        ) : (
+                          <p className="">{arriveDateTime}</p>
+                        )}
+                      </div>
+                      <div className="mx-2">
+                        <svg
+                          width="33"
+                          height="113"
+                          viewBox="0 0 33 113"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle cx="16.5" cy="5" r="5" transform="rotate(90 16.5 5)" fill="#FAA819" />
+                          <path d="M16.5 10L16.5 40" stroke="#FAA819" strokeLinecap="round" strokeLinejoin="round" />
+                          <path
+                            d="M28.5071 44.4929C27.9132 43.899 26.8868 43.8406 25.538 44.324C24.6105 44.6565 23.6377 45.2137 23.1723 45.6792L19.4345 49.417L7.13066 47.4844L4 50.6151L14.2295 54.6219L10.9451 57.9064L6.28335 58.1794L4.04805 60.4147L9.10708 62.8558L7.6898 64.2731L8.7269 65.3102L10.1423 63.8948L12.5858 68.9514L14.8206 66.7166L15.0936 62.0549L18.4332 58.7153L22.4392 68.9428L25.5698 65.8121L23.6377 53.5107L27.3208 49.8276C27.7862 49.3622 28.3435 48.3893 28.676 47.4618C29.1594 46.1134 29.101 45.0867 28.5071 44.4929ZM6.62236 50.0671L7.64023 49.0492L18.1514 50.7001L15.3615 53.49L6.62236 50.0671ZM24.0051 65.3027L22.9873 66.3205L19.5651 57.5835L22.3545 54.794L24.0051 65.3027ZM27.2953 46.967C27.0151 47.7488 26.552 48.5223 26.2837 48.7906L13.6621 61.4123L13.3891 66.074L13.0083 66.4547L11.2407 62.7966L12.5157 61.5215L11.4786 60.4844L10.2057 61.7573L6.54575 59.9913L6.92603 59.6111L11.5877 59.3381L24.2094 46.7163C24.4777 46.448 25.2512 45.985 26.033 45.7047C26.9205 45.3865 27.3914 45.4515 27.47 45.53C27.5484 45.6086 27.6135 46.0794 27.2953 46.967Z"
+                            fill="#FAA819"
+                          />
+                          <path
+                            d="M16.5 72.9517L16.5 102.952"
+                            stroke="#FAA819"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <circle cx="16.5" cy="107.952" r="5" transform="rotate(90 16.5 107.952)" fill="#FAA819" />
+                        </svg>
+                      </div>
+                      <div className="flex flex-col justify-between">
+                        <div className="flex font-semibold">
+                          <p className="">{departureNameCity}</p>
+                        </div>
+                        <p className=""></p>
+                        <div className="flex font-semibold">
+                          {oneStopCity ? (
+                            <p className="">{oneStopCity}</p>
+                          ) : (
+                            <p className="font-semibold">{arriveNameCity}</p>
+                          )}
+                        </div>
+                      </div>
+                      <div className="flex flex-col justify-between mx-16">
+                        <p className="text-[#828282]">({departureCodeCity})</p>
+                        {oneStopCity ? (
+                          <p className="text-[#828282]">({oneStopCodeCity})</p>
+                        ) : (
+                          <p className="text-[#828282]">({arriveCodeCity})</p>
+                        )}
+                      </div>
                     </div>
 
-                    <div className="flex font-semibold">
-                      {oneStopCity ? (
-                        <p className="">{oneStopCity}</p>
-                      ) : (
-                        <p className="font-semibold">{arriveNameCity}</p>
-                      )}
-                    </div>
-                  </div>
-                  <div className="flex flex-col justify-between mx-16">
-                    <p className="text-[#828282]">({departureCodeCity})</p>
                     {oneStopCity ? (
-                      <p className="text-[#828282]">({arriveCodeCitySeq1})</p>
-                    ) : (
-                      <p className="text-[#828282]">({arriveCodeCity})</p>
-                    )}
+                      <div className="flex w-[100%] text-lg my-6">
+                        <div className="flex flex-col justify-between font-semibold ">
+                          {oneStopCity2 && twoStopCity2 ? (
+                            <p className="">{departureDateTimeSeq2_1}</p>
+                          ) : oneStopCity2 ? (
+                            <p className="">{departureDateTimeSeq2_1}</p>
+                          ) : (
+                            <p className="">{departureDateTime}</p>
+                          )}
+
+                          {oneStopCity2 && twoStopCity2 ? (
+                            <p className="">{arrivalDateTimeSeq2_1}</p>
+                          ) : oneStopCity2 ? (
+                            <p className="">{arrivalDateTimeSeq2_1}</p>
+                          ) : (
+                            <p className="">{arriveDateTime}</p>
+                          )}
+                        </div>
+                        <div className="mx-2">
+                          <svg
+                            width="33"
+                            height="113"
+                            viewBox="0 0 33 113"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <circle cx="16.5" cy="5" r="5" transform="rotate(90 16.5 5)" fill="#FAA819" />
+                            <path d="M16.5 10L16.5 40" stroke="#FAA819" strokeLinecap="round" strokeLinejoin="round" />
+                            <path
+                              d="M28.5071 44.4929C27.9132 43.899 26.8868 43.8406 25.538 44.324C24.6105 44.6565 23.6377 45.2137 23.1723 45.6792L19.4345 49.417L7.13066 47.4844L4 50.6151L14.2295 54.6219L10.9451 57.9064L6.28335 58.1794L4.04805 60.4147L9.10708 62.8558L7.6898 64.2731L8.7269 65.3102L10.1423 63.8948L12.5858 68.9514L14.8206 66.7166L15.0936 62.0549L18.4332 58.7153L22.4392 68.9428L25.5698 65.8121L23.6377 53.5107L27.3208 49.8276C27.7862 49.3622 28.3435 48.3893 28.676 47.4618C29.1594 46.1134 29.101 45.0867 28.5071 44.4929ZM6.62236 50.0671L7.64023 49.0492L18.1514 50.7001L15.3615 53.49L6.62236 50.0671ZM24.0051 65.3027L22.9873 66.3205L19.5651 57.5835L22.3545 54.794L24.0051 65.3027ZM27.2953 46.967C27.0151 47.7488 26.552 48.5223 26.2837 48.7906L13.6621 61.4123L13.3891 66.074L13.0083 66.4547L11.2407 62.7966L12.5157 61.5215L11.4786 60.4844L10.2057 61.7573L6.54575 59.9913L6.92603 59.6111L11.5877 59.3381L24.2094 46.7163C24.4777 46.448 25.2512 45.985 26.033 45.7047C26.9205 45.3865 27.3914 45.4515 27.47 45.53C27.5484 45.6086 27.6135 46.0794 27.2953 46.967Z"
+                              fill="#FAA819"
+                            />
+                            <path
+                              d="M16.5 72.9517L16.5 102.952"
+                              stroke="#FAA819"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <circle cx="16.5" cy="107.952" r="5" transform="rotate(90 16.5 107.952)" fill="#FAA819" />
+                          </svg>
+                        </div>
+                        <div className="flex flex-col justify-between">
+                          <div className="flex font-semibold">
+                            <p className="text-[#828282]">First stop to change planes in {oneStopCity}</p>
+                          </div>
+                          <p className=""></p>
+                          <div className="flex font-semibold">
+                            {oneStopCity && twoStopCity ? (
+                              <p className="">{twoStopCity}</p>
+                            ) : oneStopCity ? (
+                              <p className="font-semibold">{arriveNameCity}</p>
+                            ) : (
+                              <p className="font-semibold">{arriveNameCity}</p>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex flex-col justify-between mx-16">
+                          <p className="text-[#828282]">({oneStopCodeCity})</p>
+                          {oneStopCity && twoStopCity ? (
+                            <p className="text-[#828282]">({twoStopCodeCity})</p>
+                          ) : (
+                            <p className="text-[#828282]">({arriveCodeCity})</p>
+                          )}
+                        </div>
+                      </div>
+                    ) : null}
+
+                    {oneStopCity && twoStopCity ? (
+                      <div className="flex w-[100%] text-lg my-6">
+                        <div className="flex flex-col justify-between font-semibold ">
+                          {oneStopCity && twoStopCity ? (
+                            <p className="">{departureDateTimeSeq3_1}</p>
+                          ) : oneStopCity2 ? (
+                            <p className="">{departureDateTimeSeq3_1}</p>
+                          ) : (
+                            <p className="">{departureDateTime}</p>
+                          )}
+
+                          {oneStopCity && twoStopCity ? (
+                            <p className="">{arrivalDateTimeSeq3_1}</p>
+                          ) : oneStopCity2 ? (
+                            <p className="">{arrivalDateTimeSeq3_1}</p>
+                          ) : (
+                            <p className="">{arriveDateTime}</p>
+                          )}
+                        </div>
+                        <div className="mx-2">
+                          <svg
+                            width="33"
+                            height="113"
+                            viewBox="0 0 33 113"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <circle cx="16.5" cy="5" r="5" transform="rotate(90 16.5 5)" fill="#FAA819" />
+                            <path d="M16.5 10L16.5 40" stroke="#FAA819" strokeLinecap="round" strokeLinejoin="round" />
+                            <path
+                              d="M28.5071 44.4929C27.9132 43.899 26.8868 43.8406 25.538 44.324C24.6105 44.6565 23.6377 45.2137 23.1723 45.6792L19.4345 49.417L7.13066 47.4844L4 50.6151L14.2295 54.6219L10.9451 57.9064L6.28335 58.1794L4.04805 60.4147L9.10708 62.8558L7.6898 64.2731L8.7269 65.3102L10.1423 63.8948L12.5858 68.9514L14.8206 66.7166L15.0936 62.0549L18.4332 58.7153L22.4392 68.9428L25.5698 65.8121L23.6377 53.5107L27.3208 49.8276C27.7862 49.3622 28.3435 48.3893 28.676 47.4618C29.1594 46.1134 29.101 45.0867 28.5071 44.4929ZM6.62236 50.0671L7.64023 49.0492L18.1514 50.7001L15.3615 53.49L6.62236 50.0671ZM24.0051 65.3027L22.9873 66.3205L19.5651 57.5835L22.3545 54.794L24.0051 65.3027ZM27.2953 46.967C27.0151 47.7488 26.552 48.5223 26.2837 48.7906L13.6621 61.4123L13.3891 66.074L13.0083 66.4547L11.2407 62.7966L12.5157 61.5215L11.4786 60.4844L10.2057 61.7573L6.54575 59.9913L6.92603 59.6111L11.5877 59.3381L24.2094 46.7163C24.4777 46.448 25.2512 45.985 26.033 45.7047C26.9205 45.3865 27.3914 45.4515 27.47 45.53C27.5484 45.6086 27.6135 46.0794 27.2953 46.967Z"
+                              fill="#FAA819"
+                            />
+                            <path
+                              d="M16.5 72.9517L16.5 102.952"
+                              stroke="#FAA819"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <circle cx="16.5" cy="107.952" r="5" transform="rotate(90 16.5 107.952)" fill="#FAA819" />
+                          </svg>
+                        </div>
+                        <div className="flex flex-col justify-between">
+                          <div className="flex font-semibold">
+                            <p className="text-[#828282]">Second stop to change planes in {twoStopCity}</p>
+                          </div>
+                          <p className=""></p>
+                          <div className="flex font-semibold">
+                            {oneStopCity ? (
+                              <p className="">{arriveNameCity}</p>
+                            ) : (
+                              <p className="font-semibold">{arriveNameCity}</p>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex flex-col justify-between mx-16">
+                          <p className="text-[#828282]">({twoStopCodeCity})</p>
+                          {oneStopCity2 ? (
+                            <p className="text-[#828282]">({arriveCodeCity})</p>
+                          ) : (
+                            <p className="text-[#828282]">({arriveCodeCity})</p>
+                          )}
+                        </div>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
-                {oneStopCity ? (
-                  <div className="flex w-[100%] my-6 text-lg">
-                    <div className="flex flex-col justify-between font-semibold w-[81px]">
-                      <p className="">{departureDateTimeSeq2}</p>
-                      <p className="">{arriveDateTime}</p>
-                    </div>
-                    <div className="mx-2">
-                      <svg width="33" height="113" viewBox="0 0 33 113" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="16.5" cy="5" r="5" transform="rotate(90 16.5 5)" fill="#FAA819" />
-                        <path d="M16.5 10L16.5 40" stroke="#FAA819" strokeLinecap="round" strokeLinejoin="round" />
-                        <path
-                          d="M28.5071 44.4929C27.9132 43.899 26.8868 43.8406 25.538 44.324C24.6105 44.6565 23.6377 45.2137 23.1723 45.6792L19.4345 49.417L7.13066 47.4844L4 50.6151L14.2295 54.6219L10.9451 57.9064L6.28335 58.1794L4.04805 60.4147L9.10708 62.8558L7.6898 64.2731L8.7269 65.3102L10.1423 63.8948L12.5858 68.9514L14.8206 66.7166L15.0936 62.0549L18.4332 58.7153L22.4392 68.9428L25.5698 65.8121L23.6377 53.5107L27.3208 49.8276C27.7862 49.3622 28.3435 48.3893 28.676 47.4618C29.1594 46.1134 29.101 45.0867 28.5071 44.4929ZM6.62236 50.0671L7.64023 49.0492L18.1514 50.7001L15.3615 53.49L6.62236 50.0671ZM24.0051 65.3027L22.9873 66.3205L19.5651 57.5835L22.3545 54.794L24.0051 65.3027ZM27.2953 46.967C27.0151 47.7488 26.552 48.5223 26.2837 48.7906L13.6621 61.4123L13.3891 66.074L13.0083 66.4547L11.2407 62.7966L12.5157 61.5215L11.4786 60.4844L10.2057 61.7573L6.54575 59.9913L6.92603 59.6111L11.5877 59.3381L24.2094 46.7163C24.4777 46.448 25.2512 45.985 26.033 45.7047C26.9205 45.3865 27.3914 45.4515 27.47 45.53C27.5484 45.6086 27.6135 46.0794 27.2953 46.967Z"
-                          fill="#FAA819"
-                        />
-                        <path
-                          d="M16.5 72.9517L16.5 102.952"
-                          stroke="#FAA819"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <circle cx="16.5" cy="107.952" r="5" transform="rotate(90 16.5 107.952)" fill="#FAA819" />
-                      </svg>
-                    </div>
-                    <div className="flex flex-col justify-between">
-                      <div className="flex">
-                        <div className="text-[#828282]">Stop to change plane in {oneStopCity}</div>
-                      </div>
-
-                      <div className="flex ">
-                        <p className="font-semibold">{arriveNameCity}</p>
-                        <p className="text-[#828282] mx-16">({arriveCodeCity})</p>
-                      </div>
-                    </div>
-                  </div>
-                ) : null}
 
                 <hr></hr>
 
                 {typeTrip === "R" ? (
                   <div className="my-4 text-lg">
-                    <p className="bg-gray-100 text-[#FAA819] font-bold">Return</p>
+                    <p className=" text-[#FAA819] font-bold">Return</p>
                     <p className="text-[#828282]">
                       {moment(access.returnDate).format("dddd")}, {moment(access.returnDate).format("DD-MMM-YYYY")}
                     </p>
@@ -854,7 +1012,7 @@ function contractInfo_copy() {
                 ) : null}
 
                 <div className="w-full">
-                  <p className="p-1 bg-gray-100 text-lg font-bold text-[#FAA819]">Contact Detail</p>
+                  <p className=" bg-gray-100 text-lg font-bold text-[#FAA819] p-4 rounded">Contact Detail</p>
                   <div className="form-control w-full max-w-full text-lg">
                     <div className="flex w-full p-2 gap-4">
                       <div className="text-start">
@@ -880,7 +1038,7 @@ function contractInfo_copy() {
                       </div>
                     </div>
 
-                    <p className="bg-gray-100 text-[#FAA819] text-lg font-bold mt-4">Passenger Detail</p>
+                    <p className="bg-gray-100 text-[#FAA819] text-lg font-bold mt-4 p-4 rounded">Passenger Detail</p>
 
                     {adultsSection}
                     {childsSection}
@@ -891,21 +1049,22 @@ function contractInfo_copy() {
                         <Button onClick={onClick}>Next</Button>
                         <Modal show={show} onClose={onClose}>
                           <div>
-                            <Modal.Header>ยืนยันข้อมูลให้ถูกต้อง</Modal.Header>
+                            <Modal.Header>Please check your information</Modal.Header>
                             <Modal.Body>
                               <div className="space-y-6">
                                 <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                  ยืนยันการจองตั๋ว กด CONFIRM / แก้ไขข้อมูล กด Decline
+                                  To confirm booking, click Confirm
+                                  To edit booking, click Back
                                 </p>
                                 <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                  **การจองตั๋วถือเป็นที่สิ้นสุดไม่สามารถเปลียนเปลี่ยนข้อมูลการจองได้**
+                                  **Your booking cannot be changed after you confirm the booking.**
                                 </p>
                               </div>
                             </Modal.Body>
                             <Modal.Footer>
                               <Button onClick={finalTicket}>Confirm</Button>
                               <Button color="gray" onClick={onClose}>
-                                Decline
+                                Back
                               </Button>
                             </Modal.Footer>
                           </div>

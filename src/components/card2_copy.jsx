@@ -9,6 +9,7 @@ import CardReturnTwoStopFlightFilter from "../components/card/CardReturnTwoStopF
 import { usePnrContext } from "../context/PnrContext";
 
 import { EncryptStorage } from "encrypt-storage";
+import { logger } from "ethers";
 const encryptStorage1 = new EncryptStorage("H@b'v4U*[8Y,m~:d", {});
 
 function card2_copy() {
@@ -16,10 +17,7 @@ function card2_copy() {
   const { checkedAny, setCheckedAny } = useBetween(Share);
   const { checkedAirline, setCheckedAirline } = useBetween(Share);
 
-  const checkboxArray = usePnrContext();
-
-  // const returnFlight = share.data.returnFlight;
-  // console.log(returnFlight);
+  const checkboxArray2 = usePnrContext();
 
   const access_ = localStorage.access_;
   const value_ = encryptStorage1.decryptString(access_);
@@ -29,6 +27,7 @@ function card2_copy() {
   const value = encryptStorage1.decryptString(localStorageReturnFlight);
 
   const returnFlight = JSON.parse(value).data.returnFlight;
+
 
   const [anyFilter, setAnyFilter] = useState([]);
   // console.log(anyFilter);
@@ -93,13 +92,13 @@ function card2_copy() {
   return (
     <>
       {checkedAny === "any" &&
-        returnFlight.map((data, idx) => {
+        returnFlight?.map((data, idx) => {
           if (data.flightDetails.length === 1) {
             const flightArray = data.flightDetails.filter((el) => {
-              if (checkboxArray.checkboxArray.length === 0) {
+              if (checkboxArray2.checkboxArray2.length === 0) {
                 return data.flightDetails;
               } else {
-                const isInArray = checkboxArray.checkboxArray.find((i) => {
+                const isInArray = checkboxArray2.checkboxArray2.find((i) => {
                   return i === el.airline.name;
                 });
                 if (isInArray) {
@@ -114,12 +113,11 @@ function card2_copy() {
                   return el;
                 }
               });
-            
 
               return (
                 <CardReturnDirectFlightFilter
                   key={idx}
-                  src={`src/assets/img/square/${data.flightDetails[0].airline.code}.png`}
+                  src={data.flightDetails[0].airline.code}
                   airline={el.airline.name}
                   timeDuration={data.totalTime}
                   departureNameCity={el.depCity.name}
@@ -149,10 +147,10 @@ function card2_copy() {
 
           if (data.flightDetails.length === 2) {
             const flightArray = data.flightDetails.filter((el) => {
-              if (checkboxArray.checkboxArray.length === 0) {
+              if (checkboxArray2.checkboxArray2.length === 0) {
                 return data.flightDetails;
               } else {
-                const isInArray = checkboxArray.checkboxArray.find((i) => {
+                const isInArray = checkboxArray2.checkboxArray2.find((i) => {
                   return i === data.flightDetails[0].airline.name;
                 });
 
@@ -165,14 +163,15 @@ function card2_copy() {
             });
 
             return flightArray?.map((el, idx) => {
-
-              const selectedRBD_s1 = data.flightDetails[0].productInfo.find((el) => {
+              const productInfoReverse_s1 = [...data.flightDetails[0].productInfo].reverse();
+              const productInfoReverse_s2 = [...data.flightDetails[1].productInfo].reverse();
+              const selectedRBD_s1 = productInfoReverse_s1.find((el) => {
                 if (access.adult <= el.availabilityStatus) {
                   return el;
                 }
               });
-            
-              const selectedRBD_s2 = data.flightDetails[1].productInfo.find((el) => {
+
+              const selectedRBD_s2 = productInfoReverse_s2.find((el) => {
                 if (access.adult <= el.availabilityStatus) {
                   return el;
                 }
@@ -182,19 +181,21 @@ function card2_copy() {
                 return (
                   <CardReturnOneStopFlightFilter
                     key={idx}
-                    src={`src/assets/img/square/${el.airline.code}.png`}
-                    airline={el.airline.name}
-                    departureNameCity={el.depCity.name}
-                    oneStopCity={el.arrCity.name}
-                    oneStopCodeCity={el.arrCity.code}
-                    departureCodeCity={el.depCity.code}
-                    departureDateTime={el.depDisplayDateTime.displayTime}
+                    src={data.flightDetails[0].airline.code}
+                    airline={data.flightDetails[0].airline.name}
+                    departureNameCity={data.flightDetails[0].depCity.name}
+                    oneStopCity={data.flightDetails[0].arrCity.name}
+                    oneStopCodeCity={data.flightDetails[0].arrCity.code}
+                    departureCodeCity={data.flightDetails[0].depCity.code}
+                    departureDateTime={data.flightDetails[0].depDisplayDateTime.displayTime}
                     arriveNameCity={data.flightDetails[1].arrCity.name}
                     arriveCodeCity={data.flightDetails[1].arrCity.code}
                     arriveDateTime={data.flightDetails[1].arrDisplayDateTime.displayTime}
                     timeDuration={data.totalTime}
-                    departureDateTimeSeq_1={data.flightDetails[0].arrDisplayDateTime.displayTime}
+                    departureDateTimeSeq_1={data.flightDetails[0].depDisplayDateTime.displayTime}
                     departureDateTimeSeq_2={data.flightDetails[1].depDisplayDateTime.displayTime}
+                    arrivalDateTimeSeq_1={data.flightDetails[0].arrDisplayDateTime.displayTime}
+                    arrivalDateTimeSeq_2={data.flightDetails[1].arrDisplayDateTime.displayTime}
                     flightNumberSeq1={data.flightDetails[0].flightNumber}
                     flightNumberSeq2={data.flightDetails[1].flightNumber}
                     operatedAirlineNameSeq1={data.flightDetails[0].operatedAirline.name}
@@ -203,7 +204,7 @@ function card2_copy() {
                     operatedAirlineCodeSeq2={data.flightDetails[1].operatedAirline.code}
                     seqOneFlight={data.flightDetails[0].seq}
                     seqTwoFlight={data.flightDetails[1].seq}
-                    //new
+                    //New
                     returnOneStopDepCityCode_s1={data.flightDetails[0].depCity.code}
                     returnOneStopDepCityCode_s2={data.flightDetails[1].depCity.code}
                     returnOneStopDepCityName_s1={data.flightDetails[0].depCity.name}
@@ -237,53 +238,132 @@ function card2_copy() {
           }
 
           //FOR FURTURE 2 STOP
+          if (data.flightDetails.length === 3) {
+            const flightArray = data.flightDetails.filter((el) => {
+              if (checkboxArray2.checkboxArray2.length === 0) {
+                return data.flightDetails;
+              } else {
+                const isInArray = checkboxArray2.checkboxArray2.find((i) => {
+                  return i === data.flightDetails[0].airline.name;
+                });
 
-          // if (data.flightDetails.length === 3) {
-          //   const flightArray = data.flightDetails.filter((el) => {
-          //     if (checkboxArray.checkboxArray.length === 0) {
-          //       return data.flightDetails;
-          //     } else {
-          //       const isInArray = checkboxArray.checkboxArray.find((i) => {
-          //         return i === el.airline.name;
-          //       });
-          //       if (isInArray) {
-          //         return el;
-          //       }
-          //     }
-          //   });
-          //   return flightArray?.map((el, idx) => {
-          //     return (
-          //       <CardTwoStopFlightFilter
-          //         key={idx}
-          //         src={`src/assets/img/square/${data.flightDetails[0].airline.code}.png`}
-          //         airline={data.flightDetails[0].airline.name}
-          //         departureNameCity={data.flightDetails[0].depCity.name}
-          //         departureCodeCity={data.flightDetails[0].depCity.code}
-          //         departureDateTime={
-          //           data.flightDetails[0].depDisplayDateTime.displayTime
-          //         }
-          //         firstStopCity={data.flightDetails[0].arrCity.name}
-          //         scondStopCity={data.flightDetails[1].arrCity.name}
-          //         arriveNameCity={data.flightDetails[2].arrCity.name}
-          //         arriveCodeCity={data.flightDetails[2].arrCity.code}
-          //         arriveDateTime={
-          //           data.flightDetails[2].arrDisplayDateTime.displayTime
-          //         }
-          //         timeDuration={data.totalTime}
-          //       />
-          //     );
-          //   });
-          // }
+                if (isInArray) {
+                  if (el.Seq === 1) {
+                    return el;
+                  }
+                }
+              }
+            });
+
+            return flightArray?.map((el, idx) => {
+              const selectedRBD_s1 = data.flightDetails[0].productInfo.find((el) => {
+                if (access.adult <= el.availabilityStatus) {
+                  return el;
+                }
+              });
+
+              const selectedRBD_s2 = data.flightDetails[1].productInfo.find((el) => {
+                if (access.adult <= el.availabilityStatus) {
+                  return el;
+                }
+              });
+
+              const selectedRBD_s3 = data.flightDetails[2].productInfo.find((el) => {
+                if (access.adult <= el.availabilityStatus) {
+                  return el;
+                }
+              });
+
+              if (el.Seq === 1) {
+                return (
+                  <CardReturnTwoStopFlightFilter
+                    key={idx}
+                    src={data.flightDetails[0].airline.code}
+                    airline={data.flightDetails[0].airline.name}
+                    departureNameCity={data.flightDetails[0].depCity.name}
+                    oneStopCity={data.flightDetails[0].arrCity.name}
+                    twoStopCity={data.flightDetails[1].arrCity.name}
+                    oneStopCodeCity={data.flightDetails[0].arrCity.code}
+                    twoStopCodeCity={data.flightDetails[1].arrCity.code}
+                    departureCodeCity={data.flightDetails[0].depCity.code}
+                    departureDateTime={el.depDisplayDateTime.displayTime}
+                    arriveNameCity={data.flightDetails[2].arrCity.name}
+                    arriveCodeCity={data.flightDetails[2].arrCity.code}
+                    arriveDateTime={data.flightDetails[1].arrDisplayDateTime.displayTime}
+                    timeDuration={data.totalTime}
+                    departureDateTimeSeq_1={data.flightDetails[0].depDisplayDateTime.displayTime}
+                    departureDateTimeSeq_2={data.flightDetails[1].depDisplayDateTime.displayTime}
+                    departureDateTimeSeq_3={data.flightDetails[2].depDisplayDateTime.displayTime}
+                    arrivalDateTimeSeq_1={data.flightDetails[0].arrDisplayDateTime.displayTime}
+                    arrivalDateTimeSeq_2={data.flightDetails[1].arrDisplayDateTime.displayTime}
+                    arrivalDateTimeSeq_3={data.flightDetails[2].arrDisplayDateTime.displayTime}
+                    flightNumberSeq1={data.flightDetails[0].flightNumber}
+                    flightNumberSeq2={data.flightDetails[1].flightNumber}
+                    flightNumberSeq3={data.flightDetails[2].flightNumber}
+                    operatedAirlineNameSeq1={data.flightDetails[0].operatedAirline.name}
+                    operatedAirlineNameSeq2={data.flightDetails[1].operatedAirline.name}
+                    operatedAirlineNameSeq3={data.flightDetails[2].operatedAirline.name}
+                    operatedAirlineCodeSeq1={data.flightDetails[0].operatedAirline.code}
+                    operatedAirlineCodeSeq2={data.flightDetails[1].operatedAirline.code}
+                    operatedAirlineCodeSeq3={data.flightDetails[2].operatedAirline.code}
+                    seqOneFlight={data.flightDetails[0].seq}
+                    seqTwoFlight={data.flightDetails[1].seq}
+                    seqThreeFlight={data.flightDetails[2].seq}
+                    //new
+                    returnTwoStopDepCityCode_s1={data.flightDetails[0].depCity.code}
+                    returnTwoStopDepCityCode_s2={data.flightDetails[1].depCity.code}
+                    returnTwoStopDepCityCode_s3={data.flightDetails[2].depCity.code}
+                    returnTwoStopDepCityName_s1={data.flightDetails[0].depCity.name}
+                    returnTwoStopDepCityName_s2={data.flightDetails[1].depCity.name}
+                    returnTwoStopDepCityName_s3={data.flightDetails[2].depCity.name}
+                    returnTwoStopArrCityCode_s1={data.flightDetails[0].arrCity.code}
+                    returnTwoStopArrCityCode_s2={data.flightDetails[1].arrCity.code}
+                    returnTwoStopArrCityCode_s3={data.flightDetails[2].arrCity.code}
+                    returnTwoStopArrCityName_s1={data.flightDetails[0].arrCity.name}
+                    returnTwoStopArrCityName_s2={data.flightDetails[1].arrCity.name}
+                    returnTwoStopArrCityName_s3={data.flightDetails[2].arrCity.name}
+                    returnTwoStopAirlineCode_s1={data.flightDetails[0].airline.code}
+                    returnTwoStopAirlineCode_s2={data.flightDetails[1].airline.code}
+                    returnTwoStopAirlineCode_s3={data.flightDetails[2].airline.code}
+                    returnTwoStopAirlineName_s1={data.flightDetails[0].airline.name}
+                    returnTwoStopAirlineName_s2={data.flightDetails[1].airline.name}
+                    returnTwoStopAirlineName_s3={data.flightDetails[2].airline.name}
+                    returnTwoStopFlightNumber_s1={data.flightDetails[0].flightNumber}
+                    returnTwoStopFlightNumber_s2={data.flightDetails[1].flightNumber}
+                    returnTwoStopFlightNumber_s3={data.flightDetails[2].flightNumber}
+                    returnTwoStopOperatedAirlineCode_s1={data.flightDetails[0].operatedAirline.code}
+                    returnTwoStopOperatedAirlineCode_s2={data.flightDetails[1].operatedAirline.code}
+                    returnTwoStopOperatedAirlineCode_s3={data.flightDetails[2].operatedAirline.code}
+                    returnTwoStopOperatedAirlineName_s1={data.flightDetails[0].operatedAirline.name}
+                    returnTwoStopOperatedAirlineName_s2={data.flightDetails[1].operatedAirline.name}
+                    returnTwoStopOperatedAirlineName_s3={data.flightDetails[2].operatedAirline.name}
+                    returnTwoStopDepartureDateTime_s1={data.flightDetails[0].departureDateTime}
+                    returnTwoStopDepartureDateTime_s2={data.flightDetails[1].departureDateTime}
+                    returnTwoStopDepartureDateTime_s3={data.flightDetails[2].departureDateTime}
+                    returnTwoStoparriveDateTime_s1={data.flightDetails[0].arrivalDateTime}
+                    returnTwoStoparriveDateTime_s2={data.flightDetails[1].arrivalDateTime}
+                    returnTwoStoparriveDateTime_s3={data.flightDetails[2].arrivalDateTime}
+                    returnTwoStopRBD_s1={selectedRBD_s1.rbd}
+                    returnTwoStopRBD_s2={selectedRBD_s2.rbd}
+                    returnTwoStopRBD_s3={selectedRBD_s3.rbd}
+                    returnTwoStopSeq_s1={data.flightDetails[0].Seq}
+                    returnTwoStopSeq_s2={data.flightDetails[1].Seq}
+                    returnTwoStopSeq_s3={data.flightDetails[2].Seq}
+                  />
+                );
+              }
+            });
+          }
         })}
 
       {checkedAny === "direct" &&
         directFilter.map((data, index) => {
           if (data.flightDetails.length === 1) {
             const flightArray = data.flightDetails.filter((el) => {
-              if (checkboxArray.checkboxArray.length === 0) {
+              if (checkboxArray2.checkboxArray2.length === 0) {
                 return data.flightDetails;
               } else {
-                const isInArray = checkboxArray.checkboxArray.find((i) => {
+                const isInArray = checkboxArray2.checkboxArray2.find((i) => {
                   return i === el.airline.name;
                 });
                 if (isInArray) {
@@ -293,7 +373,8 @@ function card2_copy() {
             });
 
             return flightArray?.map((el) => {
-              const selectedRBD = el.productInfo.find((el) => {
+              const productInfoReverse_s1 = [...data.flightDetails[0].productInfo].reverse();
+              const selectedRBD = productInfoReverse_s1.find((el) => {
                 if (access.adult <= el.availabilityStatus) {
                   return el;
                 }
@@ -302,7 +383,7 @@ function card2_copy() {
               return (
                 <CardReturnDirectFlightFilter
                   key={index}
-                  src={`src/assets/img/square/${data.flightDetails[0].airline.code}.png`}
+                  src={data.flightDetails[0].airline.code}
                   airline={el.airline.name}
                   timeDuration={data.totalTime}
                   departureNameCity={el.depCity.name}
@@ -334,10 +415,10 @@ function card2_copy() {
       {checkedAny === "oneStop" &&
         oneStopFilter.map((data, index) => {
           const flightArray = data.flightDetails.filter((el) => {
-            if (checkboxArray.checkboxArray.length === 0) {
+            if (checkboxArray2.checkboxArray2.length === 0) {
               return data.flightDetails;
             } else {
-              const isInArray = checkboxArray.checkboxArray.find((i) => {
+              const isInArray = checkboxArray2.checkboxArray2.find((i) => {
                 return i === data.flightDetails[0].airline.name;
               });
 
@@ -350,14 +431,15 @@ function card2_copy() {
           });
 
           return flightArray?.map((el, idx) => {
-
-            const selectedRBD_s1 = data.flightDetails[0].productInfo.find((el) => {
+            const productInfoReverse_s1 = [...data.flightDetails[0].productInfo].reverse();
+            const productInfoReverse_s2 = [...data.flightDetails[1].productInfo].reverse();
+            const selectedRBD_s1 = productInfoReverse_s1.find((el) => {
               if (access.adult <= el.availabilityStatus) {
                 return el;
               }
             });
-          
-            const selectedRBD_s2 = data.flightDetails[1].productInfo.find((el) => {
+
+            const selectedRBD_s2 = productInfoReverse_s2.find((el) => {
               if (access.adult <= el.availabilityStatus) {
                 return el;
               }
@@ -367,19 +449,21 @@ function card2_copy() {
               return (
                 <CardReturnOneStopFlightFilter
                   key={idx}
-                  src={`src/assets/img/square/${el.airline.code}.png`}
-                  airline={el.airline.name}
-                  departureNameCity={el.depCity.name}
-                  oneStopCity={el.arrCity.name}
-                  oneStopCodeCity={el.arrCity.code}
-                  departureCodeCity={el.depCity.code}
-                  departureDateTime={el.depDisplayDateTime.displayTime}
+                  src={data.flightDetails[0].airline.code}
+                  airline={data.flightDetails[0].airline.name}
+                  departureNameCity={data.flightDetails[0].depCity.name}
+                  oneStopCity={data.flightDetails[0].arrCity.name}
+                  oneStopCodeCity={data.flightDetails[0].arrCity.code}
+                  departureCodeCity={data.flightDetails[0].depCity.code}
+                  departureDateTime={data.flightDetails[0].depDisplayDateTime.displayTime}
                   arriveNameCity={data.flightDetails[1].arrCity.name}
                   arriveCodeCity={data.flightDetails[1].arrCity.code}
                   arriveDateTime={data.flightDetails[1].arrDisplayDateTime.displayTime}
                   timeDuration={data.totalTime}
-                  departureDateTimeSeq_1={data.flightDetails[0].arrDisplayDateTime.displayTime}
+                  departureDateTimeSeq_1={data.flightDetails[0].depDisplayDateTime.displayTime}
                   departureDateTimeSeq_2={data.flightDetails[1].depDisplayDateTime.displayTime}
+                  arrivalDateTimeSeq_1={data.flightDetails[0].arrDisplayDateTime.displayTime}
+                  arrivalDateTimeSeq_2={data.flightDetails[1].arrDisplayDateTime.displayTime}
                   flightNumberSeq1={data.flightDetails[0].flightNumber}
                   flightNumberSeq2={data.flightDetails[1].flightNumber}
                   operatedAirlineNameSeq1={data.flightDetails[0].operatedAirline.name}
@@ -425,7 +509,7 @@ function card2_copy() {
       {/* {checkedAny === "twoStop" &&
         twoStopFilter.map((data) => {
           return (
-            <CardTwoStopFlightFilter
+            <CardReturnTwoStopFlightFilter
               src={`src/assets/img/square/${data.flightDetails[0].airline.code}.png`}
               airline={data.flightDetails[0].airline.name}
               departureNameCity={data.flightDetails[0].depCity.name}
@@ -440,6 +524,124 @@ function card2_copy() {
             />
           );
         })} */}
+
+      {checkedAny === "twoStop" &&
+        twoStopFilter.map((data, index) => {
+          const flightArray = data.flightDetails.filter((el) => {
+            if (checkboxArray2.checkboxArray2.length === 0) {
+              return data.flightDetails;
+            } else {
+              const isInArray = checkboxArray2.checkboxArray2.find((i) => {
+                return i === data.flightDetails[0].airline.name;
+              });
+
+              if (isInArray) {
+                if (el.Seq === 1) {
+                  return el;
+                }
+              }
+            }
+          });
+
+          return flightArray?.map((el, idx) => {
+            const selectedRBD_s1 = data.flightDetails[0].productInfo.find((el) => {
+              if (access.adult <= el.availabilityStatus) {
+                return el;
+              }
+            });
+
+            const selectedRBD_s2 = data.flightDetails[1].productInfo.find((el) => {
+              if (access.adult <= el.availabilityStatus) {
+                return el;
+              }
+            });
+
+            const selectedRBD_s3 = data.flightDetails[2].productInfo.find((el) => {
+              if (access.adult <= el.availabilityStatus) {
+                return el;
+              }
+            });
+
+            if (el.Seq === 1) {
+              return (
+                <CardReturnTwoStopFlightFilter
+                  key={idx}
+                  src={data.flightDetails[0].airline.code}
+                  airline={data.flightDetails[0].airline.name}
+                  departureNameCity={data.flightDetails[0].depCity.name}
+                  oneStopCity={data.flightDetails[0].arrCity.name}
+                  twoStopCity={data.flightDetails[1].arrCity.name}
+                  oneStopCodeCity={data.flightDetails[0].arrCity.code}
+                  twoStopCodeCity={data.flightDetails[1].arrCity.code}
+                  departureCodeCity={data.flightDetails[0].depCity.code}
+                  departureDateTime={data.flightDetails[0].depDisplayDateTime.displayTime}
+                  arriveNameCity={data.flightDetails[2].arrCity.name}
+                  arriveCodeCity={data.flightDetails[2].arrCity.code}
+                  arriveDateTime={data.flightDetails[2].arrDisplayDateTime.displayTime}
+                  timeDuration={data.totalTime}
+                  departureDateTimeSeq_1={data.flightDetails[0].depDisplayDateTime.displayTime}
+                  departureDateTimeSeq_2={data.flightDetails[1].depDisplayDateTime.displayTime}
+                  departureDateTimeSeq_3={data.flightDetails[2].depDisplayDateTime.displayTime}
+                  arrivalDateTimeSeq_1={data.flightDetails[0].arrDisplayDateTime.displayTime}
+                  arrivalDateTimeSeq_2={data.flightDetails[1].arrDisplayDateTime.displayTime}
+                  arrivalDateTimeSeq_3={data.flightDetails[2].arrDisplayDateTime.displayTime}
+                  flightNumberSeq1={data.flightDetails[0].flightNumber}
+                  flightNumberSeq2={data.flightDetails[1].flightNumber}
+                  flightNumberSeq3={data.flightDetails[2].flightNumber}
+                  operatedAirlineNameSeq1={data.flightDetails[0].operatedAirline.name}
+                  operatedAirlineNameSeq2={data.flightDetails[1].operatedAirline.name}
+                  operatedAirlineNameSeq3={data.flightDetails[2].operatedAirline.name}
+                  operatedAirlineCodeSeq1={data.flightDetails[0].operatedAirline.code}
+                  operatedAirlineCodeSeq2={data.flightDetails[1].operatedAirline.code}
+                  operatedAirlineCodeSeq3={data.flightDetails[2].operatedAirline.code}
+                  seqOneFlight={data.flightDetails[0].seq}
+                  seqTwoFlight={data.flightDetails[1].seq}
+                  seqThreeFlight={data.flightDetails[2].seq}
+                  //new
+                  returnTwoStopDepCityCode_s1={data.flightDetails[0].depCity.code}
+                  returnTwoStopDepCityCode_s2={data.flightDetails[1].depCity.code}
+                  returnTwoStopDepCityCode_s3={data.flightDetails[2].depCity.code}
+                  returnTwoStopDepCityName_s1={data.flightDetails[0].depCity.name}
+                  returnTwoStopDepCityName_s2={data.flightDetails[1].depCity.name}
+                  returnTwoStopDepCityName_s3={data.flightDetails[2].depCity.name}
+                  returnTwoStopArrCityCode_s1={data.flightDetails[0].arrCity.code}
+                  returnTwoStopArrCityCode_s2={data.flightDetails[1].arrCity.code}
+                  returnTwoStopArrCityCode_s3={data.flightDetails[2].arrCity.code}
+                  returnTwoStopArrCityName_s1={data.flightDetails[0].arrCity.name}
+                  returnTwoStopArrCityName_s2={data.flightDetails[1].arrCity.name}
+                  returnTwoStopArrCityName_s3={data.flightDetails[2].arrCity.name}
+                  returnTwoStopAirlineCode_s1={data.flightDetails[0].airline.code}
+                  returnTwoStopAirlineCode_s2={data.flightDetails[1].airline.code}
+                  returnTwoStopAirlineCode_s3={data.flightDetails[2].airline.code}
+                  returnTwoStopAirlineName_s1={data.flightDetails[0].airline.name}
+                  returnTwoStopAirlineName_s2={data.flightDetails[1].airline.name}
+                  returnTwoStopAirlineName_s3={data.flightDetails[2].airline.name}
+                  returnTwoStopFlightNumber_s1={data.flightDetails[0].flightNumber}
+                  returnTwoStopFlightNumber_s2={data.flightDetails[1].flightNumber}
+                  returnTwoStopFlightNumber_s3={data.flightDetails[2].flightNumber}
+                  returnTwoStopOperatedAirlineCode_s1={data.flightDetails[0].operatedAirline.code}
+                  returnTwoStopOperatedAirlineCode_s2={data.flightDetails[1].operatedAirline.code}
+                  returnTwoStopOperatedAirlineCode_s3={data.flightDetails[2].operatedAirline.code}
+                  returnTwoStopOperatedAirlineName_s1={data.flightDetails[0].operatedAirline.name}
+                  returnTwoStopOperatedAirlineName_s2={data.flightDetails[1].operatedAirline.name}
+                  returnTwoStopOperatedAirlineName_s3={data.flightDetails[2].operatedAirline.name}
+                  returnTwoStopDepartureDateTime_s1={data.flightDetails[0].departureDateTime}
+                  returnTwoStopDepartureDateTime_s2={data.flightDetails[1].departureDateTime}
+                  returnTwoStopDepartureDateTime_s3={data.flightDetails[2].departureDateTime}
+                  returnTwoStoparriveDateTime_s1={data.flightDetails[0].arrivalDateTime}
+                  returnTwoStoparriveDateTime_s2={data.flightDetails[1].arrivalDateTime}
+                  returnTwoStoparriveDateTime_s3={data.flightDetails[2].arrivalDateTime}
+                  returnTwoStopRBD_s1={selectedRBD_s1.rbd}
+                  returnTwoStopRBD_s2={selectedRBD_s2.rbd}
+                  returnTwoStopRBD_s3={selectedRBD_s3.rbd}
+                  returnTwoStopSeq_s1={data.flightDetails[0].Seq}
+                  returnTwoStopSeq_s2={data.flightDetails[1].Seq}
+                  returnTwoStopSeq_s3={data.flightDetails[2].Seq}
+                />
+              );
+            }
+          });
+        })}
     </>
   );
 }

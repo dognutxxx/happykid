@@ -5,6 +5,12 @@ import { usePnrContext } from "../context/PnrContext";
 function PNR() {
   let navigate = useNavigate();
   const { dataSearch } = usePnrContext();
+
+  const refreshToHome = () => {
+    window.location.href = "http://127.0.0.1:5173/"
+    localStorage.clear();
+    sessionStorage.clear();
+  }
   return (
     <>
       <div className="grid h-screen place-items-center">
@@ -26,7 +32,9 @@ function PNR() {
               </p>
             </div>
             <button
-              onClick={() => (window.location.href = "http://127.0.0.1:5173/")}
+              // onClick={() => (window.location.href = "http://127.0.0.1:5173/")}
+              // onClick={() => (window.location.href = "https://front-nftant-uat.azurewebsites.net")}
+              onClick={() => refreshToHome()}
             >
               Click or refresh to home page
             </button>

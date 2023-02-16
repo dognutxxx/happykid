@@ -1,14 +1,26 @@
 import { useState } from "react";
+import { EncryptStorage } from "encrypt-storage";
+
+const encryptStorage2 = new EncryptStorage("H@b'v4U*[8Y,m~:d", {});
 
 function Share() {
+  
   const [share, setShare] = useState("");
   const [info, setInfo] = useState("");
   const [bookingInfo, setBookingInfo] = useState("");
   const [resBooking, setResBooking] = useState("");
   const [opensea, setOpensea] = useState("");
   const [ownerAddress, setOwnerAddress] = useState("");
-  const [tokenID, setTokenID] = useState("");
-  const [account, setAccount] = useState("");
+  // const [tokenID, setTokenID] = useState(localStorage.NFT_ != undefined ? JSON.parse(encryptStorage2.decryptString(localStorage.NFT_)) : "");
+  const [tokenID, setTokenID] = useState(sessionStorage.tokenIDPinata != undefined ? JSON.parse(sessionStorage.tokenIDPinata) : "");
+  
+
+ 
+
+  
+
+
+  const [account, setAccount] = useState(sessionStorage.walletAddress != undefined ? sessionStorage.walletAddress : "");
   const [checkedAny, setCheckedAny] = useState(true);
   const [checkedDirect, setCheckedDirect] = useState(false);
   const [checkedOneStop, setCheckedOneStop] = useState(false);
@@ -17,9 +29,10 @@ function Share() {
   const [adult, setAdult] = useState("");
   const [child, setChild] = useState("");
   const [infant, setInfant] = useState("");
-  const [checkOpenseaAPI, setCheckOpenseaAPI] = useState("");
-  const [logout, setLogout] = useState("");
-  const [image, setImage] = useState("");
+  const [checkOpenseaAPI, setCheckOpenseaAPI] = useState(sessionStorage.checkOpenseaAPI != undefined ? sessionStorage.checkOpenseaAPI : "");
+  // const [logout, setLogout] = useState(sessionStorage.logoutStatus != undefined ? sessionStorage.logoutStatus : "");
+  const [logout, setLogout] = useState(sessionStorage.logoutStatus != undefined ? sessionStorage.logoutStatus : "");
+  const [image, setImage] = useState(sessionStorage.image != undefined ? JSON.parse(sessionStorage.image) : "");
   const [checkedAirline, setCheckedAirline] = useState("");
 
   //รายละเอียดเที่ยวบินฝั่งขาไป(Seq:1)
@@ -85,13 +98,11 @@ function Share() {
   //รายละเอียดเที่ยวบินฝั่งขากลับ(Seq:1)
   const [depDisplayTime_1Return, setdepDisplayTime_1Return] = useState();
   //console.log(depDisplayTime_1Return);
-  const [depShortDateWithoutDay_1Return, setdepShortDateWithoutDay_1Return] =
-    useState();
+  const [depShortDateWithoutDay_1Return, setdepShortDateWithoutDay_1Return] = useState();
   //console.log(depShortDateWithoutDay_1Return);
   const [arrDisplayTime_1Return, setarrDisplayTime_1Return] = useState();
   //console.log(arrDisplayTime_1Return);
-  const [arrShortDateWithoutDay_1Return, setarrShortDateWithoutDay_1Return] =
-    useState();
+  const [arrShortDateWithoutDay_1Return, setarrShortDateWithoutDay_1Return] = useState();
   //console.log(arrShortDateWithoutDay_1Return);
   const [depCity_1Return, setdepCity_1Return] = useState();
   //console.log(depCity_1Return);
@@ -117,13 +128,11 @@ function Share() {
   //รายละเอียดเที่ยวบินฝั่งขากลับ(Seq:2)
   const [depDisplayTime_2Return, setdepDisplayTime_2Return] = useState();
   //console.log(depDisplayTime_2Return);
-  const [depShortDateWithoutDay_2Return, setdepShortDateWithoutDay_2Return] =
-    useState();
+  const [depShortDateWithoutDay_2Return, setdepShortDateWithoutDay_2Return] = useState();
   //console.log(depShortDateWithoutDay_2Return);
   const [arrDisplayTime_2Return, setarrDisplayTime_2Return] = useState();
   //console.log(arrDisplayTime_2Return);
-  const [arrShortDateWithoutDay_2Return, setarrShortDateWithoutDay_2Return] =
-    useState();
+  const [arrShortDateWithoutDay_2Return, setarrShortDateWithoutDay_2Return] = useState();
   //console.log(arrShortDateWithoutDay_2Return);
   const [depCity_2Return, setdepCity_2Return] = useState();
   //console.log(depCity_2Return);
@@ -218,7 +227,7 @@ function Share() {
     setCheckedTwoStop,
     logout,
     setLogout,
-    image, 
+    image,
     setImage,
 
     //รายละเอียดเที่ยวบินฝั่งขาไป(Seq:1)

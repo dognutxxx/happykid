@@ -10,8 +10,10 @@ import PassengerContractInfoContextProvider from "./context/PassengerContractInf
 import ContractDetailContextProvider from "./context/ContractDetailContext";
 import FinalDirectDepartureContextProvider from "./context/FinalDirectDepartureContext";
 import FinalOneStopDepartureContextProvider from "./context/FinalOneStopDepartureContext";
+import FinalTwoStopDepartureContextProvider from "./context/FinalTwoStopDepartureContext";
 import FinalDirectReturnContextProvider from "./context/FinalDirectReturnContext";
 import FinalOneStopReturnContextProvider from "./context/FinalOneStopReturnContext";
+import FinalTwoStopReturnContextProvider from "./context/FinalTwoStopReturnContext";
 import ResultBookingObjContextProvider from "./context/ResultBookingObjContext";
 import PnrContextProvider from "./context/PnrContext";
 
@@ -19,25 +21,29 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <PnrContextProvider>
       <ResultBookingObjContextProvider>
-        <FinalOneStopReturnContextProvider>
-          <FinalDirectReturnContextProvider>
-            <FinalOneStopDepartureContextProvider>
-              <FinalDirectDepartureContextProvider>
-                <ContractDetailContextProvider>
-                  <PassengerContractInfoContextProvider>
-                    <ReturnSelectedContextProvider>
-                      <DepartureSelectedContextProvider>
-                        <BookingContextProvider>
-                          <App />
-                        </BookingContextProvider>
-                      </DepartureSelectedContextProvider>
-                    </ReturnSelectedContextProvider>
-                  </PassengerContractInfoContextProvider>
-                </ContractDetailContextProvider>
-              </FinalDirectDepartureContextProvider>
-            </FinalOneStopDepartureContextProvider>
-          </FinalDirectReturnContextProvider>
-        </FinalOneStopReturnContextProvider>
+        <FinalTwoStopReturnContextProvider>
+          <FinalOneStopReturnContextProvider>
+            <FinalDirectReturnContextProvider>
+              <FinalTwoStopDepartureContextProvider>
+                <FinalOneStopDepartureContextProvider>
+                  <FinalDirectDepartureContextProvider>
+                    <ContractDetailContextProvider>
+                      <PassengerContractInfoContextProvider>
+                        <ReturnSelectedContextProvider>
+                          <DepartureSelectedContextProvider>
+                            <BookingContextProvider>
+                              <App />
+                            </BookingContextProvider>
+                          </DepartureSelectedContextProvider>
+                        </ReturnSelectedContextProvider>
+                      </PassengerContractInfoContextProvider>
+                    </ContractDetailContextProvider>
+                  </FinalDirectDepartureContextProvider>
+                </FinalOneStopDepartureContextProvider>
+              </FinalTwoStopDepartureContextProvider>
+            </FinalDirectReturnContextProvider>
+          </FinalOneStopReturnContextProvider>
+        </FinalTwoStopReturnContextProvider>
       </ResultBookingObjContextProvider>
     </PnrContextProvider>
   </BrowserRouter>

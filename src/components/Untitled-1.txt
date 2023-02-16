@@ -70,7 +70,7 @@ function contractInfo_copy() {
   const access = JSON.parse(valueTypeTrip);
   const typeType_ = JSON.parse(valueTypeTrip);
   const typeTrip = typeType_.tripType;
-  console.log(typeTrip);
+  // console.log(access);
 
   //FinalDirectDepartureContext
   const { depDirectDepCityCode_s1 } = useFinalDirectDepartureContext();
@@ -418,12 +418,12 @@ function contractInfo_copy() {
   const { inputCountryOfIssueContract } = useContractDetailContext();
   const { inputExpiryDateContract } = useContractDetailContext();
 
-  console.log(inputTitleContract);
+  // console.log(inputTitleContract);
   console.log(inputFirstNameContract);
-  console.log(inputMiddleNameContract);
-  console.log(inputLastNameContract);
-  console.log(inputEmailContract);
-  console.log(inputMobilePhoneContract);
+  // console.log(inputMiddleNameContract);
+  // console.log(inputLastNameContract);
+  // console.log(inputEmailContract);
+  // console.log(inputMobilePhoneContract);
 
   const { setInputTitleContract } = useContractDetailContext();
   const { setInputFirstNameContract } = useContractDetailContext();
@@ -437,7 +437,7 @@ function contractInfo_copy() {
   const { setInputCountryOfIssueContract } = useContractDetailContext();
   const { setinputExpiryDateContract } = useContractDetailContext();
 
-  // console.log("inputFirstNameContract", inputFirstNameContract);
+  console.log("inputFirstNameContract", inputFirstNameContract);
 
   //Passenger Detail
   const { inputTitle } = usePassengerContractInfoContext();
@@ -454,7 +454,7 @@ function contractInfo_copy() {
   const { inputExpiryDate } = usePassengerContractInfoContext();
 
   // console.log(inputTitle);
-  // console.log("inputFirstName", inputFirstName);
+  console.log("inputFirstName", inputFirstName);
   // console.log(inputMiddleName);
   // console.log(inputLastName);
   // console.log(inputDateOfBirth);
@@ -544,6 +544,11 @@ function contractInfo_copy() {
   const { arrivalDateTimeSeq2_2 } = useReturnSelectedContext();
   const { arrivalDateTimeSeq3_2 } = useReturnSelectedContext();
 
+  // const [copyDetails, setCopyDetails] = useState(false);
+  // console.log("checked", copyDetails);
+
+
+
   const errorAlert = (message) => {
     Swal.fire({
       position: "top-center",
@@ -557,131 +562,67 @@ function contractInfo_copy() {
 
   const { adultInfo, childInfo, infantInfo } = usePnrContext();
 
-  console.log("Final Adult", adultInfo);
-  console.log("Final Child", childInfo);
-  console.log("Final Infant", infantInfo);
+  const inputTitleAdultsPassenger = (e, i) => {
+    // adultInfo[i].title = e;
+    setInputTitle((adultInfo[i].title = e));
+  };
 
-  // const inputTitleAdultsPassenger = (e, i) => {
-  //   // adultInfo[i].title = e;
-  //   setInputTitle((adultInfo[i].title = e));
-  // };
+  const inputFirstnameAdultsPassenger = (e, i) => {
+    // adultInfo[i].firstname = e;
+    // if (copyDetails === false) {
+    setInputFirstName((adultInfo[i].firstname = e));
+    // }
+  };
 
-  // const inputFirstnameAdultsPassenger = (e, i) => {
-  //   // adultInfo[i].firstname = e;
-  //   // if (copyDetails === false) {
-  //   setInputFirstName((adultInfo[i].firstname = e));
-  //   // }
-  // };
+  const inputMiddleNameAdultsPassenger = (e, i) => {
+    // adultInfo[i].middlename = e;
+    setInputMiddleName((adultInfo[i].middlename = e));
+  };
 
-  // const inputMiddleNameAdultsPassenger = (e, i) => {
-  //   // adultInfo[i].middlename = e;
-  //   setInputMiddleName((adultInfo[i].middlename = e));
-  // };
+  const inputLastnameAdultsPassenger = (e, i) => {
+    // adultInfo[i].lastname = e;
+    setInputLastName((adultInfo[i].lastname = e));
+  };
 
-  // const inputLastnameAdultsPassenger = (e, i) => {
-  //   // adultInfo[i].lastname = e;
-  //   setInputLastName((adultInfo[i].lastname = e));
-  // };
+  const inputEmailAdultsPassenger = (e, i) => {
+    // adultInfo[i].email = e;
+    setInputEmail((adultInfo[i].email = e));
+  };
 
-  // const inputEmailAdultsPassenger = (e, i) => {
-  //   // adultInfo[i].email = e;
-  //   setInputEmail((adultInfo[i].email = e));
-  // };
+  const inputDateOfBirthAdultsPassenger = (e, i) => {
+    // adultInfo[i].birthday = e;
+    setInputDateOfBirth((adultInfo[i].birthday = e));
+  };
 
-  // const inputDateOfBirthAdultsPassenger = (e, i) => {
-  //   // adultInfo[i].birthday = e;
-  //   setInputDateOfBirth((adultInfo[i].birthday = e));
-  // };
+  const inputMobilePhoneAdultsPassenger = (e, i) => {
+    // adultInfo[i].telNo = e;
+    setChildInputinputMobilePhone((adultInfo[i].telNo = e));
+  };
 
-  // const inputMobilePhoneAdultsPassenger = (e, i) => {
-  //   // adultInfo[i].telNo = e;
-  //   setChildInputinputMobilePhone((adultInfo[i].telNo = e));
-  // };
+  const inputTitleChildsPassenger = (e, i) => {
+    // adultInfo[i].title = e;
+    setChildInputTitle((childInfo[i].title = e));
+  };
 
-  // const inputTitleChildsPassenger = (e, i) => {
-  //   // adultInfo[i].title = e;
-  //   setChildInputTitle((childInfo[i].title = e));
-  // };
+  const inputFirstnameChildsPassenger = (e, i) => {
+    // childInfo[i].firstname = e;
+    setChildInputFirstName((childInfo[i].firstname = e));
+  };
 
-  // const inputFirstnameChildsPassenger = (e, i) => {
-  //   // childInfo[i].firstname = e;
-  //   setChildInputFirstName((childInfo[i].firstname = e));
-  // };
+  const inputMiddleNameChildsPassenger = (e, i) => {
+    // childInfo[i].middlename = e;
+    setChildInputMiddleName((childInfo[i].middlename = e));
+  };
 
-  // const inputMiddleNameChildsPassenger = (e, i) => {
-  //   // childInfo[i].middlename = e;
-  //   setChildInputMiddleName((childInfo[i].middlename = e));
-  // };
+  const inputLastnameChildsPassenger = (e, i) => {
+    // childInfo[i].lastname = e;
+    setChildInputLastName((childInfo[i].lastname = e));
+  };
 
-  // const inputLastnameChildsPassenger = (e, i) => {
-  //   // childInfo[i].lastname = e;
-  //   setChildInputLastName((childInfo[i].lastname = e));
-  // };
-
-  // const inputEmailChildsPassenger = (e, i) => {
-  //   // childInfo[i].email = e;
-  //   setChildInputEmail((childInfo[i].email = e));
-  // };
-
-  const { setAirline } = useDepartureSelectedContext();
-  const { setDepDirectAirlineCode_s1 } = useDepartureSelectedContext();
-  const { setTimeDuration } = useDepartureSelectedContext();
-  const { setDepartureNameCity } = useDepartureSelectedContext();
-  const { setArriveNameCity } = useDepartureSelectedContext();
-  const { setDepartureCodeCity } = useDepartureSelectedContext();
-  const { setArriveCodeCity } = useDepartureSelectedContext();
-  const { setDepartureDateTime } = useDepartureSelectedContext();
-  const { setArriveDateTime } = useDepartureSelectedContext();
-  const { setSRC } = useDepartureSelectedContext();
-  const { setOneStopCity } = useDepartureSelectedContext();
-  const { setTwoStopCity } = useDepartureSelectedContext();
-  const { setIsSelected } = useDepartureSelectedContext();
-  const { setFlightNumber } = useDepartureSelectedContext();
-
-  const { setAirline2 } = useReturnSelectedContext();
-  const { setTimeDuration2 } = useReturnSelectedContext();
-  const { setDepartureNameCity2 } = useReturnSelectedContext();
-  const { setArriveNameCity2 } = useReturnSelectedContext();
-  const { setDepartureCodeCity2 } = useReturnSelectedContext();
-  const { setArriveCodeCity2 } = useReturnSelectedContext();
-  const { setDepartureDateTime2 } = useReturnSelectedContext();
-  const { setArriveDateTime2 } = useReturnSelectedContext();
-  const { setSRC2 } = useReturnSelectedContext();
-  const { setOneStopCity2 } = useReturnSelectedContext();
-  const { setTwoStopCity2 } = useReturnSelectedContext();
-  const { setIsSelected2 } = useReturnSelectedContext();
-
-  const backToBookingPage = () => {
-    setAirline("");
-    setTimeDuration("");
-    setDepartureNameCity("");
-    setArriveNameCity("");
-    setDepartureCodeCity("");
-    setArriveCodeCity("");
-    setDepartureDateTime("");
-    setArriveDateTime("");
-    setSRC("");
-    setOneStopCity("");
-    setTwoStopCity("");
-    setIsSelected(false);
-    setFlightNumber("");
-
-    setAirline2("");
-    setTimeDuration2("");
-    setDepartureNameCity2("");
-    setArriveNameCity2("");
-    setDepartureCodeCity2("");
-    setArriveCodeCity2("");
-    setDepartureDateTime2("");
-    setArriveDateTime2("");
-    setSRC2("");
-    setOneStopCity2("");
-    setTwoStopCity2("");
-    setIsSelected2(false);
-
-    navigate("/booking")
-
-  }
+  const inputEmailChildsPassenger = (e, i) => {
+    // childInfo[i].email = e;
+    setChildInputEmail((childInfo[i].email = e));
+  };
 
   const totalAge = (val) => {
     let nowdate = moment().format("YYYY-MM-DD");
@@ -692,59 +633,59 @@ function contractInfo_copy() {
     return result;
   };
 
-  // const inputDateOfBirthChildsPassenger = (e, i) => {
-  //   if (totalAge(e) < 12 && totalAge(e) >= 2) {
-  //     setChildInputDateOfBirth((childInfo[i].birthday = e));
-  //   } else {
-  //     errorAlert(`Date of Birth of child might 2-12 years old.`);
-  //     setChildInputDateOfBirth((childInfo[i].birthday = ""));
-  //   }
-  // };
+  const inputDateOfBirthChildsPassenger = (e, i) => {
+    if (totalAge(e) < 12 && totalAge(e) >= 2) {
+      setChildInputDateOfBirth((childInfo[i].birthday = e));
+    } else {
+      errorAlert(`Date of Birth of child might 2-12 years old.`);
+      setChildInputDateOfBirth((childInfo[i].birthday = ""));
+    }
+  };
 
-  // const inputMobilePhoneChildsPassenger = (e, i) => {
-  //   // childInfo[i].telNo = e;
-  //   setChildInputinputMobilePhone((childInfo[i].telNo = e));
-  // };
+  const inputMobilePhoneChildsPassenger = (e, i) => {
+    // childInfo[i].telNo = e;
+    setChildInputinputMobilePhone((childInfo[i].telNo = e));
+  };
 
-  // const inputTitleInfantsPassenger = (e, i) => {
-  //   // adultInfo[i].title = e;
-  //   setInfantInputTitle((infantInfo[i].title = e));
-  // };
+  const inputTitleInfantsPassenger = (e, i) => {
+    // adultInfo[i].title = e;
+    setInfantInputTitle((infantInfo[i].title = e));
+  };
 
-  // const inputFirstnameInfantsPassenger = (e, i) => {
-  //   // infantInfo[i].firstname = e;
-  //   setInfantInputFirstName((infantInfo[i].firstname = e));
-  // };
+  const inputFirstnameInfantsPassenger = (e, i) => {
+    // infantInfo[i].firstname = e;
+    setInfantInputFirstName((infantInfo[i].firstname = e));
+  };
 
-  // const inputMiddleNameInfantsPassenger = (e, i) => {
-  //   // infantInfo[i].middlename = e;
-  //   setInfantInputMiddleName((infantInfo[i].middlename = e));
-  // };
+  const inputMiddleNameInfantsPassenger = (e, i) => {
+    // infantInfo[i].middlename = e;
+    setInfantInputMiddleName((infantInfo[i].middlename = e));
+  };
 
-  // const inputLastnameInfantsPassenger = (e, i) => {
-  //   // infantInfo[i].lastname = e;
-  //   setInfantInputLastName((infantInfo[i].lastname = e));
-  // };
+  const inputLastnameInfantsPassenger = (e, i) => {
+    // infantInfo[i].lastname = e;
+    setInfantInputLastName((infantInfo[i].lastname = e));
+  };
 
-  // const inputEmailInfantsPassenger = (e, i) => {
-  //   // infantInfo[i].email = e;
-  //   setInfantInputEmail((infantInfo[i].email = e));
-  // };
+  const inputEmailInfantsPassenger = (e, i) => {
+    // infantInfo[i].email = e;
+    setInfantInputEmail((infantInfo[i].email = e));
+  };
 
-  // const inputDateOfBirthInfantsPassenger = (e, i) => {
-  //   // infantInfo[i].birthday = e;
-  //   if (totalAge(e) < 2) {
-  //     setInfantInputDateOfBirth((infantInfo[i].birthday = e));
-  //   } else {
-  //     errorAlert(`Date of Birth at infant might 0-2 years old.`);
-  //     setInfantInputDateOfBirth((infantInfo[i].birthday = ""));
-  //   }
-  // };
+  const inputDateOfBirthInfantsPassenger = (e, i) => {
+    // infantInfo[i].birthday = e;
+    if (totalAge(e) < 2) {
+      setInfantInputDateOfBirth((infantInfo[i].birthday = e));
+    } else {
+      errorAlert(`Date of Birth at infant might 0-2 years old.`);
+      setInfantInputDateOfBirth((infantInfo[i].birthday = ""));
+    }
+  };
 
-  // const inputMobilePhoneInfantsPassenger = (e, i) => {
-  //   // infantInfo[i].telNo = e;
-  //   setInfantInputinputMobilePhone((infantInfo[i].telNo = e));
-  // };
+  const inputMobilePhoneInfantsPassenger = (e, i) => {
+    // infantInfo[i].telNo = e;
+    setInfantInputinputMobilePhone((infantInfo[i].telNo = e));
+  };
 
   const totalTime = timeDuration?.slice(0, 2) + "hr " + timeDuration?.slice(2) + "m";
   const totalTime2 = timeDuration2?.slice(0, 2) + "hr " + timeDuration2?.slice(2) + "m";
@@ -755,23 +696,21 @@ function contractInfo_copy() {
   const infant = objAccess.infant;
   const svc_class = objAccess.svcClass;
 
-  const [adultPassenger, setAdultPassenger] = useState([]);
-  const [childPassenger, setChildPassenger] = useState([]);
-  const [infantPassenger, setInfantPassenger] = useState([]);
-  console.log("adultPassenger", adultPassenger);
-  console.log("childPassenger", childPassenger);
-  console.log("infantPassenger", infantPassenger);
 
-  useEffect(() => {
-    handleAdultPassenger();
-    handleChildPassenger();
-    handleInfantPassenger();
-    chooseRoute();
-  }, []);
+  // useEffect(() => {
+  //   if (copyDetails === true) {
+  //     setInputFirstName(inputFirstNameContract);
+  //   }
+  //   if (copyDetails === false) {
+  //     setInputFirstName("");
+  //   }
+  // }, [copyDetails]);
 
-  const chooseRoute = () => {
+  const handleObjBooking = (e) => {
+    e.preventDefault();
     if (typeTrip === "O") {
       if (depDirectSeq_s1) {
+        // console.log("Direct");
         const onewayDirectObjBooking = [
           {
             noOfAdults: adult,
@@ -815,11 +754,83 @@ function contractInfo_copy() {
             adtPaxs: adultInfo,
             chdPaxs: childInfo,
             infPaxs: infantInfo,
+
+            //   "chdPaxs": [
+            //     {
+            //       "id": 2,
+            //       "paxType": "CHD",
+            //       "title": "MSTR",
+            //       "firstname": "nina",
+            //       "middlename": null,
+            //       "lastname": "aisoft",
+            //       "birthday": "2015-05-20T00:00:00",
+            //       "email": null,
+            //       "telNo": null,
+            //       "passportNumber": null,
+            //       "passportIssuingDate": "0001-01-01T00:00:00",
+            //       "passportExpiryDate": "0001-01-01T00:00:00",
+            //       "passportIssuingCountry": null,
+            //       "passportNationality": null,
+            //       "frequencyFlyerAirline": null,
+            //       "frequencyFlyerNumber": null,
+            //       "seatRequest": null,
+            //       "mealRequest": null,
+            //       "travelWithAdultID": 1,
+            //       "netRefund": 0.0,
+            //       "agentRefund": 0.0,
+            //       "refundAmount": 0.0,
+            //       "tickNoRefund": null,
+            //       "remarkRefund": null,
+            //       "StatusRefund": false,
+            //       "netReissue": 0.0,
+            //       "agentReissue": 0.0,
+            //       "reissueSelling": 0.0,
+            //       "tickNoReissueOld": null,
+            //       "tickNoReissueNew": null,
+            //       "remarkReissue": null,
+            //       "StatusReissue": false
+            //     }
+            //   ],
+            //   "infPaxs": [
+            //     {
+            //       "id": 3,
+            //       "paxType": "INF",
+            //       "title": "MSTR",
+            //       "firstname": "non",
+            //       "middlename": null,
+            //       "lastname": "aisoft",
+            //       "birthday": "2021-02-06T00:00:00",
+            //       "email": null,
+            //       "telNo": null,
+            //       "passportNumber": null,
+            //       "passportIssuingDate": "0001-01-01T00:00:00",
+            //       "passportExpiryDate": "0001-01-01T00:00:00",
+            //       "passportIssuingCountry": null,
+            //       "passportNationality": null,
+            //       "frequencyFlyerAirline": null,
+            //       "frequencyFlyerNumber": null,
+            //       "seatRequest": null,
+            //       "mealRequest": null,
+            //       "travelWithAdultID": 0,
+            //       "netRefund": 0.0,
+            //       "agentRefund": 0.0,
+            //       "refundAmount": 0.0,
+            //       "tickNoRefund": null,
+            //       "remarkRefund": null,
+            //       "StatusRefund": false,
+            //       "netReissue": 0.0,
+            //       "agentReissue": 0.0,
+            //       "reissueSelling": 0.0,
+            //       "tickNoReissueOld": null,
+            //       "tickNoReissueNew": null,
+            //       "remarkReissue": null,
+            //       "StatusReissue": false
+            //     }
+            //   ],
             languageCode: "th",
           },
         ];
         setOnewayDirectObjBooking(onewayDirectObjBooking);
-        sessionStorage.setItem("onewayDirectObjBooking", JSON.stringify(onewayDirectObjBooking));
       } else if (depOneStopSeq_s1 && depOneStopSeq_s2) {
         console.log("OneStop");
 
@@ -889,11 +900,83 @@ function contractInfo_copy() {
             adtPaxs: adultInfo,
             chdPaxs: childInfo,
             infPaxs: infantInfo,
+
+            //   "chdPaxs": [
+            //     {
+            //       "id": 2,
+            //       "paxType": "CHD",
+            //       "title": "MSTR",
+            //       "firstname": "nina",
+            //       "middlename": null,
+            //       "lastname": "aisoft",
+            //       "birthday": "2015-05-20T00:00:00",
+            //       "email": null,
+            //       "telNo": null,
+            //       "passportNumber": null,
+            //       "passportIssuingDate": "0001-01-01T00:00:00",
+            //       "passportExpiryDate": "0001-01-01T00:00:00",
+            //       "passportIssuingCountry": null,
+            //       "passportNationality": null,
+            //       "frequencyFlyerAirline": null,
+            //       "frequencyFlyerNumber": null,
+            //       "seatRequest": null,
+            //       "mealRequest": null,
+            //       "travelWithAdultID": 1,
+            //       "netRefund": 0.0,
+            //       "agentRefund": 0.0,
+            //       "refundAmount": 0.0,
+            //       "tickNoRefund": null,
+            //       "remarkRefund": null,
+            //       "StatusRefund": false,
+            //       "netReissue": 0.0,
+            //       "agentReissue": 0.0,
+            //       "reissueSelling": 0.0,
+            //       "tickNoReissueOld": null,
+            //       "tickNoReissueNew": null,
+            //       "remarkReissue": null,
+            //       "StatusReissue": false
+            //     }
+            //   ],
+            //   "infPaxs": [
+            //     {
+            //       "id": 3,
+            //       "paxType": "INF",
+            //       "title": "MSTR",
+            //       "firstname": "non",
+            //       "middlename": null,
+            //       "lastname": "aisoft",
+            //       "birthday": "2021-02-06T00:00:00",
+            //       "email": null,
+            //       "telNo": null,
+            //       "passportNumber": null,
+            //       "passportIssuingDate": "0001-01-01T00:00:00",
+            //       "passportExpiryDate": "0001-01-01T00:00:00",
+            //       "passportIssuingCountry": null,
+            //       "passportNationality": null,
+            //       "frequencyFlyerAirline": null,
+            //       "frequencyFlyerNumber": null,
+            //       "seatRequest": null,
+            //       "mealRequest": null,
+            //       "travelWithAdultID": 0,
+            //       "netRefund": 0.0,
+            //       "agentRefund": 0.0,
+            //       "refundAmount": 0.0,
+            //       "tickNoRefund": null,
+            //       "remarkRefund": null,
+            //       "StatusRefund": false,
+            //       "netReissue": 0.0,
+            //       "agentReissue": 0.0,
+            //       "reissueSelling": 0.0,
+            //       "tickNoReissueOld": null,
+            //       "tickNoReissueNew": null,
+            //       "remarkReissue": null,
+            //       "StatusReissue": false
+            //     }
+            //   ],
             languageCode: "th",
           },
         ];
         setOnewayOneStopObjBooking(onewayOneStopObjBooking);
-        sessionStorage.setItem("onewayOneStopObjBooking", JSON.stringify(onewayOneStopObjBooking));
       } else if (depTwoStopSeq_s1 && depTwoStopSeq_s2 && depTwoStopSeq_s3) {
         const onewayTwoStopObjBooking = [
           {
@@ -984,11 +1067,85 @@ function contractInfo_copy() {
             adtPaxs: adultInfo,
             chdPaxs: childInfo,
             infPaxs: infantInfo,
+
+            //   "chdPaxs": [
+            //     {
+            //       "id": 2,
+            //       "paxType": "CHD",
+            //       "title": "MSTR",
+            //       "firstname": "nina",
+            //       "middlename": null,
+            //       "lastname": "aisoft",
+            //       "birthday": "2015-05-20T00:00:00",
+            //       "email": null,
+            //       "telNo": null,
+            //       "passportNumber": null,
+            //       "passportIssuingDate": "0001-01-01T00:00:00",
+            //       "passportExpiryDate": "0001-01-01T00:00:00",
+            //       "passportIssuingCountry": null,
+            //       "passportNationality": null,
+            //       "frequencyFlyerAirline": null,
+            //       "frequencyFlyerNumber": null,
+            //       "seatRequest": null,
+            //       "mealRequest": null,
+            //       "travelWithAdultID": 1,
+            //       "netRefund": 0.0,
+            //       "agentRefund": 0.0,
+            //       "refundAmount": 0.0,
+            //       "tickNoRefund": null,
+            //       "remarkRefund": null,
+            //       "StatusRefund": false,
+            //       "netReissue": 0.0,
+            //       "agentReissue": 0.0,
+            //       "reissueSelling": 0.0,
+            //       "tickNoReissueOld": null,
+            //       "tickNoReissueNew": null,
+            //       "remarkReissue": null,
+            //       "StatusReissue": false
+            //     }
+            //   ],
+            //   "infPaxs": [
+            //     {
+            //       "id": 3,
+            //       "paxType": "INF",
+            //       "title": "MSTR",
+            //       "firstname": "non",
+            //       "middlename": null,
+            //       "lastname": "aisoft",
+            //       "birthday": "2021-02-06T00:00:00",
+            //       "email": null,
+            //       "telNo": null,
+            //       "passportNumber": null,
+            //       "passportIssuingDate": "0001-01-01T00:00:00",
+            //       "passportExpiryDate": "0001-01-01T00:00:00",
+            //       "passportIssuingCountry": null,
+            //       "passportNationality": null,
+            //       "frequencyFlyerAirline": null,
+            //       "frequencyFlyerNumber": null,
+            //       "seatRequest": null,
+            //       "mealRequest": null,
+            //       "travelWithAdultID": 0,
+            //       "netRefund": 0.0,
+            //       "agentRefund": 0.0,
+            //       "refundAmount": 0.0,
+            //       "tickNoRefund": null,
+            //       "remarkRefund": null,
+            //       "StatusRefund": false,
+            //       "netReissue": 0.0,
+            //       "agentReissue": 0.0,
+            //       "reissueSelling": 0.0,
+            //       "tickNoReissueOld": null,
+            //       "tickNoReissueNew": null,
+            //       "remarkReissue": null,
+            //       "StatusReissue": false
+            //     }
+            //   ],
             languageCode: "th",
           },
         ];
         setOnewayTwoStopObjBooking(onewayTwoStopObjBooking);
-        sessionStorage.setItem("onewayTwoStopObjBooking", JSON.stringify(onewayTwoStopObjBooking));
+      } else {
+        console.log("error");
       }
     }
 
@@ -1138,7 +1295,6 @@ function contractInfo_copy() {
           },
         ];
         setRoundDir_DirObjBookingInfo(roundDir_DirObjBookingInfo);
-        sessionStorage.setItem("roundDir_DirObjBookingInfo", JSON.stringify(roundDir_DirObjBookingInfo));
       } else if (depDirectSeq_s1 && returnOneStopSeq_s1 && returnOneStopSeq_s2) {
         // console.log("Direct,Onestop");
 
@@ -1309,7 +1465,6 @@ function contractInfo_copy() {
           },
         ];
         setRoundDir_OneObjBookingInfo(roundDir_OneObjBookingInfo);
-        sessionStorage.setItem("roundDir_OneObjBookingInfo", roundDir_OneObjBookingInfo);
       } else if (depDirectSeq_s1 && returnTwoStopSeq_s1 && returnTwoStopSeq_s2 && returnTwoStopSeq_s3) {
         // console.log("Direct,Twostop");
 
@@ -1503,7 +1658,6 @@ function contractInfo_copy() {
           },
         ];
         setRoundDir_TwoObjBookingInfo(roundDir_TwoObjBookingInfo);
-        sessionStorage.setItem("roundDir_TwoObjBookingInfo", roundDir_TwoObjBookingInfo);
       } else if (depOneStopSeq_s1 && depOneStopSeq_s2 && returnOneStopSeq_s1 && returnOneStopSeq_s2) {
         // console.log("Onestop,Onestop");
 
@@ -1697,7 +1851,6 @@ function contractInfo_copy() {
           },
         ];
         setRoundOne_OneObjBookingInfo(roundOne_OneObjBookingInfo);
-        sessionStorage.setItem("roundOne_OneObjBookingInfo", roundOne_OneObjBookingInfo);
       } else if (
         depOneStopSeq_s1 &&
         depOneStopSeq_s2 &&
@@ -1920,7 +2073,6 @@ function contractInfo_copy() {
           },
         ];
         setRoundOne_TwoObjBookingInfo(roundOne_TwoObjBookingInfo);
-        sessionStorage.setItem("roundOne_TwoObjBookingInfo", roundOne_TwoObjBookingInfo);
       } else if (depOneStopSeq_s1 && depOneStopSeq_s2 && returnDirectSeq_s1) {
         const roundOne_DirObjBookingInfo = [
           {
@@ -2090,7 +2242,6 @@ function contractInfo_copy() {
           },
         ];
         setRoundOne_DirObjBookingInfo(roundOne_DirObjBookingInfo);
-        sessionStorage.setItem("roundOne_DirObjBookingInfo", roundOne_DirObjBookingInfo);
       } else if (depTwoStopSeq_s1 && depTwoStopSeq_s2 && depTwoStopSeq_s3 && returnDirectSeq_s1) {
         const roundTwo_DirObjBookingInfo = [
           {
@@ -2283,7 +2434,6 @@ function contractInfo_copy() {
           },
         ];
         setRoundTwo_DirObjBookingInfo(roundTwo_DirObjBookingInfo);
-        sessionStorage.setItem("roundTwo_DirObjBookingInfo", roundTwo_DirObjBookingInfo);
       } else if (
         depTwoStopSeq_s1 &&
         depTwoStopSeq_s2 &&
@@ -2505,7 +2655,6 @@ function contractInfo_copy() {
           },
         ];
         setRoundTwo_OneObjBookingInfo(roundTwo_OneObjBookingInfo);
-        sessionStorage.setItem("roundTwo_OneObjBookingInfo", roundTwo_OneObjBookingInfo);
       } else if (
         depTwoStopSeq_s1 &&
         depTwoStopSeq_s2 &&
@@ -2751,112 +2900,82 @@ function contractInfo_copy() {
           },
         ];
         setRoundTwo_TwoObjBookingInfo(roundTwo_TwoObjBookingInfo);
-        sessionStorage.setItem("roundTwo_TwoObjBookingInfo", roundTwo_TwoObjBookingInfo);
       } else {
         console.log("error");
       }
     }
-  };
 
-  const verlifyAge = () => {
-    if (onewayDirectObjBooking) {
-      return onewayDirectObjBooking[0];
-    } else if (onewayOneStopObjBooking) {
-      return onewayOneStopObjBooking[0];
-    } else if (onewayTwoStopObjBooking) {
-      return onewayTwoStopObjBooking[0];
-    } else if (roundDir_DirObjBookingInfo) {
-      return roundDir_DirObjBookingInfo[0];
-    } else if (roundDir_OneObjBookingInfo) {
-      return roundDir_OneObjBookingInfo[0];
-    } else if (roundDir_TwoObjBookingInfo) {
-      return roundDir_TwoObjBookingInfo[0];
-    } else if (roundOne_OneObjBookingInfo) {
-      return roundOne_OneObjBookingInfo[0];
-    } else if (roundOne_DirObjBookingInfo) {
-      return roundOne_DirObjBookingInfo[0];
-    } else if (roundOne_TwoObjBookingInfo) {
-      return roundOne_TwoObjBookingInfo[0];
-    } else if (roundTwo_DirObjBookingInfo) {
-      return roundTwo_DirObjBookingInfo[0];
-    } else if (roundTwo_OneObjBookingInfo) {
-      return roundTwo_OneObjBookingInfo[0];
-    } else if (roundTwo_TwoObjBookingInfo) {
-      return roundTwo_TwoObjBookingInfo[0];
-    } else {
-      console.log("error");
-    }
-  };
+    // setTimeout(() => {
+    //   if (onewayDirectObjBooking) {
+    //     invalidAge(onewayDirectObjBooking);
+    //   }
+    //   // if(onewayOneStopObjBooking){
+    //   //   validAge(onewayOneStopObjBooking);
+    //   // }
 
-  console.log(verlifyAge());
+    //   // navigate("/bookingresult", { replace: true });
+    // }, 200);
+    const verlifyAge = () => {
+      if (onewayDirectObjBooking) {
+        return onewayDirectObjBooking[0];
+      } else if (onewayOneStopObjBooking) {
+        return onewayOneStopObjBooking[0];
+      } else if (onewayTwoStopObjBooking) {
+        return onewayTwoStopObjBooking[0];
+      } else if (roundDir_DirObjBookingInfo) {
+        return roundDir_DirObjBookingInfo[0];
+      } else if (roundDir_OneObjBookingInfo) {
+        return roundDir_OneObjBookingInfo[0];
+      } else if (roundDir_TwoObjBookingInfo) {
+        return roundDir_TwoObjBookingInfo[0];
+      } else if (roundOne_OneObjBookingInfo) {
+        return roundOne_OneObjBookingInfo[0];
+      } else if (roundOne_DirObjBookingInfo) {
+        return roundOne_DirObjBookingInfo[0];
+      } else if (roundOne_TwoObjBookingInfo) {
+        return roundOne_TwoObjBookingInfo[0];
+      } else if (roundTwo_DirObjBookingInfo) {
+        return roundTwo_DirObjBookingInfo[0];
+      } else if (roundTwo_OneObjBookingInfo) {
+        return roundTwo_OneObjBookingInfo[0];
+      } else if (roundTwo_TwoObjBookingInfo) {
+        return roundTwo_TwoObjBookingInfo[0];
+      } else {
+        console.log("error");
+      }
+    };
 
-  const handleObjBooking = (e) => {
-    e.preventDefault();
     const invalidAge = verlifyAge();
-    console.log(invalidAge);
-
-    invalidAge.contactInfo.title = inputTitleContract;
-    invalidAge.contactInfo.firstname = inputFirstNameContract;
-    invalidAge.contactInfo.middlename = inputMiddleNameContract;
-    invalidAge.contactInfo.lastname = inputLastNameContract;
-    invalidAge.contactInfo.telNo = inputMobilePhoneContract;
-
     const chdPax_infPaxsArray = invalidAge.chdPaxs.concat(invalidAge.infPaxs);
-    console.log(chdPax_infPaxsArray);
+
     let checkdata = false;
 
-    setTimeout(() => {
-      for (let i = 0; i < chdPax_infPaxsArray?.length; i++) {
-        const item = chdPax_infPaxsArray[i];
-        if (item.paxType === "CHD") {
-          if (totalAge(item.birthday) > 12 || totalAge(item.birthday) < 2 || totalAge(item.birthday) === "") {
+    for (let i = 0; i < chdPax_infPaxsArray.length; i++) {
+      const item = chdPax_infPaxsArray[i];
+      if (item.paxType === "CHD") {
+        if (totalAge(item.birthday) > 12 || totalAge(item.birthday) < 2 || totalAge(item.birthday) === "") {
+          checkdata = true;
+          errorAlert(`Date of Birth at Child passenger no.${item.id} incorrect.`);
+          break;
+        }
+      } else {
+        if (item.paxType === "INF") {
+          if (totalAge(item.birthday) > 2 || totalAge(item.birthday) > 0 || totalAge(item.birthday) === "") {
             checkdata = true;
-            errorAlert(`Date of Birth at Child passenger no.${item.id} incorrect.`);
+            errorAlert(`Date of Birth at Infant passenger no.${item.id} incorrect.`);
             break;
-          }
-        } else {
-          if (item.paxType === "INF") {
-            if (totalAge(item.birthday) > 2 || totalAge(item.birthday) > 0 || totalAge(item.birthday) === "") {
-              checkdata = true;
-              errorAlert(`Date of Birth at Infant passenger no.${item.id} incorrect.`);
-              break;
-            }
           }
         }
       }
-      setTimeout(() => {
-        if (checkdata === false) {
-          navigate("/bookingresult", { replace: true });
-        }
-      }, 100);
-    }, 100);
-
-    for (let i = 0; i < adultInfo?.length; i++) {
-      adultInfo[i].firstname = adultPassenger[i].firstName;
-      adultInfo[i].middlename = adultPassenger[i].middleName;
-      adultInfo[i].lastname = adultPassenger[i].lastName;
-      adultInfo[i].email = adultPassenger[i].email;
-      adultInfo[i].telNo = adultPassenger[i].mobilePhone;
     }
 
-    for (let i = 0; i < childInfo.length; i++) {
-      childInfo[i].firstname = childPassenger[i].firstName;
-      childInfo[i].middlename = childPassenger[i].middleName;
-      childInfo[i].lastname = childPassenger[i].lastName;
-      childInfo[i].email = childPassenger[i].email;
-      childInfo[i].telNo = childPassenger[i].mobilePhone;
-      childInfo[i].birthday = childPassenger[i].dateOfBirth;
-    }
-
-    for (let i = 0; i < infantInfo.length; i++) {
-      infantInfo[i].firstname = infantPassenger[i].firstName;
-      infantInfo[i].middlename = infantPassenger[i].middleName;
-      infantInfo[i].lastname = infantPassenger[i].lastName;
-      infantInfo[i].email = infantPassenger[i].email;
-      infantInfo[i].telNo = infantPassenger[i].mobilePhone;
-      infantInfo[i].birthday = infantPassenger[i].dateOfBirth;
-    }
+    setTimeout(() => {
+      if (!checkdata) {
+        navigate("/bookingresult", { replace: true });
+      }
+    }, 200);
   };
+
 
   const dataNFTDetail = localStorage.NFT_;
   const value = encryptStorage2.decryptString(dataNFTDetail);
@@ -2866,22 +2985,16 @@ function contractInfo_copy() {
   const nftImg = dataNFTDetail_.image_thumbnail_url;
   const nftName = dataNFTDetail_.name;
 
+  const [adultPassenger, setAdultPassenger] = useState([]);
+  console.log(adultPassenger);
+  useEffect(() => {
+    handleAddPassenger();
+  }, []);
+
   const handlePassengerTitleChange = (index, event) => {
     const newPassengers = [...adultPassenger];
     newPassengers[index].title = event.target.value;
     setAdultPassenger(newPassengers);
-  };
-
-  const handleChildPassengerTitleChange = (index, event) => {
-    const newChildPassengers = [...childPassenger];
-    newChildPassengers[index].title = event.target.value;
-    setChildPassenger(newChildPassengers);
-  };
-
-  const handleInfantPassengerTitleChange = (index, event) => {
-    const newInfantPassengers = [...infantPassenger];
-    newInfantPassengers[index].title = event.target.value;
-    setInfantPassenger(newInfantPassengers);
   };
 
   const handlePassengerFirstNameChange = (index, event) => {
@@ -2890,34 +3003,10 @@ function contractInfo_copy() {
     setAdultPassenger(newPassengers);
   };
 
-  const handleChildPassengerFirstNameChange = (index, event) => {
-    const newChildPassengers = [...childPassenger];
-    newChildPassengers[index].firstName = event.target.value;
-    setChildPassenger(newChildPassengers);
-  };
-
-  const handleInfantPassengerFirstNameChange = (index, event) => {
-    const newInfantPassengers = [...infantPassenger];
-    newInfantPassengers[index].firstName = event.target.value;
-    setInfantPassenger(newInfantPassengers);
-  };
-
   const handlePassengerMiddlenameChange = (index, event) => {
     const newPassengers = [...adultPassenger];
     newPassengers[index].middleName = event.target.value;
     setAdultPassenger(newPassengers);
-  };
-
-  const handleChildPassengerMiddlenameChange = (index, event) => {
-    const newChildPassengers = [...childPassenger];
-    newChildPassengers[index].middleName = event.target.value;
-    setChildPassenger(newChildPassengers);
-  };
-
-  const handleInfantPassengerMiddlenameChange = (index, event) => {
-    const newInfantPassengers = [...infantPassenger];
-    newInfantPassengers[index].middleName = event.target.value;
-    setInfantPassenger(newInfantPassengers);
   };
 
   const handlePassengerLastNameChange = (index, event) => {
@@ -2926,72 +3015,10 @@ function contractInfo_copy() {
     setAdultPassenger(newPassengers);
   };
 
-  const handleChildPassengerLastNameChange = (index, event) => {
-    const newChildPassengers = [...childPassenger];
-    newChildPassengers[index].lastName = event.target.value;
-    setChildPassenger(newChildPassengers);
-  };
-
-  const handleInfantPassengerLastNameChange = (index, event) => {
-    const newInfantPassengers = [...infantPassenger];
-    newInfantPassengers[index].lastName = event.target.value;
-    setChildPassenger(newInfantPassengers);
-  };
-
   const handlePassengerEmailChange = (index, event) => {
     const newPassengers = [...adultPassenger];
     newPassengers[index].email = event.target.value;
     setAdultPassenger(newPassengers);
-  };
-
-  const handleChildPassengerEmailChange = (index, event) => {
-    const newChildPassengers = [...childPassenger];
-    newChildPassengers[index].email = event.target.value;
-    setChildPassenger(newChildPassengers);
-  };
-
-  const handleInfantPassengerEmailChange = (index, event) => {
-    const newInfantPassengers = [...infantPassenger];
-    newInfantPassengers[index].email = event.target.value;
-    setChildPassenger(newInfantPassengers);
-  };
-
-  const handleChildPassengerDateOfBirthChange = (index, event) => {
-    console.log(event.target.value);
-    if (totalAge(event.target.value) < 12 && totalAge(event.target.value) >= 2) {
-      const newChildPassengers = [...childPassenger];
-      newChildPassengers[index].dateOfBirth = event.target.value;
-      setChildPassenger(newChildPassengers);
-    } else {
-      errorAlert(`Date of Birth of child might 2-12 years old.`);
-      const newChildPassengers = [...childPassenger];
-      newChildPassengers[index].dateOfBirth = "";
-      setChildPassenger(newChildPassengers);
-    }
-  };
-
-  const handleInfantPassengerDateOfBirthChange = (index, event) => {
-    console.log(event.target.value);
-    if (totalAge(event.target.value) < 2) {
-      const newInfantPassengers = [...infantPassenger];
-      newInfantPassengers[index].dateOfBirth = event.target.value;
-      setInfantPassenger(newInfantPassengers);
-    } else {
-      errorAlert(`Date of Birth at infant might 0-2 years old.`);
-      const newInfantPassengers = [...infantPassenger];
-      newInfantPassengers[index].dateOfBirth = "";
-      setInfantPassenger(newInfantPassengers);
-    }
-    // if (totalAge(event.target.value) < 12 && totalAge(event.target.value) >= 2) {
-    //   const newInfantPassengers = [...infantPassenger];
-    //   newInfantPassengers[index].dateOfBirth = event.target.value;
-    //   setInfantPassenger(newInfantPassengers);
-    // } else {
-    //   errorAlert(`Date of Birth of infant might 2-12 years old.`);
-    //   const newInfantPassengers = [...infantPassenger];
-    //   newInfantPassengers[index].dateOfBirth = "";
-    //   setInfantPassenger(newInfantPassengers);
-    // }
   };
 
   const handlePassengerMobilePhoneChange = (index, event) => {
@@ -3000,23 +3027,11 @@ function contractInfo_copy() {
     setAdultPassenger(newPassengers);
   };
 
-  const handleChildPassengerMobilePhoneChange = (index, event) => {
-    const newChildPassengers = [...childPassenger];
-    newChildPassengers[index].mobilePhone = event.target.value;
-    setChildPassenger(newChildPassengers);
-  };
-
-  const handleInfantPassengerMobilePhoneChange = (index, event) => {
-    const newInfantPassengers = [...infantPassenger];
-    newInfantPassengers[index].mobilePhone = event.target.value;
-    setInfantPassenger(newInfantPassengers);
-  };
-
   const handleCheckboxChange = (index) => {
     const newPassengers = [...adultPassenger];
     newPassengers[index].title = inputTitleContract;
     newPassengers[index].firstName = inputFirstNameContract;
-    newPassengers[index].middleName = inputMiddleNameContract;
+    newPassengers[index].middleName = inputMiddleNameContract;childInfo
     newPassengers[index].lastName = inputLastNameContract;
     newPassengers[index].email = inputEmailContract;
     newPassengers[index].mobilePhone = inputMobilePhoneContract;
@@ -3024,399 +3039,343 @@ function contractInfo_copy() {
     setAdultPassenger(newPassengers);
   };
 
-  const handleChildCheckboxChange = (index) => {
-    const newChildPassengers = [...childPassenger];
-    newChildPassengers[index].title = "MSTR"; //initial fixed
-    newChildPassengers[index].firstName = inputFirstNameContract;
-    newChildPassengers[index].middleName = inputMiddleNameContract;
-    newChildPassengers[index].lastName = inputLastNameContract;
-    newChildPassengers[index].email = inputEmailContract;
-    newChildPassengers[index].mobilePhone = inputMobilePhoneContract;
-    newChildPassengers[index].checked = !newChildPassengers[index].checked;
-    setChildPassenger(newChildPassengers);
-  };
-
-  const handleInfantCheckboxChange = (index) => {
-    const newInfantPassengers = [...infantPassenger];
-    newInfantPassengers[index].title = "MSTR"; //initial fixed
-    newInfantPassengers[index].firstName = inputFirstNameContract;
-    newInfantPassengers[index].middleName = inputMiddleNameContract;
-    newInfantPassengers[index].lastName = inputLastNameContract;
-    newInfantPassengers[index].email = inputEmailContract;
-    newInfantPassengers[index].mobilePhone = inputMobilePhoneContract;
-    newInfantPassengers[index].checked = !newInfantPassengers[index].checked;
-    setInfantPassenger(newInfantPassengers);
-  };
-
-  const handleAdultPassenger = () => {
+  const handleAddPassenger = () => {
     const adultsSection = [];
-
     for (let i = 1; i <= adultInfo.length; i++) {
       adultsSection.push([
-        // ...adultPassenger,
-        // { title: "", firstName: "", middleName: "", lastName: "", email: "", mobilePhone: "", checked: false },
+        ...adultPassenger,
+        { title: "", firstName: "", middleName: "", lastName: "", email: "", mobilePhone: "", checked: false },
       ]);
       setAdultPassenger(adultsSection);
     }
   };
 
-  const handleChildPassenger = () => {
-    const childsSection = [];
-    for (let i = 1; i <= childInfo.length; i++) {
-      childsSection.push([
-        // ...childPassenger,
-        // {
-        //   title: "",
-        //   firstName: "",
-        //   middleName: "",
-        //   lastName: "",
-        //   email: "",
-        //   dateOfBirth: "",
-        //   mobilePhone: "",
-        //   checked: false,
-        // },
-      ]);
-      setChildPassenger(childsSection);
-    }
-  };
+  var childsSection = [];
+  for (let i = 0; i < childInfo.length; i++) {
+    childsSection.push(
+      // <div>
+      //   <div className="my-2 block">
+      //     <Label htmlFor="small" value={`Passenger No. ${i + 1}`} />
+      //   </div>
+      //   <TextInput key={i} id="small" type="text" sizing="" required={true} onChange={(e) => xx(e.target.value, i)} />
+      // </div>
+      <div>
+        <div className="">
+          <div className="my-4 block bg-map rounded-lg p-2">
+            <Label htmlFor="small" value={`Child passenger no. ${i + 1}`} />
+          </div>
+          <div className="flex p-2 gap-4">
+            <div id="select">
+              <div className="mb-2 block">
+                <Label htmlFor="countries" value="Title" />
+              </div>
 
-  const handleInfantPassenger = () => {
-    const infantsSection = [];
-    for (let i = 1; i <= infantInfo.length; i++) {
-      infantsSection.push([
-        // ...childPassenger,
-        // {
-        //   title: "",
-        //   firstName: "",
-        //   middleName: "",
-        //   lastName: "",
-        //   email: "",
-        //   dateOfBirth: "",
-        //   mobilePhone: "",
-        //   checked: false,
-        // },
-      ]);
-      setInfantPassenger(infantsSection);
-    }
-  };
+              <Select
+                id="countries"
+                required={true}
+                sizing=""
+                onChange={(e) => inputTitleChildsPassenger(e.target.value, i)}
+              >
+                <option disabled value="">
+                  Title
+                </option>
+                <option value="MSTR ">MSTR.</option>
+                {/* <option value="Mrs">Mrs.</option>
+                <option value="Ms">Ms.</option>
+                <option value="Dr">Dr.</option>
+                <option value="Phra">Phr.a</option>
+                <option value="Phramaha">Phramaha.</option> */}
+              </Select>
+            </div>
 
-  // var childsSection = [];
-  // for (let i = 0; i < childInfo.length; i++) {
-  //   childsSection.push(
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="small" value="First Name" />
+              </div>
+              <TextInput
+                id="small"
+                type="text"
+                sizing=""
+                required={true}
+                onChange={(e) => inputFirstnameChildsPassenger(e.target.value, i)}
+              />
+            </div>
 
-  //     <div>
-  //       <div className="">
-  //         <div className="my-4 block bg-map rounded-lg p-2">
-  //           <Label htmlFor="small" value={`Child passenger no. ${i + 1}`} />
-  //         </div>
-  //         <div className="flex p-2 gap-4">
-  //           <div id="select">
-  //             <div className="mb-2 block">
-  //               <Label htmlFor="countries" value="Title" />
-  //             </div>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="small" value="Middle Name" />
+              </div>
+              <TextInput
+                id="small"
+                type="text"
+                sizing=""
+                onChange={(e) => inputMiddleNameChildsPassenger(e.target.value, i)}
+              />
+            </div>
 
-  //             <Select
-  //               id="countries"
-  //               required={true}
-  //               sizing=""
-  //               onChange={(e) => inputTitleChildsPassenger(e.target.value, i)}
-  //             >
-  //               <option disabled value="">
-  //                 Title
-  //               </option>
-  //               <option value="MSTR ">MSTR.</option>
-  //               {/* <option value="Mrs">Mrs.</option>
-  //               <option value="Ms">Ms.</option>
-  //               <option value="Dr">Dr.</option>
-  //               <option value="Phra">Phr.a</option>
-  //               <option value="Phramaha">Phramaha.</option> */}
-  //             </Select>
-  //           </div>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="small" value="Last Name" />
+              </div>
+              <TextInput
+                id="small"
+                type="text"
+                sizing=""
+                required={true}
+                onChange={(e) => inputLastnameChildsPassenger(e.target.value, i)}
+              />
+            </div>
+          </div>
 
-  //           <div>
-  //             <div className="mb-2 block">
-  //               <Label htmlFor="small" value="First Name" />
-  //             </div>
-  //             <TextInput
-  //               id="small"
-  //               type="text"
-  //               sizing=""
-  //               required={true}
-  //               onChange={(e) => inputFirstnameChildsPassenger(e.target.value, i)}
-  //             />
-  //           </div>
+          <div className="flex w-full p-2 gap-4">
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="small" value="Date of Birth" />
+              </div>
+              <TextInput
+                id="small"
+                type="date"
+                sizing=""
+                required={true}
+                onChange={(e) => inputDateOfBirthChildsPassenger(e.target.value, i)}
+              />
+            </div>
 
-  //           <div>
-  //             <div className="mb-2 block">
-  //               <Label htmlFor="small" value="Middle Name" />
-  //             </div>
-  //             <TextInput
-  //               id="small"
-  //               type="text"
-  //               sizing=""
-  //               onChange={(e) => inputMiddleNameChildsPassenger(e.target.value, i)}
-  //             />
-  //           </div>
+            {/* <div>
+                        <div className="mb-2 block">
+                          <Label htmlFor="small" value="Nationality" />
+                        </div>
+                        <TextInput
+                          id="small"
+                          type="text"
+                          sizing=""
+                          required={true}
+                          onChange={(e) => setInputNationality(e.target.value)}
+                        />
+                      </div> */}
 
-  //           <div>
-  //             <div className="mb-2 block">
-  //               <Label htmlFor="small" value="Last Name" />
-  //             </div>
-  //             <TextInput
-  //               id="small"
-  //               type="text"
-  //               sizing=""
-  //               required={true}
-  //               onChange={(e) => inputLastnameChildsPassenger(e.target.value, i)}
-  //             />
-  //           </div>
-  //         </div>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="small" value="Mobile Phone" />
+              </div>
+              <TextInput
+                id="small"
+                type="tel"
+                pattern="^[0-9]*$"
+                sizing=""
+                // required={true}
+                onChange={(e) => inputMobilePhoneChildsPassenger(e.target.value, i)}
+              />
+            </div>
+          </div>
 
-  //         <div className="flex w-full p-2 gap-4">
-  //           <div>
-  //             <div className="mb-2 block">
-  //               <Label htmlFor="small" value="Date of Birth" />
-  //             </div>
-  //             <TextInput
-  //               id="small"
-  //               type="date"
-  //               sizing=""
-  //               required={true}
-  //               onChange={(e) => inputDateOfBirthChildsPassenger(e.target.value, i)}
-  //             />
-  //           </div>
+          <div className="flex w-full p-2">
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="email1" value="Email" />
+              </div>
+              <TextInput
+                id="email1"
+                type="email"
+                placeholder="name@gmail.com"
+                sizing=""
+                onChange={(e) => inputEmailChildsPassenger(e.target.value, i)}
+                // required={true}
+              />
+            </div>
+          </div>
 
-  //           {/* <div>
-  //                       <div className="mb-2 block">
-  //                         <Label htmlFor="small" value="Nationality" />
-  //                       </div>
-  //                       <TextInput
-  //                         id="small"
-  //                         type="text"
-  //                         sizing=""
-  //                         required={true}
-  //                         onChange={(e) => setInputNationality(e.target.value)}
-  //                       />
-  //                     </div> */}
+          {/* <div>
+                      <div className="mb-2 block mt-4">
+                        <Label htmlFor="small" value="Passport Number" />
+                      </div>
+                      <TextInput
+                        id="small"
+                        type="text"
+                        sizing=""
+                        required={true}
+                        onChange={(e) => setInputPassportNumber(e.target.value)}
+                      />
+                      <p className="text-xs my-2">
+                        For adultPassenger below 18 years old, you may enter another valid ID number (e.g. birth
+                        certificate, student ID) or date of birth (ddmmyyyy)
+                      </p>
+                    </div>
 
-  //           <div>
-  //             <div className="mb-2 block">
-  //               <Label htmlFor="small" value="Mobile Phone" />
-  //             </div>
-  //             <TextInput
-  //               id="small"
-  //               type="tel"
-  //               pattern="^[0-9]*$"
-  //               sizing=""
-  //               // required={true}
-  //               onChange={(e) => inputMobilePhoneChildsPassenger(e.target.value, i)}
-  //             />
-  //           </div>
-  //         </div>
+                    <div>
+                      <div className="mb-2 block">
+                        <Label htmlFor="small" value="CountryIssue" />
+                      </div>
+                      <Select
+                        id="small"
+                        required={true}
+                        sizing=""
+                        onChange={(e) => setInputCountryOfIssue(e.target.value)}
+                      >
+                        <option disabled value="">
+                          Country
+                        </option>
+                        <option value="TH">Thailand</option>
+                        <option value="ENG">English</option>
+                      </Select>
+                    </div>
 
-  //         <div className="flex w-full p-2">
-  //           <div>
-  //             <div className="mb-2 block">
-  //               <Label htmlFor="email1" value="Email" />
-  //             </div>
-  //             <TextInput
-  //               id="email1"
-  //               type="email"
-  //               placeholder="name@gmail.com"
-  //               sizing=""
-  //               onChange={(e) => inputEmailChildsPassenger(e.target.value, i)}
-  //               // required={true}
-  //             />
-  //           </div>
-  //         </div>
+                    <div>
+                      <div className="mb-2 block">
+                        <Label htmlFor="small" value="Issue Date" />
+                      </div>
+                      <TextInput
+                        id="small"
+                        type="date"
+                        sizing=""
+                        required={true}
+                        onChange={(e) => setinputIssueDate(e.target.value)}
+                      />
+                    </div>
 
-  //         {/* <div>
-  //                     <div className="mb-2 block mt-4">
-  //                       <Label htmlFor="small" value="Passport Number" />
-  //                     </div>
-  //                     <TextInput
-  //                       id="small"
-  //                       type="text"
-  //                       sizing=""
-  //                       required={true}
-  //                       onChange={(e) => setInputPassportNumber(e.target.value)}
-  //                     />
-  //                     <p className="text-xs my-2">
-  //                       For adultPassenger below 18 years old, you may enter another valid ID number (e.g. birth
-  //                       certificate, student ID) or date of birth (ddmmyyyy)
-  //                     </p>
-  //                   </div>
+                    <div>
+                      <div className="mb-2 block">
+                        <Label htmlFor="small" value="Expiry Date" />
+                      </div>
+                      <TextInput
+                        id="small"
+                        type="date"
+                        sizing=""
+                        required={true}
+                        onChange={(e) => setinputExpiryDate(e.target.value)}
+                      />
+                    </div> */}
+        </div>
+        <hr></hr>
+      </div>
+    );
+  }
 
-  //                   <div>
-  //                     <div className="mb-2 block">
-  //                       <Label htmlFor="small" value="CountryIssue" />
-  //                     </div>
-  //                     <Select
-  //                       id="small"
-  //                       required={true}
-  //                       sizing=""
-  //                       onChange={(e) => setInputCountryOfIssue(e.target.value)}
-  //                     >
-  //                       <option disabled value="">
-  //                         Country
-  //                       </option>
-  //                       <option value="TH">Thailand</option>
-  //                       <option value="ENG">English</option>
-  //                     </Select>
-  //                   </div>
+  var infantsSection = [];
+  console.log(infantsSection)
+  for (let i = 0; i < infantInfo.length; i++) {
+    console.log("xxxxxxxxxx",infantInfo)
+    infantsSection.push(
+  
+      <div>
+        <div className="">
+          <div className="my-4 block bg-map rounded-lg p-2">
+            <Label htmlFor="small" value={`Infant passenger no. ${i + 1}`} />
+          </div>
+          <div className="flex w-full p-2 gap-4">
+            <div id="select">
+              <div className="mb-2 block">
+                <Label htmlFor="countries" value="Title" />
+              </div>
 
-  //                   <div>
-  //                     <div className="mb-2 block">
-  //                       <Label htmlFor="small" value="Issue Date" />
-  //                     </div>
-  //                     <TextInput
-  //                       id="small"
-  //                       type="date"
-  //                       sizing=""
-  //                       required={true}
-  //                       onChange={(e) => setinputIssueDate(e.target.value)}
-  //                     />
-  //                   </div>
+              <Select
+                id="countries"
+                required={true}
+                sizing=""
+                onChange={(e) => inputTitleInfantsPassenger(e.target.value, i)}
+              >
+                <option disabled value="">
+                  Title
+                </option>
+                <option value="MSTR ">MSTR.</option>
+                {/* <option value="Mrs">Mrs.</option>
+                <option value="Ms">Ms.</option>
+                <option value="Dr">Dr.</option>
+                <option value="Phra">Phr.a</option>
+                <option value="Phramaha">Phramaha.</option> */}
+              </Select>
+            </div>
 
-  //                   <div>
-  //                     <div className="mb-2 block">
-  //                       <Label htmlFor="small" value="Expiry Date" />
-  //                     </div>
-  //                     <TextInput
-  //                       id="small"
-  //                       type="date"
-  //                       sizing=""
-  //                       required={true}
-  //                       onChange={(e) => setinputExpiryDate(e.target.value)}
-  //                     />
-  //                   </div> */}
-  //       </div>
-  //       <hr></hr>
-  //     </div>
-  //   );
-  // }
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="small" value="First Name" />
+              </div>
+              <TextInput
+                id="small"
+                type="text"
+                sizing=""
+                required={true}
+                onChange={(e) => inputFirstnameInfantsPassenger(e.target.value, i)}
+              />
+            </div>
 
-  // var infantsSection = [];
-  // for (let i = 0; i < infantInfo.length; i++) {
-  //   console.log("xxxxxxxxxx", infantInfo);
-  //   infantsSection.push(
-  //     <div>
-  //       <div className="">
-  //         <div className="my-4 block bg-map rounded-lg p-2">
-  //           <Label htmlFor="small" value={`Infant passenger no. ${i + 1}`} />
-  //         </div>
-  //         <div className="flex w-full p-2 gap-4">
-  //           <div id="select">
-  //             <div className="mb-2 block">
-  //               <Label htmlFor="countries" value="Title" />
-  //             </div>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="small" value="Middle Name" />
+              </div>
+              <TextInput
+                id="small"
+                type="text"
+                sizing=""
+                onChange={(e) => inputMiddleNameInfantsPassenger(e.target.value, i)}
+              />
+            </div>
 
-  //             <Select
-  //               id="countries"
-  //               required={true}
-  //               sizing=""
-  //               onChange={(e) => inputTitleInfantsPassenger(e.target.value, i)}
-  //             >
-  //               <option disabled value="">
-  //                 Title
-  //               </option>
-  //               <option value="MSTR ">MSTR.</option>
-  //               {/* <option value="Mrs">Mrs.</option>
-  //               <option value="Ms">Ms.</option>
-  //               <option value="Dr">Dr.</option>
-  //               <option value="Phra">Phr.a</option>
-  //               <option value="Phramaha">Phramaha.</option> */}
-  //             </Select>
-  //           </div>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="small" value="Last Name" />
+              </div>
+              <TextInput
+                id="small"
+                type="text"
+                sizing=""
+                required={true}
+                onChange={(e) => inputLastnameInfantsPassenger(e.target.value, i)}
+              />
+            </div>
+          </div>
 
-  //           <div>
-  //             <div className="mb-2 block">
-  //               <Label htmlFor="small" value="First Name" />
-  //             </div>
-  //             <TextInput
-  //               id="small"
-  //               type="text"
-  //               sizing=""
-  //               required={true}
-  //               onChange={(e) => inputFirstnameInfantsPassenger(e.target.value, i)}
-  //             />
-  //           </div>
+          <div className="flex w-full p-2 gap-4">
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="small" value="Date of Birth" />
+              </div>
+              <TextInput
+                id="small"
+                type="date"
+                sizing=""
+                required={true}
+                onChange={(e) => inputDateOfBirthInfantsPassenger(e.target.value, i)}
+              />
+            </div>
 
-  //           <div>
-  //             <div className="mb-2 block">
-  //               <Label htmlFor="small" value="Middle Name" />
-  //             </div>
-  //             <TextInput
-  //               id="small"
-  //               type="text"
-  //               sizing=""
-  //               onChange={(e) => inputMiddleNameInfantsPassenger(e.target.value, i)}
-  //             />
-  //           </div>
+         
 
-  //           <div>
-  //             <div className="mb-2 block">
-  //               <Label htmlFor="small" value="Last Name" />
-  //             </div>
-  //             <TextInput
-  //               id="small"
-  //               type="text"
-  //               sizing=""
-  //               required={true}
-  //               onChange={(e) => inputLastnameInfantsPassenger(e.target.value, i)}
-  //             />
-  //           </div>
-  //         </div>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="small" value="Mobile Phone" />
+              </div>
+              <TextInput
+                id="small"
+                type="tel"
+                pattern="^[0-9]*$"
+                sizing=""
+                // required={true}
+                onChange={(e) => inputMobilePhoneInfantsPassenger(e.target.value, i)}
+              />
+            </div>
+          </div>
 
-  //         <div className="flex w-full p-2 gap-4">
-  //           <div>
-  //             <div className="mb-2 block">
-  //               <Label htmlFor="small" value="Date of Birth" />
-  //             </div>
-  //             <TextInput
-  //               id="small"
-  //               type="date"
-  //               sizing=""
-  //               required={true}
-  //               onChange={(e) => inputDateOfBirthInfantsPassenger(e.target.value, i)}
-  //             />
-  //           </div>
-
-  //           <div>
-  //             <div className="mb-2 block">
-  //               <Label htmlFor="small" value="Mobile Phone" />
-  //             </div>
-  //             <TextInput
-  //               id="small"
-  //               type="tel"
-  //               pattern="^[0-9]*$"
-  //               sizing=""
-  //               // required={true}
-  //               onChange={(e) => inputMobilePhoneInfantsPassenger(e.target.value, i)}
-  //             />
-  //           </div>
-  //         </div>
-
-  //         <div className="flex w-full p-2">
-  //           <div>
-  //             <div className="mb-2 block">
-  //               <Label htmlFor="email1" value="Email" />
-  //             </div>
-  //             <TextInput
-  //               id="email1"
-  //               type="email"
-  //               placeholder="name@gmail.com"
-  //               sizing=""
-  //               onChange={(e) => inputEmailInfantsPassenger(e.target.value, i)}
-  //               // required={true}
-  //             />
-  //           </div>
-  //         </div>
-  //       </div>
-  //       <hr></hr>
-  //     </div>
-  //   );
-  // }
+          <div className="flex w-full p-2">
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="email1" value="Email" />
+              </div>
+              <TextInput
+                id="email1"
+                type="email"
+                placeholder="name@gmail.com"
+                sizing=""
+                onChange={(e) => inputEmailInfantsPassenger(e.target.value, i)}
+                // required={true}
+              />
+            </div>
+          </div>
+        </div>
+        <hr></hr>
+      </div>
+    );
+  }
 
   return (
     <div className="h-[100%] min-h-screen ">
@@ -3437,7 +3396,6 @@ function contractInfo_copy() {
 
             <div className="border rounded-xl w-full px-10 py-4">
               {/* {typeTrip === "R" ? ( */}
-
               <div className="my-4 text-lg">
                 <p className="text-[#FAA819] font-bold">Departure</p>
                 <p className="text-[#828282]">
@@ -3874,14 +3832,13 @@ function contractInfo_copy() {
               ) : null}
 
               <form onSubmit={handleObjBooking}>
-                {/* <form> */}
                 <div className="w-full">
                   <p className="p-1 bg-gray-100 text-lg font-bold text-[#FAA819]">Contact Detail</p>
                   <div className="form-control w-full max-w-full">
                     <div className="flex w-full p-2 gap-4">
                       <div id="adultInfo">
                         <div className="mb-2 flex">
-                          <Label htmlFor="small" value="Title" />
+                          <Label htmlFor="small" value="Title"/>
                           <p className="text-[#ff3838]">*</p>
                         </div>
                         <Select
@@ -4031,6 +3988,7 @@ function contractInfo_copy() {
                               type="checkbox"
                               checked={adultPassenger.checked}
                               onChange={() => handleCheckboxChange(index)}
+                              required={true}
                             />
 
                             <div className="mx-2">
@@ -4038,6 +3996,7 @@ function contractInfo_copy() {
                             </div>
                           </div>
 
+                    
                           <div className="flex p-2 gap-4">
                             <div className="w-full">
                               <div className="flex mb-2">
@@ -4060,7 +4019,7 @@ function contractInfo_copy() {
                               </Select>
                             </div>
 
-                            <div className="w-full">
+                            <div className="w-full"> 
                               <div className="flex mb-2">
                                 <Label htmlFor="firstname" value={`First Name `} />
                                 <p className="text-[#ff3838]">*</p>
@@ -4082,6 +4041,7 @@ function contractInfo_copy() {
                                 type="text"
                                 value={adultPassenger.middleName}
                                 onChange={(event) => handlePassengerMiddlenameChange(index, event)}
+                                required={true}
                               />
                             </div>
 
@@ -4100,301 +4060,48 @@ function contractInfo_copy() {
                           </div>
 
                           <div className="flex w-full p-2 gap-4">
-                            <div>
-                              <div className="flex mb-2">
-                                <Label htmlFor="email" value={`Email`} />
-                                <p className="text-[#ff3838]">*</p>
-                              </div>
-                              <TextInput
-                                type="email"
-                                value={adultPassenger.email}
-                                onChange={(event) => handlePassengerEmailChange(index, event)}
-                                placeholder="name@gmail.com"
-                                required={true}
-                              />
+                          <div>
+                            <div className="flex mb-2">
+                              <Label htmlFor="email" value={`Email`} />
+                              <p className="text-[#ff3838]">*</p>
                             </div>
-
-                            <div>
-                              <div className="flex mb-2">
-                                <Label htmlFor="MobilePhone" value={`Mobile Phone `} />
-                                <p className="text-[#ff3838]">*</p>
-                              </div>
-                              <TextInput
-                                value={adultPassenger.mobilePhone}
-                                onChange={(event) => handlePassengerMobilePhoneChange(index, event)}
-                                required={true}
-                                placeholder=""
-                                id="small"
-                                type="tel"
-                                pattern="^[0-9]*$"
-                                sizing=""
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* {childsSection} */}
-                    <div className="">
-                      {childPassenger?.map((childPassenger, index) => (
-                        <div key={index}>
-                          <div className="my-4 block bg-map rounded-lg p-2">
-                            <Label htmlFor="small" value={`Child passenger no. ${index + 1}`} />
-                          </div>
-                          <div className="flex items-center mb-2 p-2">
-                            <input
-                              type="checkbox"
-                              checked={childPassenger.checked}
-                              onChange={() => handleChildCheckboxChange(index)}
+                            <TextInput
+                              type="email"
+                              value={adultPassenger.email}
+                              onChange={(event) => handlePassengerEmailChange(index, event)}
+                              placeholder="name@gmail.com"
+                              required={true}
                             />
-
-                            <div className="mx-2">
-                              <Label htmlFor="small" value={`Copy from contract detail`} />
-                            </div>
                           </div>
 
-                          <div className="flex p-2 gap-4">
-                            <div className="w-full">
-                              <div className="flex mb-2">
-                                <Label htmlFor="small" value="Title" />
-                                <p className="text-[#ff3838]">*</p>
-                              </div>
-                              <Select
-                                id="small"
-                                required={true}
-                                sizing=""
-                                onChange={(event) => {
-                                  handleChildPassengerTitleChange(index, event);
-                                }}
-                              >
-                                <option value="MSTR">MSTR</option>
-                              </Select>
+                          <div>
+                            <div className="flex mb-2">
+                              <Label htmlFor="MobilePhone" value={`Mobile Phone `} />
+                              <p className="text-[#ff3838]">*</p>
                             </div>
-
-                            <div className="w-full">
-                              <div className="flex mb-2">
-                                <Label htmlFor="firstname" value={`First Name `} />
-                                <p className="text-[#ff3838]">*</p>
-                              </div>
-                              <TextInput
-                                type="text"
-                                value={childPassenger.firstName}
-                                onChange={(event) => handleChildPassengerFirstNameChange(index, event)}
-                                required={true}
-                              />
-                            </div>
-
-                            <div className="w-full">
-                              <div className="flex mb-2">
-                                <Label htmlFor="middleName" value={`Middle Name`} />
-                                <p className="text-[#ff3838]">*</p>
-                              </div>
-                              <TextInput
-                                type="text"
-                                value={childPassenger.middleName}
-                                onChange={(event) => handleChildPassengerMiddlenameChange(index, event)}
-                              />
-                            </div>
-
-                            <div className="w-full">
-                              <div className="flex mb-2">
-                                <Label htmlFor="lastName" value={`Last Name `} />
-                                <p className="text-[#ff3838]">*</p>
-                              </div>
-                              <TextInput
-                                type="text"
-                                value={childPassenger.lastName}
-                                onChange={(event) => handleChildPassengerLastNameChange(index, event)}
-                                required={true}
-                              />
-                            </div>
-                          </div>
-
-                          <div className="flex w-full p-2 gap-4">
-                            <div>
-                              <div className="mb-2 block">
-                                <Label htmlFor="small" value="Date of Birth" />
-                              </div>
-                              <TextInput
-                                id="small"
-                                type="date"
-                                sizing=""
-                                required={true}
-                                // onChange={(e) => inputDateOfBirthChildsPassenger(e.target.value, index)}
-                                onChange={(event) => handleChildPassengerDateOfBirthChange(index, event)}
-                              />
-                            </div>
-                            <div>
-                              <div className="flex mb-2">
-                                <Label htmlFor="email" value={`Email`} />
-                                <p className="text-[#ff3838]">*</p>
-                              </div>
-                              <TextInput
-                                type="email"
-                                value={childPassenger.email}
-                                onChange={(event) => handleChildPassengerEmailChange(index, event)}
-                                placeholder="name@gmail.com"
-                                required={true}
-                              />
-                            </div>
-
-                            <div>
-                              <div className="flex mb-2">
-                                <Label htmlFor="MobilePhone" value={`Mobile Phone `} />
-                                <p className="text-[#ff3838]">*</p>
-                              </div>
-                              <TextInput
-                                value={childPassenger.mobilePhone}
-                                onChange={(event) => handleChildPassengerMobilePhoneChange(index, event)}
-                                required={true}
-                                placeholder=""
-                                id="small"
-                                type="tel"
-                                pattern="^[0-9]*$"
-                                sizing=""
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* {infantsSection} */}
-                    <div className="">
-                      {infantPassenger?.map((infantPassenger, index) => (
-                        <div key={index}>
-                          <div className="my-4 block bg-map rounded-lg p-2">
-                            <Label htmlFor="small" value={`Infant passenger no. ${index + 1}`} />
-                          </div>
-                          <div className="flex items-center mb-2 p-2">
-                            <input
-                              type="checkbox"
-                              checked={infantPassenger.checked}
-                              onChange={() => handleInfantCheckboxChange(index)}
+                            <TextInput
+                              value={adultPassenger.mobilePhone}
+                              onChange={(event) => handlePassengerMobilePhoneChange(index, event)}
+                              required={true}
+                              placeholder=""
+                              id="small"
+                              type="tel"
+                              pattern="^[0-9]*$"
+                              sizing=""
                             />
-
-                            <div className="mx-2">
-                              <Label htmlFor="small" value={`Copy from contract detail`} />
-                            </div>
                           </div>
-
-                          <div className="flex p-2 gap-4">
-                            <div className="w-full">
-                              <div className="flex mb-2">
-                                <Label htmlFor="small" value="Title" />
-                                <p className="text-[#ff3838]">*</p>
-                              </div>
-                              <Select
-                                id="small"
-                                required={true}
-                                sizing=""
-                                onChange={(event) => {
-                                  handleInfantPassengerTitleChange(index, event);
-                                }}
-                              >
-                                <option value="MSTR">MSTR</option>
-                              </Select>
-                            </div>
-
-                            <div className="w-full">
-                              <div className="flex mb-2">
-                                <Label htmlFor="firstname" value={`First Name `} />
-                                <p className="text-[#ff3838]">*</p>
-                              </div>
-                              <TextInput
-                                type="text"
-                                value={infantPassenger.firstName}
-                                onChange={(event) => handleInfantPassengerFirstNameChange(index, event)}
-                                required={true}
-                              />
-                            </div>
-
-                            <div className="w-full">
-                              <div className="flex mb-2">
-                                <Label htmlFor="middleName" value={`Middle Name`} />
-                                <p className="text-[#ff3838]">*</p>
-                              </div>
-                              <TextInput
-                                type="text"
-                                value={infantPassenger.middleName}
-                                onChange={(event) => handleInfantPassengerMiddlenameChange(index, event)}
-                              />
-                            </div>
-
-                            <div className="w-full">
-                              <div className="flex mb-2">
-                                <Label htmlFor="lastName" value={`Last Name `} />
-                                <p className="text-[#ff3838]">*</p>
-                              </div>
-                              <TextInput
-                                type="text"
-                                value={infantPassenger.lastName}
-                                onChange={(event) => handleInfantPassengerLastNameChange(index, event)}
-                                required={true}
-                              />
-                            </div>
-                          </div>
-
-                          <div className="flex w-full p-2 gap-4">
-                            <div>
-                              <div className="mb-2 block">
-                                <Label htmlFor="small" value="Date of Birth" />
-                              </div>
-                              <TextInput
-                                id="small"
-                                type="date"
-                                sizing=""
-                                required={true}
-                                // onChange={(e) => inputDateOfBirthChildsPassenger(e.target.value, index)}
-                                onChange={(event) => handleInfantPassengerDateOfBirthChange(index, event)}
-                              />
-                            </div>
-                            <div>
-                              <div className="flex mb-2">
-                                <Label htmlFor="email" value={`Email`} />
-                                <p className="text-[#ff3838]">*</p>
-                              </div>
-                              <TextInput
-                                type="email"
-                                value={infantPassenger.email}
-                                onChange={(event) => handleInfantPassengerEmailChange(index, event)}
-                                placeholder="name@gmail.com"
-                                required={true}
-                              />
-                            </div>
-
-                            <div>
-                              <div className="flex mb-2">
-                                <Label htmlFor="MobilePhone" value={`Mobile Phone `} />
-                                <p className="text-[#ff3838]">*</p>
-                              </div>
-                              <TextInput
-                                value={infantPassenger.mobilePhone}
-                                onChange={(event) => handleInfantPassengerMobilePhoneChange(index, event)}
-                                required={true}
-                                placeholder=""
-                                id="small"
-                                type="tel"
-                                pattern="^[0-9]*$"
-                                sizing=""
-                              />
-                            </div>
                           </div>
                         </div>
                       ))}
                     </div>
 
-                    <div className="flex mx-2">
+                    {childsSection}
+                    {infantsSection}
+
+                    <div className="mx-2">
                       <Button type="submit" style={{ marginTop: 20 }}>
                         Confirm
                       </Button>
-
-                      <div className="mx-4">
-                        <Button type="button" style={{ marginTop: 20 }} onClick={() => backToBookingPage()}>
-                          Change Flight
-                        </Button>
-                      </div>
                     </div>
                   </div>
                 </div>

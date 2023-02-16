@@ -17,24 +17,23 @@ import takeoff from "../assets/img/takeoff.png";
 import landing from "../assets/img/landing.png";
 import airline_img from "../assets/img/airline.png";
 import seat from "../assets/img/takeoff.png";
-import { Tree } from "antd";
 
 export const encryptStorage1 = new EncryptStorage("H@b'v4U*[8Y,m~:d", {});
 
-function Header() {
+function Header({onCloseModal}) {
   const { account } = useBetween(Share);
-  
   const { ownerAddress, setOwnerAddress } = useBetween(Share);
   const { tokenID, setTokenID } = useBetween(Share); //id ที่เป็น obj จากการเลือก NFT ID ส่งไปหน้า contractInfo
-  console.log(tokenID);
   const { opensea, setOpensea } = useBetween(Share);
   const { share, setShare } = useBetween(Share);
   const { info, setInfo } = useBetween(Share);
   const { triptype, setTriptype } = useBetween(Share);
   const { checkOpenseaAPI, setCheckOpenseaAPI } = useBetween(Share);
   const { image, setImage } = useBetween(Share);
+  
+  const { tripType, setTripType } = usePnrContext("R");
 
-  const { tripType, setTripType } = usePnrContext();
+  
   const { adult, setAdult } = usePnrContext("");
   const { infant, setInfant } = usePnrContext("");
   const { child, setChild } = usePnrContext("");
@@ -48,8 +47,6 @@ function Header() {
   const { rbdList, setRBDList } = usePnrContext([]);
   const { adultInfo, childInfo, infantInfo, setAdultInfo, setChildInfo, setInfantInfo } = usePnrContext([]);
   const { bookingPerson, setBookingPerson } = usePnrContext("");
-
-
 
 
   // console.log(originCode, destinationCode); //log ดูจังหวัด
@@ -247,8 +244,8 @@ function Header() {
               }
             )
             .then((dataSearch) => {
+              onCloseModal();
               setDataResponse(dataSearch);
-              sessionStorage.setItem("dataSearch",JSON.stringify(dataSearch))
               encryptStorage1.setItem("dataSearch", dataSearch);
               setShare(dataSearch);
               setInfo(data);
@@ -397,7 +394,7 @@ function Header() {
 
   useEffect(() => {
     if (tripType != "R") {
-      if (adult_ + child_ + infant_ + bookingPerson > 8) {
+      if (adult_ + child_ + infant_  + bookingPerson > 8) {
         // console.log("segment",adult_ + child_ + infant_  + bookingPerson );
         setSearchFlight(false);
         return alert("limited to 8 person/flight.");
@@ -422,13 +419,10 @@ function Header() {
         setAdultInfo(adultPassenger);
         setChildInfo(childPassenger);
         setInfantInfo(infantPassenger);
-        sessionStorage.setItem("adultPassenger",JSON.stringify(adultPassenger))
-        sessionStorage.setItem("childPassenger",JSON.stringify(childPassenger))
-        sessionStorage.setItem("infantPassenger",JSON.stringify(infantPassenger))
-        
+      
       }
     } else {
-      if (adult_ * 2 + child_ * 2 + infant_ * 2 + bookingPerson > 8) {
+      if (adult_ * 2 + child_ * 2 + infant_ * 2 + bookingPerson> 8) {
         // console.log("segment",adult_ * 2 + child_ * 2 + infant_ * 2 + bookingPerson );
         setSearchFlight(false);
         return alert("limited to 8 person/flight.");
@@ -453,17 +447,15 @@ function Header() {
         setAdultInfo(adultPassenger);
         setChildInfo(childPassenger);
         setInfantInfo(infantPassenger);
-        sessionStorage.setItem("adultPassenger",JSON.stringify(adultPassenger))
-        sessionStorage.setItem("childPassenger",JSON.stringify(childPassenger))
-        sessionStorage.setItem("infantPassenger",JSON.stringify(infantPassenger))
       }
     }
-  }, [adult, child, infant, tripType ]);
+  }, [adult, child, infant, tripType]);
 
-  
-  const adult_ = Number(adult);
+ 
+
   const child_ = Number(child);
   const infant_ = Number(infant);
+  const adult_ = Number(adult);
 
   for (let i = 1; i <= adult_; i++) {
     adultPassenger.push({
@@ -903,14 +895,14 @@ function Header() {
                       Search Flight
                     </button>
 
-                    <button
+                    {/* <button
                       className="md:w-[200%] lg:w-[100%] border rounded-full  h-[50px] sm:text-sm lg:text-lg hover:shadow-lg"
                       type="button"
                       // onClick={() => window.location.href = "http://127.0.0.1:5173/"}
-                      onClick={() => (window.location.href = "https://front-nftant-uat.azurewebsites.net")}
+                      onClick={onCloseModal}
                     >
                       Back
-                    </button>
+                    </button> */}
                   </div>
                 ) : (
                   <div className="col-start-5 col-end-9 my-4">
@@ -926,9 +918,9 @@ function Header() {
               </div>
             </form>
 
-            <div className="my-4">
+            {/* <div className="my-4">
               <TableBooking historyNFT={historyNFT} />
-            </div>
+            </div> */}
           </div>
         </div>
       )}

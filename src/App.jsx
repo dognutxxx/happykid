@@ -7,6 +7,8 @@ import ContractInfo from "./Page/ContractInfo";
 import Booking from "./Page/Booking";
 import BookingResult from "./Page/BookingResult";
 import FinalTicket from "./Page/FinalTicket";
+import { useEffect } from "react";
+import axios from "axios";
 
 function App() {
   return (

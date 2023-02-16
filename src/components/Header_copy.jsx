@@ -1,10 +1,4 @@
 import React from "react";
-import imgDep from "../assets/img/departure.png";
-import imgArr from "../assets/img/landing.png";
-import imgTransfer from "../assets/img/transfer.png";
-import User from "../assets/img/user.png";
-import Window from "../assets/img/window.png";
-import imgCalenda from "../assets/img/calenda.png";
 import { Form, Button, DatePicker } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
@@ -18,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import SyncLoader from "react-spinners/SyncLoader";
 import Swal from "sweetalert2";
 import { ethers } from "ethers";
-
+import img_xx from "../assets/img/3B.png";
 import CardMyNFT from "./card/CardMyNFT";
 import CardShowNFT from "./card/CardShowNFT";
 
@@ -31,22 +25,28 @@ function Header() {
   const { account } = useBetween(Share);
   const { ownerAddress, setOwnerAddress } = useBetween(Share);
   const { tokenID, setTokenID } = useBetween(Share); //id ที่เป็น obj จากการเลือก NFT ID ส่งไปหน้า contractInfo
-  console.log("tokenID",tokenID.edition);
+  console.log(tokenID);
   const { opensea, setOpensea } = useBetween(Share);
   const { share, setShare } = useBetween(Share);
   const { info, setInfo } = useBetween(Share);
   const { triptype, setTriptype } = useBetween(Share);
   const { image, setImage } = useBetween(Share);
-  console.log("image",image);
 
   const dateFormat = "YYYY-MM-DD";
   const [form] = Form.useForm();
-  const collectionContract = "0xed8d418ebca3fb4afe09f0ce1368cac4db55eacc";
+  // const collectionContract = "0xed8d418ebca3fb4afe09f0ce1368cac4db55eacc";
+  // const collectionContract = "0x9530E3088d9A00D5E4772244940728c327474361";
+  // const collectionContract = "0xcD6Ead3fA6d767eE83e156Df64beACabF39EB938";
+  const collectionContract = "0x7012f084b5F5886b7d6EA1247F080bBcDE39Ee5b";
+
+  // const azure_url = "https://back-nftant-uat.azurewebsites.net";
+  const azure_url = "http://localhost:3001";
 
   let navigate = useNavigate();
 
   const { setAccount } = useBetween(Share);
   const { logout, setLogout } = useBetween(Share);
+  console.log(logout);
 
   const pageLogin = async () => {
     if (!window.ethereum) {
@@ -61,7 +61,6 @@ function Header() {
         window.location.reload();
       });
     }
-
     await ethereum.enable();
     const accounts = await ethereum.request({
       method: "eth_requestAccounts",
@@ -72,7 +71,7 @@ function Header() {
       // I have used Rinkeby, so switching to network ID 4
     });
 
-    setLogout(true);
+    setLogout("logout");
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     let res = await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
@@ -81,13 +80,14 @@ function Header() {
     let address = ethers.utils.verifyMessage(message, signature);
     setAccount(address);
 
-    localStorage.setItem("walletAddress", accounts[0]);
+    sessionStorage.setItem("walletAddress", accounts[0]);
   };
 
   const LogoutMetamask = () => {
-    setLogout(false);
+    setLogout("login");
     localStorage.clear();
-    window.location.href = "http://127.0.0.1:5173/";
+    // window.location.href = "http://127.0.0.1:5173/";
+    window.location.href = "https://front-nftant-uat.azurewebsites.net";
   };
 
   const [data, setData] = useState([]);
@@ -96,14 +96,12 @@ function Header() {
   const { setDataResponse } = useBooking();
 
   const { checkOpenseaAPI, setCheckOpenseaAPI } = useBetween(Share);
-  console.log("checkOpenseaAPI",checkOpenseaAPI);
-
 
   const [CID, setCID] = useState("");
   const [metaData, setMetaData] = useState([]);
+  // console.log(metaData);
   const [status, setStatus] = useState(""); //เช็คเรื่องของ NFT ที่ถูกลงทะเบียนแล้ว
   const [contract, setContract] = useState("");
-  console.log("contract",contract);
   const [loading, setLoading] = useState(false);
 
   const errorAlert = (message) => {
@@ -124,20 +122,34 @@ function Header() {
     handleSubmit,
   } = useForm();
 
+  const [bookingPerson, setBookingPerson] = useState(0);
+
+  const checkAmountNFT = async () => {
+    // await axios.get(`http://localhost:3001/sumAmountTicket?dna=${tokenID.dna}`).then((res) => {
+    await axios.get(`${azure_url}/sumAmountTicket?dna=${tokenID.dna}`).then((res) => {
+      if (res.data <= 8) {
+        setBookingPerson(res.data);
+      }
+    });
+  };
+  checkAmountNFT();
+
   const checkPNR = async () => {
     await axios
-      .get(`http://localhost:3001/read/single/${tokenID.dna}`, {
+
+      // .get(`http://localhost:3001/tokenid_response?dna=${tokenID.dna}`, {
+      .get(`${azure_url}/tokenid_response?dna=${tokenID.dna}`, {
         //Get token จาก server (localhost:3001)
       })
       .then((res) => {
         if (res.data.length > 0) {
           {
             axios
-              .get(`http://localhost:3001/status/single/${tokenID.dna}`, {
+              // .get(`http://localhost:3001/tokenid_response?dna=${tokenID.dna}`, {
+              .get(`${azure_url}/tokenid_response?dna=${tokenID.dna}`, {
                 //Get token จาก server (localhost:3001)
               })
               .then((res) => {
-                // console.log(res.data);
                 setStatus(res.data[0].active);
                 // console.log("พบ PNR ออกตั๋วไม่ได้");
               });
@@ -153,15 +165,25 @@ function Header() {
     setTriptype(e.target.value);
   };
 
+  // useEffect(() => {
+  //   onValuesChange();
+  // })
+
+  sessionStorage.setItem("tokenIDPinata",JSON.stringify(tokenID))
+
   const onValuesChange = async (el) => {
     const values = +el.token_id;
-
+   
     if (values) {
+     
+  
       setTokenID(
         ...metaData.filter((el) => {
           return el.edition == +values;
         })
       );
+
+      // sessionStorage.setItem("tokenIDPinataaaaaa",JSON.stringify(tokenID))
 
       const options = { method: "GET" };
       await fetch(
@@ -169,10 +191,7 @@ function Header() {
         options
       )
         .then((response) => {
-          // .then(response => response.json())
-          // .then(response => console.log(response))
-          // .catch(err => console.error(err));
-          console.log("response",response);
+          // console.log("response",response);
           if (response.status === 429) {
             // Handle error here, for example by displaying a message to the user
             console.error("Too many requests. Please try again later.");
@@ -183,13 +202,16 @@ function Header() {
         })
         .then((response) => {
           setImage(response);
+          sessionStorage.setItem("image",JSON.stringify(response));
+          console.log(response);
           encryptStorage1.setItem("NFT_", JSON.stringify(response));
 
           // Check if assets array is empty
           if (response) {
             setCheckOpenseaAPI(response.asset_contract?.address);
+            sessionStorage.setItem("checkOpenseaAPI",response.asset_contract?.address)
           } else {
-           console.log(err);
+            console.log(err);
           }
         })
         .catch((err) => console.log(err));
@@ -199,10 +221,20 @@ function Header() {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get(`http://localhost:3001/pinata`, {
-          //Get token จาก server (localhost:3001)
-        })
+        // .get(`http://localhost:3001/pinata`, {
+        .get(
+          `${azure_url}/pinata`,
+          {
+            //Get token จาก server (localhost:3001)
+          },
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
+        )
         .then((res) => {
+          // console.log(res);
           setCID(res.data[0].tel);
         });
     };
@@ -210,14 +242,16 @@ function Header() {
   }, []);
 
   const connect = async () => {
-    await axios
-      // .get("https://gateway.pinata.cloud/ipfs/QmSrzMEwwaSXXmtGptAPGN9w3Y2Z6fDC7GSvYeT2CnFVe6/_metadata.json")
-      .get(`https://gateway.pinata.cloud/ipfs/${CID}`)
-      .then((response) => {
-        // console.log("Metadata", response);
-        setMetaData(response.data);
+    try {
+      await axios.get(`${azure_url}/pinataGateway`).then((res) => {
+        // console.log(res); //log ดูข้อมูล metadata
+        setMetaData(res.data);
       });
-    getData();
+      getData();
+    } catch (err) {
+      console.log(err);
+      console.log(err.message);
+    }
   };
 
   useEffect(() => {
@@ -235,14 +269,11 @@ function Header() {
     )
       .then((response) => response.json())
       .then((response) => {
-        // console.log("Filter", response);
         let filter = response.assets;
         if (filter.length == 0) {
           setContract("");
         } else {
           setData(filter);
-          // console.log(filter);
-          // console.log(filter[0].name);
           setOpensea(filter);
           setContract(filter[0].asset_contract.address);
           setOwnerAddress(account);
@@ -251,25 +282,11 @@ function Header() {
       .catch((err) => console.log(err));
   };
 
-  const [bookingPerson, setBookingPerson] = useState(0);
-
-  const checkAmountNFT = async () => {
-    await axios.get(`http://localhost:3001/sumAmountTicket/${tokenID.dna}`).then((res) => {
-      console.log("RES", res.data);
-      if (res.data <= 10) {
-        setBookingPerson(res.data);
-        console.log("start");
-      } else {
-        console.log("error");
-      }
-    });
-  };
-  checkAmountNFT();
-
   const onSubmit = async (data) => {
     setDataSeclect(data);
     encryptStorage1.setItem("access_", data);
     encryptStorage1.setItem("airport_", tokenID);
+   
 
     setTimeout(() => {
       if (checkOpenseaAPI === contract) {
@@ -281,8 +298,8 @@ function Header() {
       }
     }, 10);
 
-    if (bookingPerson === 10) {
-      errorAlert("This item is limited to 10 person/NFT. Check your NFT Ticket agian");
+    if (bookingPerson === 8) {
+      errorAlert("This item is limited to 8 person/NFT. Check your NFT Ticket agian");
     } else {
       data.returnDate = moment(data.returnDate).format("YYYY-MM-DD");
       data.departDate = moment(data.departDate).format("YYYY-MM-DD");
@@ -292,14 +309,16 @@ function Header() {
       setLoading(true);
 
       await axios
-        .post("http://localhost:3001/accesstoken", {
+        // .post("http://localhost:3001/accesstoken", {
+        .post(`${azure_url}/accesstoken`, {
           //Get token จาก server (localhost:3001)
         })
         .then((res) => {
           // console.log(res.data.accessToken);
           axios
             .post(
-              "http://localhost:3001/searchflight",
+              // "http://localhost:3001/searchflight",
+              `${azure_url}/searchflight`,
               {
                 body: data,
                 accessToken: res.data.accessToken,
@@ -309,7 +328,7 @@ function Header() {
               }
             )
             .then((dataSearch) => {
-              // console.log(dataSearch);
+              console.log(dataSearch);
               setDataResponse(dataSearch);
 
               encryptStorage1.setItem("dataSearch", dataSearch);
@@ -357,8 +376,12 @@ function Header() {
                 {contract === collectionContract ? null : (
                   <div className="grid grid-cols-12 gap-8 w-[100%] text-center justify-center items-center">
                     <div className="col-start-4 col-end-10">
-                      {logout === true ? (
-                        <button className="bg-map h-[80px] w-[100%] text-3xl  rounded-3xl " onClick={LogoutMetamask}>
+                      {logout === "logout" ? (
+                        <button
+                          className="bg-map h-[80px] w-[100%] text-3xl  rounded-3xl "
+                          onClick={LogoutMetamask}
+                          disabled
+                        >
                           Signature request . . .
                         </button>
                       ) : (
@@ -372,6 +395,7 @@ function Header() {
                     </div>
 
                     <p className="col-start-4 col-end-10">No have NFT Please click to mint</p>
+                    <img src="https://ai-r-logo.azurewebsites.net/square/" alt="" />
 
                     <a
                       href="https://penguint-travel.web.app/"
@@ -388,14 +412,14 @@ function Header() {
             </div>
           </div>
 
-          <div className={account ? `grid grid-cols-12 bg-map lg:mx-72 sm:ml-2 rounded-3xl mt-8` : `hidden`}>
+          <div className={account ? `grid grid-cols-12 bg-map lg:mx-36 sm:mx-16 md:mx-16 rounded-3xl mt-8` : `hidden`}>
             <div className="col-start-2 col-end-4">
               <p className="font-bold text-xl p-4">LIBRARY</p>
             </div>
             <div className="col-start-4 col-end-8">
-              <p className="font-bold text-base p-4 text-right ">You have amount : {data.length} NFT Ticket.</p>
+              <p className="font-bold text-base p-4 text-right ">All your assets : {data.length} NFT Ticket.</p>
             </div>
-            <div className="col-start-2 col-end-8 my-6">
+            <div className="overflow-y-auto h-[460px] col-start-2 col-end-8 my-6 overflow-x-hidden">
               {data.map((el, index) => (
                 <CardMyNFT
                   key={index}
@@ -406,7 +430,7 @@ function Header() {
                 />
               ))}
             </div>
-            <div className="col-start-9 col-end-12 my-8">
+            <div className="col-start-8 col-end-12 my-8 ml-8">
               {tokenID && (
                 <span className="">
                   <CardShowNFT
@@ -418,16 +442,18 @@ function Header() {
                     Class={tokenID?.cabinClass}
                     src={image?.image_thumbnail_url}
                     dna={tokenID?.dna}
+                    bookingPerson={bookingPerson}
                   />
-                  {image && 
-                  <div className="my-6">
-                    <button
-                      className="border rounded-full px-4 py-2 bg-white hover:bg-[#FF8C21]"
-                      onClick={() => onSubmit(data)}
-                    >
-                      Let's go
-                    </button>
-                  </div> }
+                  {image && (
+                    <div className="my-6">
+                      <button
+                        className="border rounded-full px-4 py-2 bg-white hover:bg-[#FF8C21]"
+                        onClick={() => onSubmit(data)}
+                      >
+                        Let's go
+                      </button>
+                    </div>
+                  )}
                 </span>
               )}
             </div>

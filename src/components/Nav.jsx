@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useBetween } from "use-between";
 import Share from "../Page/Share";
 import { ethers } from "ethers";
@@ -11,7 +12,12 @@ function Nav() {
   const { setAccount } = useBetween(Share);
   const { logout, setLogout } = useBetween(Share);
 
+
+  sessionStorage.setItem("logoutStatus", logout);
+  console.log(logout);
+
   const connect = async () => {
+    setLogout("logout");
     if (!ethereum) {
       // Wallet not installed
       alert("Get MetaMask!");
@@ -35,7 +41,7 @@ function Nav() {
       // I have used Rinkeby, so switching to network ID 4
     });
 
-    setLogout(true);
+    setLogout("logout");
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     let res = await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
@@ -44,13 +50,14 @@ function Nav() {
     let address = ethers.utils.verifyMessage(message, signature);
     setAccount(address);
 
-    localStorage.setItem("walletAddress", accounts[0]);
+    sessionStorage.setItem("walletAddress", accounts[0]);
   };
 
   const LogoutMetamask = () => {
-    setLogout(false);
+    setLogout("login");
     localStorage.clear();
-    window.location.href = "http://127.0.0.1:5173/";
+    // window.location.href = "http://127.0.0.1:5173/";
+    window.location.href = "https://front-nftant-uat.azurewebsites.net";
   };
 
   return (
@@ -185,18 +192,18 @@ function Nav() {
             </ul>
 
             <div className="flex flex-row my-2 ">
-              {logout === false ? null : <div className="">{/* {account} */}</div>}
+           
 
               <div className="font-bold flex flex-row bg-[#FAA819] text-black border border-black rounded-full h-[50px]">
-                {logout === true ? (
+                {logout === "logout" ? 
                   <button className="text-black px-4 " onClick={LogoutMetamask}>
                     Logout
                   </button>
-                ) : (
+                 : 
                   <button className="px-4" onClick={connect}>
                     Connect Wallet
                   </button>
-                )}
+                }
               </div>
               {/* <img className="mx-4 h-12 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" /> */}
             </div>

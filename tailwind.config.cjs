@@ -7,13 +7,13 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        header: "url('./src/assets/img/image-header.jpg')",
-        map: "url('./src/assets/img/bg-page.png')",
-        map2: "url('./src/assets/img/bg-page2.png')",
-        map3: "url('./src/assets/img/bg-page3.png')",
-        map5: "url('./src/assets/img/bg-page5.png')",
-        map6: "url('./src/assets/img/bg-page6.png')",
-        map7: "url('./src/assets/img/bg-page7.png')",
+        header: "url('./assets/img/image-header.jpg')",
+        map: "url('./assets/img/bg-page.png')",
+        map2: "url('./assets/img/bg-page2.png')",
+        map3: "url('./assets/img/bg-page3.png')",
+        map5: "url('./assets/img/bg-page5.png')",
+        map6: "url('./assets/img/bg-page6.png')",
+        map7: "url('./assets/img/bg-page7.png')",
         
       },
     },

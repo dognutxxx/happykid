@@ -1,49 +1,38 @@
 import axios from "axios";
 import { useState } from "react";
 
-function CardShowNFT({ name, src, collection, departure, arrival, description, Class, dna }) {
-
-  const [allPerson, setAllPerson] = useState(0);
-  
-  const checkAmountNFT = async() => {
-    await axios.get(`http://localhost:3001/sumAmountTicket/${dna}`).then((res) => {
-      console.log("RES", res.data);
-      if (res.data <= 10) {
-        setAllPerson(res.data)
-        console.log("start");
-      } else {
-        console.log("error");
-      }
-    });
-  };
-  checkAmountNFT();
-
+function CardShowNFT({ name, src, collection, departure, arrival, description, Class, dna, bookingPerson }) {
   return (
     <div className="flex flex-wrap items-center font-bold text-start">
       <div className="mb-4">{src && <img className="rounded-xl border" src={src} alt="icon" />}</div>
 
-      <span>
+      <div className="">
         <div className="mb-4">
           {name && <p className="text-xl font-bold">Name: {name}</p>}
-          {collection && <p className="font-extralight">Limited Serises: {collection}</p>}
+          {collection && <p className="font-extralight">Limited Series: {collection}</p>}
         </div>
 
         <div className="mb-4">
-          <div className="">
-            <p className="mt-2">ROUTE</p>
-            <img src="src/assets/img/line.png" alt="" />
-          </div>
+        <div className="">
+          <p className="mt-2">ROUTE</p>
+          <img src="src/assets/img/line.png" alt="" />
+        </div>
+        
 
           {departure && (
-            <p className="font-extralight">
-              Departure : {departure[0].value}, {departure[1].value}, {departure[2].value}, {departure[3].value}
-            </p>
+            <div className="font-extralight w-[100%]">
+              {/* Departure : {departure[0].value}, {departure[1].value}, {departure[2].value}, {departure[3].value} */}
+              <p className="font-semibold">Departure :</p>
+              BKK, CNX, CEI, HDY, KKC, KBV, LPT, KOP, NNT, NAN, PHS, HKT, USM, KOH, THS, URT, TST, TDX, UBP, UTH
+            </div>
           )}
 
           {arrival && (
-            <p className="font-extralight">
-              Arrival : {arrival[0].value}, {arrival[1].value}, {arrival[2].value}, {arrival[3].value}
-            </p>
+            <div className="font-extralight">
+              {/* Arrival : {arrival[0].value}, {arrival[1].value}, {arrival[2].value}, {arrival[3].value} */}
+              <p className="font-semibold">Arrival :</p>
+              BKK, CNX, CEI, HDY, KKC, KBV, LPT, KOP, NNT, NAN, PHS, HKT, USM, KOH, THS, URT, TST, TDX, UBP, UTH
+            </div>
           )}
         </div>
 
@@ -65,11 +54,11 @@ function CardShowNFT({ name, src, collection, departure, arrival, description, C
         {description && <p className="font-extralight">{description}</p>}
 
         <div className="">
-          <p className="mt-2">Registed NFT</p>
+          <p className="mt-2">Segments used</p>
           <img src="src/assets/img/line.png" alt="" />
         </div>
-        <p className="font-extralight">{allPerson} / 10 </p>
-      </span>
+        <p className="font-extralight">{bookingPerson} / 8 </p>
+      </div>
     </div>
   );
 }

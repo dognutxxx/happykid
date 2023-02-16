@@ -16,6 +16,7 @@ function DirectFlightFilter({
   departureDateTime,
   arriveDateTime,
   src,
+  flightNumber,
 
   //new
   depDirectDepCityCode_s1,
@@ -32,7 +33,6 @@ function DirectFlightFilter({
   depDirectRBD_s1,
   depDirectSeq_s1,
 }) {
-
   // console.log("1",depDirectDepCityCode_s1);
   // console.log("2",depDirectDepCityName_s1);
   // console.log("3",depDirectArrCityCode_s1);
@@ -55,8 +55,7 @@ function DirectFlightFilter({
   const typeType_ = JSON.parse(valueTypeTrip);
   const typeTrip = typeType_.tripType;
 
-  const totalTime =
-    timeDuration.slice(0, 2) + "hr " + timeDuration.slice(2) + "m";
+  const totalTime = timeDuration.slice(0, 2) + "hr " + timeDuration.slice(2) + "m";
 
   const { setAirline } = useDepartureSelectedContext();
   const { setTimeDuration } = useDepartureSelectedContext();
@@ -68,6 +67,7 @@ function DirectFlightFilter({
   const { setArriveDateTime } = useDepartureSelectedContext();
   const { setSRC } = useDepartureSelectedContext();
   const { setIsSelected } = useDepartureSelectedContext();
+  const { setFlightNumber } = useDepartureSelectedContext();
 
   //new
   const { setDepDirectDepCityCode_s1 } = useFinalDirectDepartureContext();
@@ -77,10 +77,8 @@ function DirectFlightFilter({
   const { setDepDirectAirlineCode_s1 } = useFinalDirectDepartureContext();
   const { setDepDirectAirlineName_s1 } = useFinalDirectDepartureContext();
   const { setDepDirectFlightNumber_s1 } = useFinalDirectDepartureContext();
-  const { setDepDirectOperatedAirlineCode_s1 } =
-    useFinalDirectDepartureContext();
-  const { setDepDirectOperatedAirlineName_s1 } =
-    useFinalDirectDepartureContext();
+  const { setDepDirectOperatedAirlineCode_s1 } = useFinalDirectDepartureContext();
+  const { setDepDirectOperatedAirlineName_s1 } = useFinalDirectDepartureContext();
   const { setDepDirectDepartureDateTime_s1 } = useFinalDirectDepartureContext();
   const { setDepDirectArriveDateTime_s1 } = useFinalDirectDepartureContext();
   const { setDepDirectRBD_s1 } = useFinalDirectDepartureContext();
@@ -89,15 +87,36 @@ function DirectFlightFilter({
   const handleDepartureDetail = () => {
     if (typeTrip === "R") {
       setAirline(airline);
+      sessionStorage.setItem("airline", airline);
+
       setTimeDuration(timeDuration);
+      sessionStorage.setItem("timeDuration", timeDuration);
+
       setDepartureNameCity(departureNameCity);
+      sessionStorage.setItem("departureNameCity", departureNameCity);
+
       setArriveNameCity(arriveNameCity);
+      sessionStorage.setItem("arriveNameCity", arriveNameCity);
+
       setDepartureCodeCity(departureCodeCity);
+      sessionStorage.setItem("departureCodeCity", departureCodeCity);
+
       setArriveCodeCity(arriveCodeCity);
+      sessionStorage.setItem("arriveCodeCity", arriveCodeCity);
+
       setDepartureDateTime(departureDateTime);
+      sessionStorage.setItem("departureDateTime", departureDateTime);
+
       setArriveDateTime(arriveDateTime);
+      sessionStorage.setItem("arriveDateTime", arriveDateTime);
+
       setSRC(src);
+      sessionStorage.setItem("src", src);
+
       setIsSelected(true);
+      sessionStorage.setItem("isSelected", true);
+
+      setFlightNumber(flightNumber);
 
       //new
       setDepDirectDepCityCode_s1(depDirectDepCityCode_s1);
@@ -105,8 +124,10 @@ function DirectFlightFilter({
       setDepDirectArrCityCode_s1(depDirectArrCityCode_s1);
       setDepDirectArrCityName_s1(depDirectArrCityName_s1);
       setDepDirectAirlineCode_s1(depDirectAirlineCode_s1);
+      sessionStorage.setItem("depDirectAirlineCode_s1", depDirectAirlineCode_s1);
       setDepDirectAirlineName_s1(depDirectAirlineName_s1);
       setDepDirectFlightNumber_s1(depDirectFlightNumber_s1);
+      sessionStorage.setItem("depDirectFlightNumber_s1", depDirectFlightNumber_s1);
       setDepDirectOperatedAirlineCode_s1(depDirectOperatedAirlineCode_s1);
       setDepDirectOperatedAirlineName_s1(depDirectOperatedAirlineName_s1);
       setDepDirectDepartureDateTime_s1(depDirectDepartureDateTime_s1);
@@ -115,15 +136,25 @@ function DirectFlightFilter({
       setDepDirectSeq_s1(depDirectSeq_s1);
     } else {
       setAirline(airline);
+      sessionStorage.setItem("airline", airline);
       setTimeDuration(timeDuration);
+      sessionStorage.setItem("timeDuration", timeDuration);
       setDepartureNameCity(departureNameCity);
+      sessionStorage.setItem("departureNameCity", departureNameCity);
       setArriveNameCity(arriveNameCity);
+      sessionStorage.setItem("arriveNameCity", arriveNameCity);
       setDepartureCodeCity(departureCodeCity);
+      sessionStorage.setItem("departureCodeCity", departureCodeCity);
       setArriveCodeCity(arriveCodeCity);
+      sessionStorage.setItem("arriveCodeCity", arriveCodeCity);
       setDepartureDateTime(departureDateTime);
+      sessionStorage.setItem("departureDateTime", departureDateTime);
       setArriveDateTime(arriveDateTime);
+      sessionStorage.setItem("arriveDateTime", arriveDateTime);
       setSRC(src);
+      sessionStorage.setItem("src", src);
       setIsSelected(true);
+      sessionStorage.setItem("isSelected", true);
 
       //new
       setDepDirectDepCityCode_s1(depDirectDepCityCode_s1);
@@ -131,8 +162,10 @@ function DirectFlightFilter({
       setDepDirectArrCityCode_s1(depDirectArrCityCode_s1);
       setDepDirectArrCityName_s1(depDirectArrCityName_s1);
       setDepDirectAirlineCode_s1(depDirectAirlineCode_s1);
+      sessionStorage.setItem("depDirectAirlineCode_s1", depDirectAirlineCode_s1);
       setDepDirectAirlineName_s1(depDirectAirlineName_s1);
       setDepDirectFlightNumber_s1(depDirectFlightNumber_s1);
+      sessionStorage.setItem("depDirectFlightNumber_s1", depDirectFlightNumber_s1);
       setDepDirectOperatedAirlineCode_s1(depDirectOperatedAirlineCode_s1);
       setDepDirectOperatedAirlineName_s1(depDirectOperatedAirlineName_s1);
       setDepDirectDepartureDateTime_s1(depDirectDepartureDateTime_s1);
@@ -147,9 +180,14 @@ function DirectFlightFilter({
   return (
     <div className="my-4 p-2 border shadow-xl">
       <div className="flex justify-center items-center">
-        <div className="border-red-600 w-[20%]">
-          <img className="w-100% " src={src} alt="Icon" />
+        <div className="border-red-600 w-[20%] ml-4">
+          {/* <img className="w-100% " src="`../../assets/img/square/${src}.png`" alt="direct_icon" /> */}
+          <img alt="direct_icon" src={`https://ai-r-logo.azurewebsites.net/square/${src}.png`} />
           <p className="text-[#828282]">{airline}</p>
+          <p className="text-[#828282]">
+            Flight Number : {depDirectAirlineCode_s1}
+            {depDirectFlightNumber_s1}
+          </p>
           <p className="font-semibold text-[#4E1311]">{totalTime}</p>
           <p className="font-semibold text-[#828282]">Direct</p>
         </div>
@@ -162,7 +200,7 @@ function DirectFlightFilter({
               </div>
               <p className="text-[#828282]">{departureCodeCity}</p>
             </div>
-            <p className="w-[100%] text-center">Direct</p>
+            <p className="w-[100%] text-center text-xs  text-[#828282]">Direct</p>
             <div className="w-[100%]">
               <div className="flex justify-end text-[#4E1311] font-semibold">
                 <p className="text-end">{arriveNameCity}</p>
@@ -173,26 +211,15 @@ function DirectFlightFilter({
 
           <div className="my-2">
             <div className="flex items-center">
-              <svg
-                width=""
-                height=""
-                viewBox="0 0 206 10"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg width="" height="" viewBox="0 0 206 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="7" cy="5" r="2" fill="#FAA819" />
-                <path
-                  d="M9 5H196"
-                  stroke="#FAA819"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
+                <path d="M9 5H196" stroke="#FAA819" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="198" cy="5" r="2" fill="#FAA819" />
               </svg>
             </div>
             <div className="flex w-auto text-[#4E1311] font-semibold">
               <p className="w-[100%] text-start">{departureDateTime}</p>
-              <p className="w-[100%] text-center">{totalTime}</p>
+              {/* <p className="w-[100%] text-center">{totalTime}</p> */}
               <p className="w-[100%] text-end">{arriveDateTime}</p>
             </div>
           </div>
@@ -200,7 +227,7 @@ function DirectFlightFilter({
 
         <div className="w-[20%] flex justify-center items-center">
           <button
-            className="w-[70%] h-[50px] border rounded-full bg-[#FAA819]"
+            className="mx-4 w-[100%] h-[50px] border-2 border-solid rounded-full bg-[#FAA819] hover:border-indigo-600"
             onClick={() => handleDepartureDetail()}
           >
             Select

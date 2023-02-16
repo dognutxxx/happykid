@@ -7,19 +7,29 @@ import { EncryptStorage } from "encrypt-storage";
 const encryptStorage2 = new EncryptStorage("H@b'v4U*[8Y,m~:d", {});
 
 function CardOneStopFlightFilter({
-  airline,
-  timeDuration,
-  departureNameCity,
-  arriveNameCity,
-  departureCodeCity,
-  arriveCodeCity,
-  departureDateTime,
-  arriveDateTime,
   src,
+  airline,
+  departureNameCity,
   oneStopCity,
-  departureDateTimeSeq1,
-  departureDateTimeSeq2,
-  arriveCodeCitySeq1,
+  oneStopCodeCity,
+  departureCodeCity,
+  departureDateTime,
+  arriveNameCity,
+  arriveCodeCity,
+  arriveDateTime,
+  timeDuration,
+  departureDateTimeSeq_1,
+  departureDateTimeSeq_2,
+  arrivalDateTimeSeq_1,
+  arrivalDateTimeSeq_2,
+  flightNumberSeq1,
+  flightNumberSeq2,
+  operatedAirlineNameSeq1,
+  operatedAirlineNameSeq2,
+  operatedAirlineCodeSeq1,
+  operatedAirlineCodeSeq2,
+  seqOneFlight,
+  seqTwoFlight,
 
   //new
   depOneStopDepCityCode_s1,
@@ -68,11 +78,13 @@ function CardOneStopFlightFilter({
   const { setDepartureDateTime } = useDepartureSelectedContext();
   const { setArriveDateTime } = useDepartureSelectedContext();
   const { setSRC } = useDepartureSelectedContext();
-  const { setOneStopCity } = useDepartureSelectedContext();
+  const {setOneStopCity}  = useDepartureSelectedContext();
   const { setIsSelected } = useDepartureSelectedContext();
-  const { setDepartureDateTimeSeq1 } = useDepartureSelectedContext();
-  const { setDepartureDateTimeSeq2 } = useDepartureSelectedContext();
-  const { setArriveCodeCitySeq1 } = useDepartureSelectedContext();
+  const { setOneStopCodeCity } = useDepartureSelectedContext();
+  const { setDepartureDateTimeSeq1_1 } = useDepartureSelectedContext();
+  const { setDepartureDateTimeSeq2_1 } = useDepartureSelectedContext();
+  const { setArrivalDateTimeSeq1_1 } = useDepartureSelectedContext();
+  const { setArrivalDateTimeSeq2_1 } = useDepartureSelectedContext();
 
   //new
   const { setDepOneStopDepCityCode_s1 } = useFinalOneStopDepartureContext();
@@ -105,7 +117,9 @@ function CardOneStopFlightFilter({
   const handleDepartureDetail = () => {
     if (typeTrip === "R") {
       setAirline(airline);
+      sessionStorage.setItem("airline",airline)
       setTimeDuration(timeDuration);
+      sessionStorage.setItem("timeDuration",timeDuration)
       setDepartureNameCity(departureNameCity);
       setArriveNameCity(arriveNameCity);
       setDepartureCodeCity(departureCodeCity);
@@ -113,11 +127,14 @@ function CardOneStopFlightFilter({
       setDepartureDateTime(departureDateTime);
       setArriveDateTime(arriveDateTime);
       setSRC(src);
+      sessionStorage.setItem("src",src)
       setOneStopCity(oneStopCity);
       setIsSelected(true);
-      setDepartureDateTimeSeq1(departureDateTimeSeq1);
-      setDepartureDateTimeSeq2(departureDateTimeSeq2);
-      setArriveCodeCitySeq1(arriveCodeCitySeq1);
+      setOneStopCodeCity(oneStopCodeCity);
+      setDepartureDateTimeSeq1_1(departureDateTimeSeq_1);
+      setDepartureDateTimeSeq2_1(departureDateTimeSeq_2);
+      setArrivalDateTimeSeq1_1(arrivalDateTimeSeq_1);
+      setArrivalDateTimeSeq2_1(arrivalDateTimeSeq_2);
 
       //new
       setDepOneStopDepCityCode_s1(depOneStopDepCityCode_s1);
@@ -146,9 +163,12 @@ function CardOneStopFlightFilter({
       setDepOneStopRBD_s2(depOneStopRBD_s2);
       setDepOneStopSeq_s1(depOneStopSeq_s1);
       setDepOneStopSeq_s2(depOneStopSeq_s2);
+
     } else {
       setAirline(airline);
+      sessionStorage.setItem("airline",airline)
       setTimeDuration(timeDuration);
+      sessionStorage.setItem("timeDuration",timeDuration)
       setDepartureNameCity(departureNameCity);
       setArriveNameCity(arriveNameCity);
       setDepartureCodeCity(departureCodeCity);
@@ -156,11 +176,14 @@ function CardOneStopFlightFilter({
       setDepartureDateTime(departureDateTime);
       setArriveDateTime(arriveDateTime);
       setSRC(src);
+      sessionStorage.setItem("src",src)
       setOneStopCity(oneStopCity);
       setIsSelected(true);
-      setDepartureDateTimeSeq1(departureDateTimeSeq1);
-      setDepartureDateTimeSeq2(departureDateTimeSeq2);
-      setArriveCodeCitySeq1(arriveCodeCitySeq1);
+      setOneStopCodeCity(oneStopCodeCity);
+      setDepartureDateTimeSeq1_1(departureDateTimeSeq_1);
+      setDepartureDateTimeSeq2_1(departureDateTimeSeq_2);
+      setArrivalDateTimeSeq1_1(arrivalDateTimeSeq_1);
+      setArrivalDateTimeSeq2_1(arrivalDateTimeSeq_2);
 
       //new
       setDepOneStopDepCityCode_s1(depOneStopDepCityCode_s1);
@@ -197,9 +220,10 @@ function CardOneStopFlightFilter({
     <>
       <div className="my-4 p-2 border shadow-xl">
         <div className="flex justify-center items-center">
-          <div className=" w-[20%]">
-            <img className="w-100% " src={src} alt="Icon" />
+          <div className=" w-[20%] ml-4">
+            <img className="w-100% " src={`https://ai-r-logo.azurewebsites.net/square/${src}.png`} alt="OneStop_Icon" />
             <p className="text-[#828282]">{airline}</p>
+            <p className="text-[#828282]">Flight Number : {flightNumberSeq1}</p>
             <p className="font-semibold text-[#4E1311]">{totalTime}</p>
             <p className="font-semibold text-[#828282]">1 Stop</p>
           </div>
@@ -239,7 +263,7 @@ function CardOneStopFlightFilter({
               </div>
               <div className="mt-2 flex w-auto items-center text-[#4E1311] font-semibold">
                 <p className="w-[100%] text-start">{departureDateTime}</p>
-                <p className="w-[100%] text-center">{totalTime}</p>
+                {/* <p className="w-[100%] text-center">{totalTime}</p> */}
                 <p className="w-[100%] text-end">{arriveDateTime}</p>
               </div>
             </div>
@@ -247,7 +271,7 @@ function CardOneStopFlightFilter({
 
           <div className=" w-[20%] flex justify-center items-center">
             <button
-              className="w-[70%] h-[50px] border rounded-full bg-[#FAA819]"
+              className="w-[70%] h-[50px] border-2 border-solid rounded-full bg-[#FAA819] hover:hover:border-indigo-600"
               onClick={() => handleDepartureDetail()}
             >
               Select

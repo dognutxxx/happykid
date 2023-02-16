@@ -7,9 +7,9 @@ function FinalDirectReturnContextProvider({children}) {
     const [returnDirectDepCityName_s1, setReturnDirectDepCityName_s1] = useState();
     const [returnDirectArrCityCode_s1, setReturnDirectArrCityCode_s1] = useState();
     const [returnDirectArrCityName_s1, setReturnDirectArrCityName_s1] = useState();
-    const [returnDirectAirlineCode_s1, setReturnDirectAirlineCode_s1] = useState();
+    const [returnDirectAirlineCode_s1, setReturnDirectAirlineCode_s1] = useState(sessionStorage.returnDirectAirlineCode_s1);
     const [returnDirectAirlineName_s1, setReturnDirectAirlineName_s1] = useState();
-    const [returnDirectFlightNumber_s1, setReturnDirectFlightNumber_s1] = useState();
+    const [returnDirectFlightNumber_s1, setReturnDirectFlightNumber_s1] = useState(sessionStorage.returnDirectFlightNumber_s1);
     const [returnDirectOperatedAirlineCode_s1, setReturnDirectOperatedAirlineCode_s1] = useState();
     const [returnDirectOperatedAirlineName_s1, setReturnDirectOperatedAirlineName_s1] = useState();
     const [returnDirectDepartureDateTime_s1, setReturnDirectDepartureDateTime_s1] = useState();

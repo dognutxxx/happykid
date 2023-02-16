@@ -20,6 +20,9 @@ const FlightApp = () => {
   // const collectionContract = '0x1ec4e92063fcca32836f003c77dbbf205b1e4df2'
   const collectionContract = "0x96c3d1f4446fe5a8d5ffc25d1509d28277959a57";
 
+  // const azure_url = "https://back-nftant-uat.azurewebsites.net"
+  const azure_url = "http://localhost:3001"
+
   const [tripType, setTripType] = useState(""); //Set Hidden Arrival
   const [checkOpenseaAPI, setCheckOpenseaAPI] = useState("");
   const [data, setData] = useState([]);
@@ -64,14 +67,15 @@ const FlightApp = () => {
       // console.log(value);
 
       axios
-        .post("http://localhost:3001/accesstoken", {
+        // .post("http://localhost:3001/accesstoken", {
+        .post(`${azure_url}/accesstoken`, {
           //Get token จาก server (localhost:3001)
         })
         .then((res) => {
           // console.log(res.data.accessToken);
           axios
             .post(
-              "http://localhost:3001/searchflight",
+              `${azure_url}/searchflight`,
               {
                 body: value,
                 accessToken: res.data.accessToken,
@@ -92,7 +96,7 @@ const FlightApp = () => {
 
   const handleAccountsChanged = () => {
     window.ethereum.on("accountsChanged", (newAccount, string) => {
-      window.location.href = "http://localhost:3000/";
+      window.location.href = `${azure_url}`;
     });
   };
 
@@ -175,7 +179,8 @@ const FlightApp = () => {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get(`http://localhost:3001/pinata`, {
+        // .get(`http://localhost:3001/pinata`, {
+        .get(`${azure_url}/pinata`, {
           //Get token จาก server (localhost:3001)
         })
         .then((res) => {
@@ -211,14 +216,16 @@ const FlightApp = () => {
 
   const checkPNR = async () => {
     await axios
-      .get(`http://localhost:3001/read/single/${id.dna}`, {
+      // .get(`http://localhost:3001/read/single/${id.dna}`, {
+      .get(`${azure_url}/read/single/${id.dna}`, {
         //Get token จาก server (localhost:3001)
       })
       .then((res) => {
         if (res.data.length > 0) {
           {
             axios
-              .get(`http://localhost:3001/status/single/${id.dna}`, {
+              // .get(`http://localhost:3001/status/single/${id.dna}`, {
+              .get(`${azure_url}/status/single/${id.dna}`, {
                 //Get token จาก server (localhost:3001)
               })
               .then((res) => {

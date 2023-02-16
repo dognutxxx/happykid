@@ -39,9 +39,11 @@ function contractInfo_copy() {
   const { setRoundTwo_TwoObjBookingInfo } = useResultBookingObjContext();
 
   const { onewayDirectObjBooking } = useResultBookingObjContext();
+  console.log(onewayDirectObjBooking);
   const { onewayOneStopObjBooking } = useResultBookingObjContext();
   const { onewayTwoStopObjBooking } = useResultBookingObjContext();
   const { roundDir_DirObjBookingInfo } = useResultBookingObjContext();
+  console.log(roundDir_DirObjBookingInfo);
   const { roundDir_OneObjBookingInfo } = useResultBookingObjContext();
   const { roundDir_TwoObjBookingInfo } = useResultBookingObjContext();
   const { roundOne_OneObjBookingInfo } = useResultBookingObjContext();
@@ -100,7 +102,7 @@ function contractInfo_copy() {
   // console.log("10Dep", depDirectDepartureDateTime_s1);
   // console.log("11Dep", depDirectArriveDateTime_s1);
   // console.log("12Dep", depDirectRBD_s1);
-  // console.log("13Dep", depDirectSeq_s1);
+  console.log("13Dep", depDirectSeq_s1);
 
   //FinalOneStopDepartureContext
   const { depOneStopDepCityCode_s1 } = useFinalOneStopDepartureContext();
@@ -265,7 +267,7 @@ function contractInfo_copy() {
   // console.log("10return", returnDirectDepartureDateTime_s1);
   // console.log("11return", returnDirectArriveDateTime_s1);
   // console.log("12return", returnDirectRBD_s1);
-  // console.log("13return", returnDirectSeq_s1);
+  console.log("13return", returnDirectSeq_s1);
 
   //FinalOneStopReturnContext
   const { returnOneStopDepCityCode_s1 } = useFinalOneStopReturnContext();
@@ -679,9 +681,8 @@ function contractInfo_copy() {
     setTwoStopCity2("");
     setIsSelected2(false);
 
-    navigate("/booking")
-
-  }
+    navigate("/booking");
+  };
 
   const totalAge = (val) => {
     let nowdate = moment().format("YYYY-MM-DD");

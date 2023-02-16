@@ -3,19 +3,20 @@ import { useContext, useState, createContext } from "react";
 const ResultBookingObjContext = createContext();
 
 function ResultBookingObjContextProvider({ children }) {
-  const onewayDirectObjBookingSession = sessionStorage.onewayDirectObjBooking || "[{}]"
-  const onewayOneStopObjBookingSession = sessionStorage.onewayDirectObjBooking || "[{}]"
-  const onewayTwoStopObjBookingSession = sessionStorage.onewayDirectObjBooking || "[{}]"
+  const onewayDirectObjBookingSession = sessionStorage.onewayDirectObjBooking || null
+  const onewayOneStopObjBookingSession = sessionStorage.onewayDirectObjBooking || null
+  const onewayTwoStopObjBookingSession = sessionStorage.onewayDirectObjBooking || null
 
-  const roundDir_DirObjBookingInfoSession = sessionStorage.roundDir_DirObjBookingInfo || "[{}]"
-  const roundDir_OneObjBookingInfoSession = sessionStorage.roundDir_OneObjBookingInfo || "[{}]"
-  const roundDir_TwoObjBookingInfoSession = sessionStorage.roundDir_TwoObjBookingInfo || "[{}]"
-  const roundOne_DirObjBookingInfoSession = sessionStorage.roundOne_DirObjBookingInfo || "[{}]"
-  const roundOne_OneObjBookingInfoSession = sessionStorage.roundOne_OneObjBookingInfo || "[{}]"
-  const roundOne_TwoObjBookingInfoSession = sessionStorage.roundOne_TwoObjBookingInfo || "[{}]"
-  const roundTwo_DirObjBookingInfoSession = sessionStorage.roundTwo_DirObjBookingInfo || "[{}]"
-  const roundTwo_OneObjBookingInfoSession = sessionStorage.roundTwo_OneObjBookingInfo || "[{}]"
-  const roundTwo_TwoObjBookingInfoSession = sessionStorage.roundTwo_TwoObjBookingInfo || "[{}]"
+  const roundDir_DirObjBookingInfoSession = sessionStorage.roundDir_DirObjBookingInfo || null
+  console.log(JSON.parse(roundDir_DirObjBookingInfoSession));
+  const roundDir_OneObjBookingInfoSession = sessionStorage.roundDir_OneObjBookingInfo || null
+  const roundDir_TwoObjBookingInfoSession = sessionStorage.roundDir_TwoObjBookingInfo || null
+  const roundOne_DirObjBookingInfoSession = sessionStorage.roundOne_DirObjBookingInfo || null
+  const roundOne_OneObjBookingInfoSession = sessionStorage.roundOne_OneObjBookingInfo || null
+  const roundOne_TwoObjBookingInfoSession = sessionStorage.roundOne_TwoObjBookingInfo || null
+  const roundTwo_DirObjBookingInfoSession = sessionStorage.roundTwo_DirObjBookingInfo || null
+  const roundTwo_OneObjBookingInfoSession = sessionStorage.roundTwo_OneObjBookingInfo || null
+  const roundTwo_TwoObjBookingInfoSession = sessionStorage.roundTwo_TwoObjBookingInfo || null
 
   const [onewayDirectObjBooking, setOnewayDirectObjBooking] = useState(JSON.parse(onewayDirectObjBookingSession));
   console.log("OnewayDirect", onewayDirectObjBooking);

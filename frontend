@@ -1,0 +1,148 @@
+{
+  "noOfAdults": 1,
+  "noOfChildren": 0,
+  "noOfInfants": 0,
+  "svc_class": "Y",
+  "depFlight": [
+    {
+      "depCity": {
+        "code": "BKK",
+        "name": "Suvarnabhumi, Bangkok"
+      },
+      "arrCity": {
+        "code": "FUK",
+        "name": "Fukuoka, Fukuoka"
+      },
+      "airline": {
+        "code": "VZ",
+        "name": "Thai Vietjet Air"
+      },
+      "flightNumber": "810",
+      "operatedAirline": {
+        "code": "VZ",
+        "name": "Thai Vietjet Air"
+      },
+      "departureDateTime": "2023-01-17T23:55:00",
+      "arrivalDateTime": "2023-01-18T08:20:00",
+      "rbd": "W",
+      "Seq": 1
+    },
+    {
+      "depCity": {
+        "code": "FUK",
+        "name": "Fukuoka, Fukuoka"
+      },
+      "arrCity": {
+        "code": "HND",
+        "name": "Haneda, Tokyo"
+      },
+      "airline": {
+        "code": "JL",
+        "name": "Japan Airlines"
+      },
+      "flightNumber": "306",
+      "operatedAirline": {
+        "code": "JL",
+        "name": "Japan Airlines"
+      },
+      "departureDateTime": "2023-01-18T12:50:00",
+      "arrivalDateTime": "2023-01-18T10:30:00",
+      "rbd": "G",
+      "Seq": 2
+    }
+  ],
+  "retFlight": [
+    {
+      "depCity": {
+        "code": "HND",
+        "name": "Haneda, Tokyo"
+      },
+      "arrCity": {
+        "code": "FUK",
+        "name": "Fukuoka, Fukuoka"
+      },
+      "airline": {
+        "code": "JL",
+        "name": "Japan Airlines"
+      },
+      "flightNumber": "307",
+      "operatedAirline": {
+        "code": "JL",
+        "name": "Japan Airlines"
+      },
+      "departureDateTime": "2023-01-31T20:05:00",
+      "arrivalDateTime": "2023-01-31T17:45:00",
+      "rbd": "Y",
+      "Seq": 1
+    },
+    {
+      "depCity": {
+        "code": "FUK",
+        "name": "Fukuoka, Fukuoka"
+      },
+      "arrCity": {
+        "code": "BKK",
+        "name": "Suvarnabhumi, Bangkok"
+      },
+      "airline": {
+        "code": "TG",
+        "name": "Thai Airways Intl"
+      },
+      "flightNumber": "649",
+      "operatedAirline": {
+        "code": "TG",
+        "name": "Thai Airways Intl"
+      },
+      "departureDateTime": "2023-01-31T22:30:00",
+      "arrivalDateTime": "2023-02-01T01:25:00",
+      "rbd": "Y",
+      "Seq": 2
+    }
+  ],
+  "contactInfo": {
+    "title": "Mr",
+    "firstname": "arnon",
+    "middlename": "",
+    "lastname": "prommoon",
+    "email": "nut@gmail.com",
+    "telNo": "090",
+    "countryCode": "TH"
+  },
+  "adtPaxs": [
+    {
+      "id": 1,
+      "paxType": "ADT",
+      "title": "Mr",
+      "firstname": "arnon",
+      "middlename": "",
+      "lastname": "arnon",
+      "birthday": "2022-12-29",
+      "email": "nut@gmail.com",
+      "telNo": "090",
+      "passportNumber": "152011505",
+      "passportIssuingDate": "2022-12-23",
+      "passportExpiryDate": "2022-12-27",
+      "passportIssuingCountry": "TH",
+      "passportNationality": "asdasd",
+      "frequencyFlyerAirline": null,
+      "frequencyFlyerNumber": null,
+      "seatRequest": null,
+      "mealRequest": null,
+      "travelWithAdultID": 0,
+      "netRefund": 0,
+      "agentRefund": 0,
+      "refundAmount": 0,
+      "tickNoRefund": null,
+      "remarkRefund": null,
+      "StatusRefund": false,
+      "netReissue": 0,
+      "agentReissue": 0,
+      "reissueSelling": 0,
+      "tickNoReissueOld": null,
+      "tickNoReissueNew": null,
+      "remarkReissue": null,
+      "StatusReissue": false
+    }
+  ],
+  "languageCode": "th"
+}

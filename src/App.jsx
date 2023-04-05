@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Switch } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Home from "./Page/Home";
 
@@ -13,7 +13,7 @@ import FAQ from "./Page/FAQ";
 
 function App() {
   return (
-    <Switch>
+  
       <Routes>
         <Route path="/" element={<Nav />}>
           <Route path="/ShopCollection" element={<Home />} />
@@ -26,7 +26,7 @@ function App() {
           <Route path="/FAQ" element={<FAQ />} />
         </Route>
       </Routes>
-    </Switch>
+ 
   );
 }
 

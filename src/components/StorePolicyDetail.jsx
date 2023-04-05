@@ -4,6 +4,7 @@ import icon2 from "../assets/img/icon/icon2.png";
 import icon3 from "../assets/img/icon/icon3.png";
 import Swal from "sweetalert2";
 import { TextInput } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 function PaymentMethodsDetail() {
   const urlPath = "https://happykid-demo.web.app";

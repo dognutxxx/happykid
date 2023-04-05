@@ -12,7 +12,7 @@ import ProductSliderInfo from "./ProductSlider";
 
 function ImgSlider() {
   const urlPath = "https://happykid-demo.onrender.com"
-  // const urlPath = "http://127.0.0.1:5173/"
+  // const urlPath = "http://127.0.0.1:5173"
   useEffect(() => {
     getNewArrival();
   }, []);

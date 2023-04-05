@@ -11,13 +11,12 @@ import StorePolicy from "./Page/StorePolicy";
 import PaymentMethods from "./Page/PaymentMethods";
 import FAQ from "./Page/FAQ";
 
-
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Nav />}>
-        <Route path="" element={<Home />} />
-        <Route path="/ShopCollection" element={<ShopCollection />} />
+        <Route path="/ShopCollection" element={<Home />} />
+        <Route path="" element={<ShopCollection />} />
         <Route path="/OurStory" element={<OurStory />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/ShipReturn" element={<ShipReturn />} />

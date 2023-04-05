@@ -6,7 +6,7 @@ import bucket from "../assets/img/icon/bucket.png";
 
 function Nav() {
   const urlPath = "https://happykid-demo.onrender.com"
-  // const urlPath = "http://127.0.0.1:5173/"
+  // const urlPath = "http://127.0.0.1:5173"
   return (
     <>
       <div className="">

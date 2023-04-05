@@ -4,9 +4,10 @@ import icon2 from "../assets/img/icon/icon2.png";
 import icon3 from "../assets/img/icon/icon3.png";
 import Swal from "sweetalert2";
 import { TextInput, Label, Button } from "flowbite-react";
+import {Link } from "react-router-dom";
 
 function ContactDetail() {
-  const urlPath = "https://happykid-demo.web.app"
+  const urlPath = "https://happykid-demo.web.app";
   // const urlPath = "http://127.0.0.1:5173"
   const sucessAlert = (message) => {
     Swal.fire({
@@ -103,12 +104,17 @@ function ContactDetail() {
       <div className="border-t boder-4 flex justify-center items-center mb-5 text-3xl h-[80px] font-mono">happy kid</div>
       <div className="flex justify-around items-center mb-5 h-[160px]">
         <div>
-        <ul>
+          <ul>
             <li>
-              <a href={urlPath}>Home</a>
+              <Link to="/" className="navbar-item">
+                Home
+              </Link>
             </li>
             <li>
-              <a href={`${urlPath}/shopCollection`}>Shop Collection</a>
+              <Link to="/shopCollection" className="navbar-item">
+                Shop Collection
+              </Link>
+              {/* <a href={`${urlPath}/shopCollection`}>Shop Collection</a> */}
             </li>
             <li>
               <a href={`${urlPath}/OurStory`}>Our Story</a>
@@ -126,7 +132,7 @@ function ContactDetail() {
           </span>
         </div>
         <div>
-        <ul>
+          <ul>
             <li>
               <a href={`${urlPath}/ShipReturn`}>Shipping & Returns</a>
             </li>

@@ -46,17 +46,23 @@ function OurStoryDetail() {
         <div>
         <ul>
             <li>
-              <a href={urlPath}>Home</a>
+              <Link to="/" className="navbar-item hover:text-red-600">
+                Home
+              </Link>
             </li>
             <li>
-              <a href={`${urlPath}/shopCollection`}>Shop Collection</a>
+              <Link to="/shopCollection" className="navbar-item hover:text-red-600">
+                Shop Collection
+              </Link>
             </li>
             <li>
-              <a href={`${urlPath}/OurStory`}>Our Story</a>
+              <Link to="/OurStory" className="hover:text-red-600 navbar-item">
+                Our Story
+              </Link>
             </li>
-            <li>
-              <a href={`${urlPath}/contact`}>Contact</a>
-            </li>
+            <Link to="/contact" className="hover:text-red-600 navbar-item">
+              Contact
+            </Link>
           </ul>
         </div>
         <div className="">
@@ -69,16 +75,16 @@ function OurStoryDetail() {
         <div>
         <ul>
             <li>
-              <a href={`${urlPath}/ShipReturn`}>Shipping & Returns</a>
+              <Link to="/ShipReturn">Shipping & Returns</Link>
             </li>
             <li>
-              <a href={`${urlPath}/StorePolicy`}>Store Policy</a>
+              <Link to="/StorePolicy">Store Policy</Link>
             </li>
             <li>
-              <a href={`${urlPath}/PaymentMethods`}>Payment Methods</a>
+              <Link to="/PaymentMethods">Payment Methods</Link>
             </li>
             <li>
-              <a href={`${urlPath}/FAQ`}>FAQ</a>
+              <Link to="/FAQ">FAQ</Link>
             </li>
           </ul>
         </div>

@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { Carousel, TextInput } from "flowbite-react";
 
 function ShippingReturnDetail() {
-  const urlPath = "https://happykid-demo.web.app"
+  const urlPath = "https://happykid-demo.web.app";
   // const urlPath = "http://127.0.0.1:5173"
   const sucessAlert = (message) => {
     Swal.fire({
@@ -52,19 +52,25 @@ function ShippingReturnDetail() {
       <div className="border-t boder-4 flex justify-center items-center mb-5 text-3xl h-[80px] font-mono">happy kid</div>
       <div className="flex justify-around items-center mb-5 h-[160px]">
         <div>
-        <ul>
+          <ul>
             <li>
-              <a href={urlPath}>Home</a>
+              <Link to="/" className="navbar-item hover:text-red-600">
+                Home
+              </Link>
             </li>
             <li>
-              <a href={`${urlPath}/shopCollection`}>Shop Collection</a>
+              <Link to="/shopCollection" className="navbar-item hover:text-red-600">
+                Shop Collection
+              </Link>
             </li>
             <li>
-              <a href={`${urlPath}/OurStory`}>Our Story</a>
+              <Link to="/OurStory" className="hover:text-red-600 navbar-item">
+                Our Story
+              </Link>
             </li>
-            <li>
-              <a href={`${urlPath}/contact`}>Contact</a>
-            </li>
+            <Link to="/contact" className="hover:text-red-600 navbar-item">
+              Contact
+            </Link>
           </ul>
         </div>
         <div className="">
@@ -75,18 +81,18 @@ function ShippingReturnDetail() {
           </span>
         </div>
         <div>
-        <ul>
+          <ul>
             <li>
-              <a href={`${urlPath}/ShipReturn`}>Shipping & Returns</a>
+              <Link to="/ShipReturn">Shipping & Returns</Link>
             </li>
             <li>
-              <a href={`${urlPath}/StorePolicy`}>Store Policy</a>
+              <Link to="/StorePolicy">Store Policy</Link>
             </li>
             <li>
-              <a href={`${urlPath}/PaymentMethods`}>Payment Methods</a>
+              <Link to="/PaymentMethods">Payment Methods</Link>
             </li>
             <li>
-              <a href={`${urlPath}/FAQ`}>FAQ</a>
+              <Link to="/FAQ">FAQ</Link>
             </li>
           </ul>
         </div>

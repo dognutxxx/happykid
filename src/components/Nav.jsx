@@ -3,9 +3,10 @@ import { Outlet } from "react-router-dom";
 import { Carousel } from "flowbite-react";
 import person from "../assets/img/icon/person.png";
 import bucket from "../assets/img/icon/bucket.png";
+import { Link } from "react-router-dom";
 
 function Nav() {
-  const urlPath = "https://happykid-demo.web.app"
+  const urlPath = "https://happykid-demo.web.app";
   // const urlPath = "http://127.0.0.1:5173"
   return (
     <>
@@ -24,24 +25,24 @@ function Nav() {
           <div className="flex flex-row max-w-full ">
             <ul className="lg:flex flex-row flex-none md:grid grid-flow-row auto-cols-fr text-black justify-between items-center my-8">
               <li className="mx-[30px]">
-                <a href={urlPath} target="_self" className="hover:text-red-600">
+                <Link to="/" className="navbar-item hover:text-red-600">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="mx-[30px]">
-                <a href={`${urlPath}/shopCollection`} target="_self" className="hover:text-red-600">
+                <Link to="/shopCollection" className="navbar-item hover:text-red-600">
                   Shop Collection
-                </a>
+                </Link>
               </li>
               <li className="mx-[30px]">
-                <a href={`${urlPath}/OurStory`} target="_self" className="hover:text-red-600">
+                <Link to="/OurStory" className="navbar-item hover:text-red-600">
                   Our Story
-                </a>
+                </Link>
               </li>
               <li className="mx-[30px]">
-                <a href={`${urlPath}/contact`} target="_self" className="hover:text-red-600">
+                <Link to="/contact" className="navbar-item hover:text-red-600">
                   Contact
-                </a>
+                </Link>
               </li>
               <div className="flex ml-[4px]">
                 <img src={person} alt="" className="object-none" />

@@ -11,7 +11,7 @@ import icon3 from "../assets/img/icon/icon3.png";
 import ProductSliderInfo from "./ProductSlider";
 
 function ImgSlider() {
-  const urlPath = "https://happykid-demo.onrender.com"
+  const urlPath = "staticweb-co87.onrender.com"
   // const urlPath = "http://127.0.0.1:5173"
   useEffect(() => {
     getNewArrival();

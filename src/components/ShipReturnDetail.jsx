@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 import { Carousel, TextInput } from "flowbite-react";
 
 function ShippingReturnDetail() {
+  const urlPath = "http://127.0.0.1:5173"
+  // const renderPath = "https://happykid-demo.onrender.com"
   const sucessAlert = (message) => {
     Swal.fire({
       position: "top-center",
@@ -50,18 +52,18 @@ function ShippingReturnDetail() {
       <div className="border-t boder-4 flex justify-center items-center mb-5 text-3xl h-[80px] font-mono">happy kid</div>
       <div className="flex justify-around items-center mb-5 h-[160px]">
         <div>
-          <ul>
+        <ul>
             <li>
-              <a href="http://127.0.0.1:5173/">Home</a>
+              <a href={urlPath}>Home</a>
             </li>
             <li>
-              <a href="http://127.0.0.1:5173/shopCollection">Shop Collection</a>
+              <a href={`${urlPath}/shopCollection`}>Shop Collection</a>
             </li>
             <li>
-              <a href="http://127.0.0.1:5173/OurStory">Our Story</a>
+              <a href={`${urlPath}/OurStory`}>Our Story</a>
             </li>
             <li>
-              <a href="http://127.0.0.1:5173/contact">Contact</a>
+              <a href={`${urlPath}/contact`}>Contact</a>
             </li>
           </ul>
         </div>
@@ -73,18 +75,18 @@ function ShippingReturnDetail() {
           </span>
         </div>
         <div>
-          <ul>
+        <ul>
             <li>
-              <a href="http://127.0.0.1:5173/ShipReturn">Shipping & Returns</a>
+              <a href={`${urlPath}/ShipReturn`}>Shipping & Returns</a>
             </li>
             <li>
-              <a href="http://127.0.0.1:5173/StorePolicy">Store Policy</a>
+              <a href={`${urlPath}/StorePolicy`}>Store Policy</a>
             </li>
             <li>
-              <a href="http://127.0.0.1:5173/PaymentMethods">Payment Methods</a>
+              <a href={`${urlPath}/PaymentMethods`}>Payment Methods</a>
             </li>
             <li>
-              <a href="http://127.0.0.1:5173/FAQ">FAQ</a>
+              <a href={`${urlPath}/FAQ`}>FAQ</a>
             </li>
           </ul>
         </div>

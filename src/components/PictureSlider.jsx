@@ -11,6 +11,8 @@ import icon3 from "../assets/img/icon/icon3.png";
 import ProductSliderInfo from "./ProductSlider";
 
 function ImgSlider() {
+  const urlPath = "http://127.0.0.1:5173"
+  // const renderPath = "https://happykid-demo.onrender.com"
   useEffect(() => {
     getNewArrival();
   }, []);
@@ -59,7 +61,7 @@ function ImgSlider() {
           <div className="flex h-full items-center justify-center bg-banner1"></div>
           <div className="flex h-full items-center justify-center bg-banner2"></div>
           <div className="flex h-full items-center justify-center bg-banner3">
-            <a href="http://127.0.0.1:5173/shopCollection" alt="" className="border border-black p-4">
+            <a href={`${urlPath}/shopCollection`} alt="" className="border border-black p-4">
               Shop Now
             </a>
           </div>
@@ -73,18 +75,18 @@ function ImgSlider() {
       <div className="flex justify-center items-center mb-5 text-3xl h-[80px] font-mono">happy kid</div>
       <div className="flex justify-around items-center mb-5 h-[160px]">
         <div>
-          <ul>
+        <ul>
             <li>
-              <a href="http://127.0.0.1:5173/">Home</a>
+              <a href={urlPath}>Home</a>
             </li>
             <li>
-              <a href="http://127.0.0.1:5173/shopCollection">Shop Collection</a>
+              <a href={`${urlPath}/shopCollection`}>Shop Collection</a>
             </li>
             <li>
-              <a href="http://127.0.0.1:5173/OurStory">Our Story</a>
+              <a href={`${urlPath}/OurStory`}>Our Story</a>
             </li>
             <li>
-              <a href="http://127.0.0.1:5173/contact">Contact</a>
+              <a href={`${urlPath}/contact`}>Contact</a>
             </li>
           </ul>
         </div>
@@ -96,18 +98,18 @@ function ImgSlider() {
           </span>
         </div>
         <div>
-          <ul>
+        <ul>
             <li>
-              <a href="http://127.0.0.1:5173/ShipReturn">Shipping & Returns</a>
+              <a href={`${urlPath}/ShipReturn`}>Shipping & Returns</a>
             </li>
             <li>
-              <a href="http://127.0.0.1:5173/StorePolicy">Store Policy</a>
+              <a href={`${urlPath}/StorePolicy`}>Store Policy</a>
             </li>
             <li>
-              <a href="http://127.0.0.1:5173/PaymentMethods">Payment Methods</a>
+              <a href={`${urlPath}/PaymentMethods`}>Payment Methods</a>
             </li>
             <li>
-              <a href="http://127.0.0.1:5173/FAQ">FAQ</a>
+              <a href={`${urlPath}/FAQ`}>FAQ</a>
             </li>
           </ul>
         </div>

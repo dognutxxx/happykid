@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { Carousel, TextInput } from "flowbite-react";
 
 function OurStoryDetail() {
-  const urlPath = "staticweb-co87.onrender.com"
+  const urlPath = "https://happykid-demo.web.app"
   // const urlPath = "http://127.0.0.1:5173"
   const sucessAlert = (message) => {
     Swal.fire({

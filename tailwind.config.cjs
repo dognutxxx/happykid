@@ -7,13 +7,17 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        header: "url('./assets/img/image-header.jpg')",
-        map: "url('./assets/img/bg-page.png')",
-        map2: "url('./assets/img/bg-page2.png')",
-        map3: "url('./assets/img/bg-page3.png')",
-        map5: "url('./assets/img/bg-page5.png')",
-        map6: "url('./assets/img/bg-page6.png')",
-        map7: "url('./assets/img/bg-page7.png')",
+        banner1: "url('./assets/img/Banner1.png')",
+        banner2: "url('./assets/img/Banner2.png')",
+        banner3: "url('./assets/img/Banner3.png')",
+        banner4: "url('./assets/img/Banner4.png')",
+        NewArrival1: "url('./assets/img/newArrive/Product1.png')",
+        NewArrival2: "url('./assets/img/newArrive/Product2.png')",
+        NewArrival3: "url('./assets/img/newArrive/Product3.png')",
+        NewArrival4: "url('./assets/img/newArrive/Product4.png')",
+        NewArrival5: "url('./assets/img/newArrive/Product5.png')",
+        NewArrival6: "url('./assets/img/newArrive/Product6.png')",
+      
         
       },
     },

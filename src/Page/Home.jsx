@@ -1,7 +1,5 @@
 import React from "react";
-// import FlightApp from '../components/aatestFlightApp'
-import Header from "../components/Header_copy";
-// import Card from "../components/Card"
+import Header from "../components/PictureSlider";
 
 function Home() {
   return (
@@ -12,4 +10,3 @@ function Home() {
 }
 
 export default Home;
-

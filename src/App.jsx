@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Switch } from "react-router-dom";
 import Nav from "./components/Nav";
 import Home from "./Page/Home";
 
@@ -13,18 +13,20 @@ import FAQ from "./Page/FAQ";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Nav />}>
-        <Route path="/ShopCollection" element={<Home />} />
-        <Route path="" element={<ShopCollection />} />
-        <Route path="/OurStory" element={<OurStory />} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/ShipReturn" element={<ShipReturn />} />
-        <Route path="/StorePolicy" element={<StorePolicy />} />
-        <Route path="/PaymentMethods" element={<PaymentMethods />} />
-        <Route path="/FAQ" element={<FAQ />} />
-      </Route>
-    </Routes>
+    <Switch>
+      <Routes>
+        <Route path="/" element={<Nav />}>
+          <Route path="/ShopCollection" element={<Home />} />
+          <Route path="" element={<ShopCollection />} />
+          <Route path="/OurStory" element={<OurStory />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/ShipReturn" element={<ShipReturn />} />
+          <Route path="/StorePolicy" element={<StorePolicy />} />
+          <Route path="/PaymentMethods" element={<PaymentMethods />} />
+          <Route path="/FAQ" element={<FAQ />} />
+        </Route>
+      </Routes>
+    </Switch>
   );
 }
 

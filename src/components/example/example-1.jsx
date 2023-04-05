@@ -15,6 +15,7 @@ import imgGoods11 from "../assets/img/newArrive/Product11.png";
 import imgGoods12 from "../assets/img/newArrive/Product12.png";
 
 function ProductSlider({ product }) {
+  //test
   const [popupcontent, setpopupcontent] = useState([]);
   const changecontent = (el) => {
     setpopupcontent([el]);

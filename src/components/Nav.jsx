@@ -5,8 +5,8 @@ import person from "../assets/img/icon/person.png";
 import bucket from "../assets/img/icon/bucket.png";
 
 function Nav() {
-  const urlPath = "http://127.0.0.1:5173"
-  // const renderPath = "https://happykid-demo.onrender.com"
+  const urlPath = "https://happykid-demo.onrender.com"
+  // const urlPath = "http://127.0.0.1:5173/"
   return (
     <>
       <div className="">

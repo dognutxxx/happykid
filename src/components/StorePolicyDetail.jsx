@@ -6,8 +6,8 @@ import Swal from "sweetalert2";
 import { TextInput } from "flowbite-react";
 
 function PaymentMethodsDetail() {
-  const urlPath = "http://127.0.0.1:5173"
-  // const renderPath = "https://happykid-demo.onrender.com"
+  const urlPath = "https://happykid-demo.onrender.com"
+  // const urlPath = "http://127.0.0.1:5173/"
   const sucessAlert = (message) => {
     Swal.fire({
       position: "top-center",

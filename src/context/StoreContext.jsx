@@ -3,6 +3,8 @@ import { useContext, useState, createContext } from "react";
 const StoreContext = createContext();
 
 function StoreContextProvider({ children }) {
+  const [selectedColor3, setSelectedColor3] = useState();
+  const [selectedColor2, setSelectedColor2] = useState();
   const [selectedColor4, setSelectedColor4] = useState();
   const [selectedColor5, setSelectedColor5] = useState();
   const [selectedColor, setSelectedColor] = useState();
@@ -19,6 +21,10 @@ function StoreContextProvider({ children }) {
         setSelectedColor5,
         selectedColor4,
         setSelectedColor4,
+        selectedColor2,
+        setSelectedColor2,
+        selectedColor3,
+        setSelectedColor3,
       }}
     >
       {children}

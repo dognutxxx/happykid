@@ -114,13 +114,12 @@ function ContactDetail() {
               <Link to="/shopCollection" className="navbar-item">
                 Shop Collection
               </Link>
-              {/* <a href={`${urlPath}/shopCollection`}>Shop Collection</a> */}
             </li>
             <li>
-              <a href={`${urlPath}/OurStory`}>Our Story</a>
+              <Link to="/OurStory">Our Story</Link>
             </li>
             <li>
-              <a href={`${urlPath}/contact`}>Contact</a>
+              <Link to="/contact">Contact</Link>
             </li>
           </ul>
         </div>
@@ -134,16 +133,16 @@ function ContactDetail() {
         <div>
           <ul>
             <li>
-              <a href={`${urlPath}/ShipReturn`}>Shipping & Returns</a>
+              <Link to="/ShipReturn">Shipping & Returns</Link>
             </li>
             <li>
-              <a href={`${urlPath}/StorePolicy`}>Store Policy</a>
+              <Link to="/StorePolicy">Store Policy</Link>
             </li>
             <li>
-              <a href={`${urlPath}/PaymentMethods`}>Payment Methods</a>
+              <Link to="/StorePolicy">Payment Methods</Link>
             </li>
             <li>
-              <a href={`${urlPath}/FAQ`}>FAQ</a>
+              <Link to="/FAQ">FAQ</Link>
             </li>
           </ul>
         </div>

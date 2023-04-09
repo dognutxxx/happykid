@@ -56,21 +56,27 @@ function ImgSlider() {
 
   return (
     <>
-      <div className="h-96 sm:h-96 xl:h-80 2xl:h-96">
+      {/* <div className="h-96 sm:h-96 xl:h-80 2xl:h-96"> */}
+      <div className="h-[600px] mx-6 my-2">
         <Carousel>
           <div className="flex h-full items-center justify-center bg-banner1"></div>
           <div className="flex h-full items-center justify-center bg-banner2"></div>
-          <div className="flex h-full items-center justify-center bg-banner3">
-            <a href={`${urlPath}/shopCollection`} alt="" className="border border-black p-4">
-              Shop Now
-            </a>
+          <div className="grid grid-cols-4 h-full bg-banner3 items-center">
+            <div className="col-start-2 col-end-4 text-center">
+              <p className="text-4xl font-mono my-10 tracking-widest text-momno">New Collection</p>
+              <Link to="/shopCollection" alt="iconShop" className="border border-black p-4 hover:bg-black hover:text-white rounded-sm">
+                Shop Now
+              </Link>
+            </div>
           </div>
         </Carousel>
       </div>
       <div className="flex justify-center items-center text-4xl font-mono mt-16">New Arrivals</div>
       <ProductSliderInfo product={goodsData} />
       <div className="flex justify-center my-5">
-        <button className="text-center bg-black text-white hover:bg-[#D2461C] p-2 rounded-sm">Shop All</button>
+        <Link to="/shopCollection" className=" text-center bg-black text-white hover:bg-[#D2461C] p-2 rounded-sm">
+          <p className="w-[120px]">Shop All</p>
+        </Link>
       </div>
       <div className="flex justify-center items-center mb-5 text-3xl h-[80px] font-mono">happy kid</div>
       <div className="flex justify-around items-center mb-5 h-[160px]">
@@ -104,7 +110,7 @@ function ImgSlider() {
           </span>
         </div>
         <div>
-        <ul>
+          <ul>
             <li>
               <Link to="/ShipReturn">Shipping & Returns</Link>
             </li>

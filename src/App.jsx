@@ -13,6 +13,7 @@ import PaymentMethods from "./Page/PaymentMethods";
 import FAQ from "./Page/FAQ";
 import SocialLogin from "./Page/SocialLogin";
 
+import Cart from "./Page/Cart";
 function App() {
   return (
     <Routes>
@@ -25,6 +26,7 @@ function App() {
         <Route path="/StorePolicy" element={<StorePolicy />} />
         <Route path="/PaymentMethods" element={<PaymentMethods />} />
         <Route path="/FAQ" element={<FAQ />} />
+        <Route path="/Cart" element={<Cart />} />
       </Route>
       <Route path="/SocialLogin" element={<SocialLogin />} />
     </Routes>

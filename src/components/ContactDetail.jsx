@@ -7,8 +7,6 @@ import { TextInput, Label, Button } from "flowbite-react";
 import { Link } from "react-router-dom";
 
 function ContactDetail() {
-  const urlPath = "https://happykid-demo.web.app";
-  // const urlPath = "http://127.0.0.1:5173"
   const sucessAlert = (message) => {
     Swal.fire({
       position: "top-center",

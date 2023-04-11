@@ -18,10 +18,10 @@ function Nav() {
         </Carousel>
       </div>
 
-      <Menubar/>
-   
-      <a href={urlPath} className="tracking-widest font-mono text-black text-4xl lg:text-6xl flex justify-center items-center h-[150px]">
-        happy kids
+      <Menubar />
+
+      <a href={urlPath} className="mx-4 border-b border-gray-200 tracking-widest font-mono text-black text-4xl lg:text-6xl flex justify-center items-center h-[150px]">
+        <p className="">happy kids</p>
       </a>
       <Outlet />
     </>

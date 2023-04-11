@@ -3,7 +3,7 @@ import icon1 from "../assets/img/icon/icon1.png";
 import icon2 from "../assets/img/icon/icon2.png";
 import icon3 from "../assets/img/icon/icon3.png";
 import Swal from "sweetalert2";
-import { Carousel, TextInput } from "flowbite-react";
+import { TextInput } from "flowbite-react";
 import { Link } from "react-router-dom";
 
 function ShippingReturnDetail() {

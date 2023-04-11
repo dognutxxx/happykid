@@ -4,18 +4,18 @@ import { useEffect, useState } from "react";
 import imgGoods1 from "../assets/img/newArrive/Product1.png";
 import imgGoods2 from "../assets/img/newArrive/Product2.png";
 import SelectNumber from "./AmountSelect";
+import ModalRightSumModal from "./ModalRightSumModal";
 
-const ModalAllProduct = ({ name, discount, price, sku, imgItem1, imgItem2 }) => {
 
-  const handleSumModal = () => {
-    alert("ทำไม่ทันโปรดเห็นใจ แต่ทำได้แน่นอน")
-  }
+
+const ModalAllProduct = ({ name, discount, price, sku, imgItem1, imgItem2, product }) => {
 
   //   console.log("newProduct", newProduct);
   const handleAddtoCard = () => {
     setShowModal(true);
   };
   const [showModal, setShowModal] = useState(false);
+
   const [selectedColor, setSelectedColor] = useState("red");
   const handleColorChange = (event) => {
     setSelectedColor(event.target.value);
@@ -24,6 +24,7 @@ const ModalAllProduct = ({ name, discount, price, sku, imgItem1, imgItem2 }) => 
   const onClose = () => {
     setShowModal(false);
   };
+
   return (
     <>
       <div className="flex justify-center">
@@ -86,9 +87,9 @@ const ModalAllProduct = ({ name, discount, price, sku, imgItem1, imgItem2 }) => 
                 <div>
                   <SelectNumber />
                 </div>
-                <Button size="lg" outline={true} gradientDuoTone="purpleToPink" onClick={handleSumModal}>
-                  Add to Card
-                </Button>
+
+                <ModalRightSumModal productToRightModal={product}/>
+
                 <div className="mt-6 text-sm">
                   <a href="" className="underline">
                     View More Details

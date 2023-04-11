@@ -11,15 +11,11 @@ import icon3 from "../assets/img/icon/icon3.png";
 import ProductSliderInfo from "./ProductSlider";
 
 function ImgSlider() {
-  const urlPath = "https://happykid-demo.web.app";
-  // const urlPath = "http://127.0.0.1:5173"
+
   useEffect(() => {
     getNewArrival();
   }, []);
   const [goodsData, setGoodsData] = useState();
-  console.log("goodsData", goodsData);
-
-  const xx = goodsData;
 
   const getNewArrival = async () => {
     try {

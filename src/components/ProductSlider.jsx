@@ -2,6 +2,7 @@ import React from "react";
 import { Carousel, Button, Modal, Label, Select } from "flowbite-react";
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import SelectNumber from "./AmountSelect";
 import { useStore } from "../context/StoreContext";
 import imgGoods1 from "../assets/img/newArrive/Product1.png";
@@ -12,23 +13,16 @@ import imgGoods5 from "../assets/img/newArrive/Product5.png";
 import imgGoods6 from "../assets/img/newArrive/Product6.png";
 import imgGoods7 from "../assets/img/newArrive/Product7.png";
 import imgGoods8 from "../assets/img/newArrive/Product8.png";
-// import imgGoods7 from "../assets/img/newArrive/Product7.png";
-// import imgGoods8 from "../assets/img/newArrive/Product8.png";
-// import imgGoods9 from "../assets/img/newArrive/Product9.png";
-// import imgGoods10 from "../assets/img/newArrive/Product10.png";
-// import imgGoods11 from "../assets/img/newArrive/Product11.png";
-// import imgGoods12 from "../assets/img/newArrive/Product12.png";
+
 
 function ProductSlider({ product }) {
+  
   const [show0, setShow0] = useState(false);
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
   const [show5, setShow5] = useState(false);
-  const [show6, setShow6] = useState(false);
-  const [show7, setShow7] = useState(false);
-  const [show8, setShow8] = useState(false);
 
   const [newArriveItem3, setNewArriveItem3] = useState([]);
   const [newArriveItem2, setNewArriveItem2] = useState([]);
@@ -36,8 +30,6 @@ function ProductSlider({ product }) {
   const [newArriveItem5, setNewArriveItem5] = useState([]);
   const [newArriveItem0, setNewArriveItem0] = useState([]);
   const [newArriveItem1, setNewArriveItem1] = useState([]);
-  const [newArriveItem7, setNewArriveItem7] = useState([]);
-  const [newArriveItem8, setNewArriveItem8] = useState([]);
 
   const { selectedColor3, setSelectedColor3 } = useStore();
   const { selectedColor2, setSelectedColor2 } = useStore();
@@ -163,8 +155,6 @@ function ProductSlider({ product }) {
     setShow5(false);
   };
 
-  
-
   return (
     <>
       <div className="h-[500px] flex items-center my-[30px]">
@@ -272,8 +262,8 @@ function ProductSlider({ product }) {
                           <SelectNumber />
                         </div>
 
-                        <Button size="lg" outline={true} gradientDuoTone="purpleToPink" onClick="">
-                          Add to Card
+                        <Button size="lg" outline={true} gradientDuoTone="purpleToPink" >
+                          <Link to="/shopCollection">Shop Now</Link>
                         </Button>
                         <div className="mt-6 text-sm">
                           <a href="" className="underline">
@@ -307,9 +297,7 @@ function ProductSlider({ product }) {
                 <Modal show={show3} onClose={onClose3} size="4xl">
                   <Modal.Body>
                     <div className="space-y-6 grid grid-cols-8 text-mono">
-                
-                        <img src={imgGoods4} alt="" className=" col-start-1 col-end-5 text-base leading-relaxed text-gray-500 dark:text-gray-400" />
-                     
+                      <img src={imgGoods4} alt="" className=" col-start-1 col-end-5 text-base leading-relaxed text-gray-500 dark:text-gray-400" />
 
                       <div className=" col-start-5 col-end-9 text-base leading-relaxed text-gray-500 dark:text-gray-400">
                         <h2 className="text-2xl">{newArriveItem2.name}</h2>
@@ -336,8 +324,8 @@ function ProductSlider({ product }) {
                           <SelectNumber />
                         </div>
 
-                        <Button size="lg" outline={true} gradientDuoTone="purpleToPink" onClick="">
-                          Add to Card
+                        <Button size="lg" outline={true} gradientDuoTone="purpleToPink" >
+                          <Link to="/shopCollection">Shop Now</Link>
                         </Button>
                         <div className="mt-6 text-sm">
                           <a href="" className="underline">
@@ -399,8 +387,8 @@ function ProductSlider({ product }) {
                           <SelectNumber />
                         </div>
 
-                        <Button size="lg" outline={true} gradientDuoTone="purpleToPink" onClick="">
-                          Add to Card
+                        <Button size="lg" outline={true} gradientDuoTone="purpleToPink" >
+                          <Link to="/shopCollection">Shop Now</Link>
                         </Button>
                         <div className="mt-6 text-sm">
                           <a href="" className="underline">
@@ -461,8 +449,8 @@ function ProductSlider({ product }) {
                           <SelectNumber />
                         </div>
 
-                        <Button size="lg" outline={true} gradientDuoTone="purpleToPink" onClick="">
-                          Add to Card
+                        <Button size="lg" outline={true} gradientDuoTone="purpleToPink" >
+                          <Link to="/shopCollection">Shop Now</Link>
                         </Button>
                         <div className="mt-6 text-sm">
                           <a href="" className="underline">
@@ -523,8 +511,8 @@ function ProductSlider({ product }) {
                           <SelectNumber />
                         </div>
 
-                        <Button size="lg" outline={true} gradientDuoTone="purpleToPink" onClick="">
-                          Add to Card
+                        <Button size="lg" outline={true} gradientDuoTone="purpleToPink" >
+                          <Link to="/shopCollection">Shop Now</Link>
                         </Button>
                         <div className="mt-6 text-sm">
                           <a href="" className="underline">
@@ -558,9 +546,7 @@ function ProductSlider({ product }) {
                 <Modal show={show1} onClose={onClose1} size="4xl">
                   <Modal.Body>
                     <div className="space-y-6 grid grid-cols-8 text-mono">
-                     
-                        <img src={imgGoods8} alt="" className=" col-start-1 col-end-5 text-base leading-relaxed text-gray-500 dark:text-gray-400" />
-                  
+                      <img src={imgGoods8} alt="" className=" col-start-1 col-end-5 text-base leading-relaxed text-gray-500 dark:text-gray-400" />
 
                       <div className=" col-start-5 col-end-9 text-base leading-relaxed text-gray-500 dark:text-gray-400">
                         <h2 className="text-2xl">{newArriveItem1.name}</h2>
@@ -587,8 +573,8 @@ function ProductSlider({ product }) {
                           <SelectNumber />
                         </div>
 
-                        <Button size="lg" outline={true} gradientDuoTone="purpleToPink" onClick="">
-                          Add to Card
+                        <Button size="lg" outline={true} gradientDuoTone="purpleToPink" >
+                          <Link to="/shopCollection">Shop Now</Link>
                         </Button>
                         <div className="mt-6 text-sm">
                           <a href="" className="underline">

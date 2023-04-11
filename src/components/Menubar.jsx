@@ -2,6 +2,7 @@ import { useState } from "react"; // import state
 import person from "../assets/img/icon/person.png";
 import bucket from "../assets/img/icon/bucket.png";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 export default function Menubar() {
   const [isNavOpen, setIsNavOpen] = useState(false); // initiate isNavOpen state with false
@@ -66,7 +67,7 @@ export default function Menubar() {
 
         <div></div>
         <ul className="DESKTOP-MENU hidden space-x-8 lg:flex">
-          <li data-testid="li" className="mx-[30px]">
+          <li data-testid="li" className="">
             <Link to="/" className="navbar-item hover:text-red-600">
               Home
             </Link>
@@ -86,16 +87,17 @@ export default function Menubar() {
               Contact
             </Link>
           </li>
-          <div className="flex ml-[4px]">
+          <div className="flex ml-[4px] items-center">
             <img src={person} alt="" className="object-none" />
-            <Link to="/SocialLogin" className="flex flex-row mx-4">
+            <Link to="/SocialLogin" className="flex flex-row ml-2 mr-8">
               Login
             </Link>
+            <Navbar />
           </div>
 
-          <div className="flex flex-row mx-4 hover:text-purple-600">
-            <img src={bucket} alt="" className="object-none" />
-          </div>
+          {/* <div className="flex flex-row mx-4 hover:text-purple-600">
+          
+          </div> */}
         </ul>
       </nav>
 

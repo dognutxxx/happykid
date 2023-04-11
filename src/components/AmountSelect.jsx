@@ -1,24 +1,25 @@
 import React from "react";
 import { useState } from "react";
 
-function AmountSelect() {
+function AmountSelect({ quanlity, setQuanlity }) {
+  
   const [mintAmount, setMintAmount] = useState(1);
 
   const handleDecrement = () => {
-    let newMintAmount = mintAmount - 1;
-    if (newMintAmount < 1) {
+
+    const newMintAmount = mintAmount - 1;
+    if(newMintAmount < 1){
       newMintAmount = 1;
     }
     setMintAmount(newMintAmount);
+    setQuanlity((prev) => (prev -= 1));
   };
 
-  //Set maxMint
+
   const handleIncrement = () => {
-    let newMintAmount = mintAmount + 1;
-    // if (newMintAmount > 100) {
-    //   newMintAmount = 100;
-    // }
+    const newMintAmount = mintAmount + 1;
     setMintAmount(newMintAmount);
+    setQuanlity((prev) => (prev += 1));
   };
 
   return (

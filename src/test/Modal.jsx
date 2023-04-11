@@ -18,14 +18,6 @@
           <p className="my-4">
             <div className="">
               {item.formattedDiscountedPrice}
-
-              {/* {item.formattedPrice === item.formattedDiscountedPrice ? (
-                            <span className="line-through">{item.discountedPrice}</span>
-                          ) : (
-                            <span className="flex justify-center gap-2">
-                              <p className="line-through">{item.formattedPrice}</p>
-                            </span>
-                          )} */}
             </div>
           </p>
           <div className="flex items-center">
@@ -53,7 +45,7 @@
           <div>
             <SelectNumber />
           </div>
-          <Button size="lg" outline={true} gradientDuoTone="purpleToPink" onClick="">
+          <Button size="lg" outline={true} gradientDuoTone="purpleToPink">
             Add to Card
           </Button>
           <div className="mt-6 text-sm">

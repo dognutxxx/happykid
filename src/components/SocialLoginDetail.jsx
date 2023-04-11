@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { GoogleLogin } from "@react-oauth/google";
 import { GoogleLoginButton } from "react-social-login-buttons";
 import { FacebookLoginButton } from "react-social-login-buttons";
 import { googleLogout } from "@react-oauth/google";
@@ -21,8 +19,8 @@ function SocialLoginDetail() {
 
   googleLogout();
   return (
-    <div className="mx-4">
-      <div>
+    <div className="mx-4 grid grid-cols-12">
+      <div className="col-start-5 col-end-9">
         <div className="h-[100px] flex justify-center items-center mt-[100px]">
           <span className="text-4xl text-mono text-bold">
             <button onClick={handleClick}>{isLoggedIn ? "Sign Up" : "Log In"}</button>
@@ -38,17 +36,6 @@ function SocialLoginDetail() {
         </div>
 
         <div className="my-6">
-          {/* <GoogleOAuthProvider clientId="34240223999-u007pu8r5t1ubdnsaf3p8pa5k7nao8u2.apps.googleusercontent.com">
-            <GoogleLogin
-              onSuccess={(credentialResponse) => {
-                console.log(credentialResponse);
-              }}
-              onError={() => {
-                console.log("Login Failed");
-              }}
-              useOneTap
-            />
-          </GoogleOAuthProvider> */}
           <GoogleLoginButton onClick={() => alert("Google login suscess")} />
           <FacebookLoginButton onClick={() => alert("facebook login suscess")} />
         </div>

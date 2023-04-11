@@ -1,8 +1,11 @@
 import { useContext, useState, createContext } from "react";
+import { productsItem } from "../data";
 
 const StoreContext = createContext();
 
 function StoreContextProvider({ children }) {
+  const [newProduct, setNewProduct] = useState(productsItem);
+  console.log("newProduct", newProduct);
   const [selectedColor3, setSelectedColor3] = useState();
   const [selectedColor2, setSelectedColor2] = useState();
   const [selectedColor4, setSelectedColor4] = useState();
@@ -13,6 +16,8 @@ function StoreContextProvider({ children }) {
   return (
     <StoreContext.Provider
       value={{
+        newProduct,
+        setNewProduct,
         selectedColor,
         setSelectedColor,
         selectedColor1,

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import icon1 from "../assets/img/icon/icon1.png";
 import icon2 from "../assets/img/icon/icon2.png";
 import icon3 from "../assets/img/icon/icon3.png";
+import Navbar from "./Navbar";
 
 function CollectionDetail() {
   const sucessAlert = (message) => {
@@ -29,7 +30,11 @@ function CollectionDetail() {
   return (
     <>
       <div className="h-[150px] p-4 flex justify-center items-center">
-        <h1 className="tracking-widest text-mono text-2xl text-center">Shop Collection</h1>
+        <h1 className="tracking-widest text-mono text-2xl text-center mx-4">Shop Collection</h1>
+      </div>
+      <div className="flex justify-end fixed top-[450px] left-0 right-2">
+        {" "}
+        <Navbar />
       </div>
       <div className="sm:grid-grid-cols-2 lg:grid grid-cols-12 gap-4 mx-20">
         <div className="col-start-1 col-end-3 ">

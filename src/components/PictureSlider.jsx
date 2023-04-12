@@ -52,7 +52,7 @@ function ImgSlider() {
 
   return (
     <>
-      {/* <div className="h-96 sm:h-96 xl:h-80 2xl:h-96"> */}
+
       <div className="h-[600px] mx-6 my-2">
         <Carousel>
           <div className="flex h-full items-center justify-center bg-banner1"></div>

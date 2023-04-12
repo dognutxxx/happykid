@@ -5,16 +5,18 @@ import { useSelector, useDispatch } from "react-redux";
 import AmountSelect from "./AmountSelect";
 import { useEffect } from "react";
 
-const CartItem = ({ item, setTotalAmount, setTotalItem }) => {
+const CartItem = ({ item, setTotalAmount, totalItem, setTotalItem, index, totalAmount }) => {
+
   const [quanlity, setQuanlity] = useState(1);
 
   useEffect(() => {
     //total quanlity
-    setTotalAmount((prev) => (prev = quanlity * item.price));
+    setTotalAmount((prev) => (prev = (quanlity * item.price).toFixed(2)));
     setTotalItem((prev) => (prev += 1));
   }, [quanlity]);
 
   const { cart } = useSelector((state) => state);
+
   const dispatch = useDispatch();
 
   const removeItemFromCart = () => {
@@ -33,7 +35,7 @@ const CartItem = ({ item, setTotalAmount, setTotalItem }) => {
             <div>
               <p>${item.price}</p>
               <p>
-                <AmountSelect quanlity={quanlity} setQuanlity={setQuanlity} />
+                <AmountSelect quanlity={quanlity} setQuanlity={setQuanlity} totalItem={totalItem} index={index}/>
               </p>
               <p>{sumPrices}</p>
             </div>

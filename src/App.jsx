@@ -13,9 +13,14 @@ import PaymentMethods from "./Page/PaymentMethods";
 import FAQ from "./Page/FAQ";
 import SocialLogin from "./Page/SocialLogin";
 
+
 import Cart from "./Page/Cart";
 function App() {
+
+  
+
   return (
+
     <Routes>
       <Route path="/" element={<Nav />}>
         <Route path="/" element={<Home />} />

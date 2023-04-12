@@ -30,7 +30,7 @@ function CollectionDetail() {
   return (
     <>
       <div className="h-[150px] p-4 flex justify-center items-center">
-        <h1 className="tracking-widest text-mono text-2xl text-center mx-4">Shop Collection</h1>
+        <div className="tracking-widest text-mono text-2xl text-center mx-4">Shop Collection</div>
       </div>
       <div className="flex justify-end fixed top-[450px] left-0 right-2">
         {" "}

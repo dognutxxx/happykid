@@ -1,4 +1,4 @@
-import { useState } from "react"; // import state
+import { useState } from "react"; 
 import person from "../assets/img/icon/person.png";
 import bucket from "../assets/img/icon/bucket.png";
 import { Link } from "react-router-dom";
@@ -94,10 +94,6 @@ export default function Menubar() {
             </Link>
             <Navbar />
           </div>
-
-          {/* <div className="flex flex-row mx-4 hover:text-purple-600">
-          
-          </div> */}
         </ul>
       </nav>
 

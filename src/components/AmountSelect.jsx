@@ -1,7 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-function AmountSelect({ quanlity, setQuanlity }) {
+function AmountSelect({ quanlity, setQuanlity, setTotalItem, totalItem }) {
+
+
+  const { cart } = useSelector((state) => state);
   
   const [mintAmount, setMintAmount] = useState(1);
 
@@ -13,18 +17,21 @@ function AmountSelect({ quanlity, setQuanlity }) {
     }
     setMintAmount(newMintAmount);
     setQuanlity((prev) => (prev -= 1));
+
   };
 
 
   const handleIncrement = () => {
+
     const newMintAmount = mintAmount + 1;
     setMintAmount(newMintAmount);
     setQuanlity((prev) => (prev += 1));
+
   };
 
   return (
     <div className="my-6">
-      <p>Quantity</p>
+      <div>Quantity</div>
       <button onClick={handleDecrement} className="text-2xl mr-2">
         -
       </button>

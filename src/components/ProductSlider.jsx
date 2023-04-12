@@ -51,8 +51,6 @@ function ProductSlider({ product }) {
     setShow0(true);
     try {
       await axios.get(`https://skillkamp-api.com/v1/api/products/details/00001`).then((res) => {
-        console.log(res.data.detail.data.catalog.product);
-        // setNewArriveItem0(res.data.detail.data.catalog.category.productsWithMetaData.list);
         setNewArriveItem0(res.data.detail.data.catalog.product);
       });
     } catch (err) {
@@ -69,8 +67,6 @@ function ProductSlider({ product }) {
     setShow1(true);
     try {
       await axios.get(`https://skillkamp-api.com/v1/api/products/details/00002`).then((res) => {
-        console.log(res.data.detail.data.catalog.product);
-        // setNewArriveItem0(res.data.detail.data.catalog.category.productsWithMetaData.list);
         setNewArriveItem1(res.data.detail.data.catalog.product);
       });
     } catch (err) {
@@ -87,8 +83,6 @@ function ProductSlider({ product }) {
     setShow2(true);
     try {
       await axios.get(`https://skillkamp-api.com/v1/api/products/details/00003`).then((res) => {
-        console.log(res.data.detail.data.catalog.product);
-        // setNewArriveItem0(res.data.detail.data.catalog.category.productsWithMetaData.list);
         setNewArriveItem2(res.data.detail.data.catalog.product);
       });
     } catch (err) {
@@ -105,8 +99,6 @@ function ProductSlider({ product }) {
     setShow3(true);
     try {
       await axios.get(`https://skillkamp-api.com/v1/api/products/details/00004`).then((res) => {
-        console.log(res.data.detail.data.catalog.product);
-        // setNewArriveItem0(res.data.detail.data.catalog.category.productsWithMetaData.list);
         setNewArriveItem3(res.data.detail.data.catalog.product);
       });
     } catch (err) {
@@ -123,8 +115,6 @@ function ProductSlider({ product }) {
     setShow4(true);
     try {
       await axios.get(`https://skillkamp-api.com/v1/api/products/details/00004`).then((res) => {
-        console.log(res.data.detail.data.catalog.product);
-        // setNewArriveItem0(res.data.detail.data.catalog.category.productsWithMetaData.list);
         setNewArriveItem4(res.data.detail.data.catalog.product);
       });
     } catch (err) {

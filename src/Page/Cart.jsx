@@ -2,11 +2,23 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CartItem from "../components/CartItem";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Cart = () => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalItem, setTotalItem] = useState(0);
   const { cart } = useSelector((state) => state);
+
+  const sucessAlert = (message) => {
+    Swal.fire({
+      position: "top-center",
+      icon: "success",
+      title: "success",
+      html: `<p style="font-size:25px">${message}</p>`,
+      showConfirmButton: false,
+      timer: 3000,
+    });
+  };
 
   // useEffect(() => {
   //   setTotalAmount(cart.reduce((acc, curr) => acc + curr.price, 0));
@@ -18,8 +30,9 @@ const Cart = () => {
         <>
           <div className="min-h-[80vh] grid md:grid-cols-2 max-w-6xl mx-auto">
             <div className="flex flex-col justify-start items-between p-2">
-              {cart.map((item) => {
-                return <CartItem key={item.id} item={item} setTotalAmount={setTotalAmount} setTotalItem={setTotalItem}/>;
+              {cart.map((item, index) => {
+               
+                return <CartItem key={item.id} item={item} setTotalAmount={setTotalAmount} setTotalItem={setTotalItem} index={index} totalAmount={totalAmount} />;
               })}
             </div>
             <div>
@@ -30,9 +43,13 @@ const Cart = () => {
                 </p>
                 <p>
                   {" "}
-                  <span className="text-gray-700 font-semibold">Total Amount</span> : ${totalAmount}
+                  <span className="text-gray-700 font-semibold">Total Price</span> : ${totalAmount}
                 </p>
-                <button className="bg-purple-700 hover:bg-purple-50 rounded-lg text-white transition duration-300 ease-linear mt-5 border-2 border-purple-600 font-bold hover:text-purple-700 p-3">
+
+                <button
+                  className="bg-purple-700 hover:bg-purple-50 rounded-lg text-white transition duration-300 ease-linear mt-5 border-2 border-purple-600 font-bold hover:text-purple-700 p-3"
+                  onClick={() => sucessAlert("Payment Sucess")}
+                >
                   Checkout Now
                 </button>
               </div>

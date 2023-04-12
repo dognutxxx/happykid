@@ -7,7 +7,7 @@ const Product = ({ item }) => {
   const dispatch = useDispatch();
 
   const addToCart = () => {
-    dispatch(add(item));
+    dispatch(add({...item,quanlity:1}));
   };
 
   const removeFromCart = () => {

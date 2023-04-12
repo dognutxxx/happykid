@@ -42,7 +42,7 @@ const CheckBoxFilter = () => {
     <div className="mt-6">
       <div>
         <input type="checkbox" name="age0to3" checked={age0to3} onChange={handleCheckboxChange} />
-        <label className="text-mono mx-2">0-3 months</label>
+        <label for="text" className="text-mono mx-2">0-3 months</label>
       </div>
 
       <div>

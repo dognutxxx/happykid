@@ -15,7 +15,7 @@ const CartItem = ({ item, setTotalAmount, setTotalItem }) => {
   }, [quanlity]);
 
   const { cart } = useSelector((state) => state);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); //test
 
   const removeItemFromCart = () => {
     dispatch(remove(item.id));

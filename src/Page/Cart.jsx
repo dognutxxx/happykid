@@ -7,7 +7,13 @@ import Swal from "sweetalert2";
 const Cart = () => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalItem, setTotalItem] = useState(0);
+  const [newItems, setNewItems]  = useState();
   const { cart } = useSelector((state) => state);
+
+
+  useEffect(() => {
+    console.log(111);
+  },[newItems])
 
   const sucessAlert = (message) => {
     Swal.fire({
@@ -20,9 +26,7 @@ const Cart = () => {
     });
   };
 
-  // useEffect(() => {
-  //   setTotalAmount(cart.reduce((acc, curr) => acc + curr.price, 0));
-  // }, [cart]);
+ 
 
   return (
     <>
@@ -30,10 +34,7 @@ const Cart = () => {
         <>
           <div className="min-h-[80vh] grid md:grid-cols-2 max-w-6xl mx-auto">
             <div className="flex flex-col justify-start items-between p-2">
-              {cart.map((item, index) => {
-               
-                return <CartItem key={item.id} item={item} setTotalAmount={setTotalAmount} setTotalItem={setTotalItem} index={index} totalAmount={totalAmount} />;
-              })}
+                <CartItem cartItems={cart}  setTotalAmount={setTotalAmount} setTotalItem={setTotalItem}/>;             
             </div>
             <div>
               <div className="flex flex-col justify-center items-end p-5 space-y-5">

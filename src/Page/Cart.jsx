@@ -4,16 +4,11 @@ import CartItem from "../components/CartItem";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
+
 const Cart = () => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalItem, setTotalItem] = useState(0);
-  const [newItems, setNewItems]  = useState();
   const { cart } = useSelector((state) => state);
-
-
-  useEffect(() => {
-    console.log(111);
-  },[newItems])
 
   const sucessAlert = (message) => {
     Swal.fire({

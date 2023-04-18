@@ -16,9 +16,17 @@ const CartItem = ({ setTotalAmount, setTotalItem, cartItems }) => {
     setProducts(updatedProducts);
   };
 
+  // const handleDecrement = (productId) => {
+  //   const updatedProducts = products.map((product) => (product.id === productId && product.quanlity > 0 ? { ...product, quanlity: product.quanlity - 1 } : product));
+  //   setProducts(updatedProducts);
+  // };
+
   const handleDecrement = (productId) => {
     const updatedProducts = products.map((product) => (product.id === productId && product.quanlity > 0 ? { ...product, quanlity: product.quanlity - 1 } : product));
     setProducts(updatedProducts);
+    if (updatedProducts.find((product) => product.id === productId).quanlity === 0) {
+      handleDelete(productId);
+    }
   };
 
   const handleDelete = (productId) => {
@@ -35,9 +43,9 @@ const CartItem = ({ setTotalAmount, setTotalItem, cartItems }) => {
 
   const dispatch = useDispatch();
 
-  // const removeItemFromCart = () => {
-  //   dispatch(remove(item.id));
-  // };
+  const removeItemFromCart = () => {
+    dispatch(remove(item.id));
+  };
 
   useEffect(() => {
     setTotalItem(totalQuantity);
@@ -77,7 +85,7 @@ const CartItem = ({ setTotalAmount, setTotalItem, cartItems }) => {
                       </div>
                     </div>
                   </>
-                );
+                )
               })}
             </div>
           </div>
